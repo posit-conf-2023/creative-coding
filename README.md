@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+Steal like an Rtist: Creative Coding in R
 ================
 
 ### posit::conf 2023
