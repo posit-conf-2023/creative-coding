@@ -29,10 +29,7 @@ This workshop is hands on and will cover colour theory and manipulation, a reint
 
 ## Prework
 
-ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO
-COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON
-RSTUDIO COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN
-RSTUDIO.CLOUD ACCOUNT, ETC.
+Coming soon!
 
 ## Schedule
 
@@ -51,6 +48,10 @@ RSTUDIO.CLOUD ACCOUNT, ETC.
 Ijeamaka Anyene Fumagalli (she/her) is a full-time senior data analyst in the healthcare space and a free time computational artist. Using code, mainly the R programming language, she creates data art and generative art systems. She loves all things grid based, minimal, and geometric which naturally led to her love for textile arts as well. 
 
 Sharla Gelfand (they/them) is a freelance statistician, software developer, and artist with interests in web development, generative art, and textile arts. Their work explores the play between art created by a computer and by hand, creating generative art that looks like it could have been made by hand (like a textile, drawing, or painting), and making physical art based on data or outputs of a generative system, exploring the strengths and limitations of each. 
+
+## Code of Conduct
+
+Please review the [code of conduct](https://posit.co/code-of-conduct/) that we will be following for this workshop and for the conference.
 
 -----
 
