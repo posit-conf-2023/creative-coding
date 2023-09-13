@@ -1,0 +1,19 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: 'Infinite Truchet by Roni Kaufman Exercise 1'
+output: html_document
+---
+
+# Exercise 1
+
+In this exercise, you will create your own hand drawn truchet tiles piece.
+
+Open the `exercises/05-infinite-truchet/truchet_tiles_examples` directory. These are different examples of truchet tiles. Choose one example.
+
+Draw four squares on your graphing paper in a 2x2 format. See below for an example. 
+
+![](exercise_1_image.png)
+
+Using the example you selected as a guide, draw the original example and three additional rotations in all four squares. Because these are truchet tiles, the tiles should "connect" with the adjacent tiles. When you are done, the four squares should come together to create a larger pattern. 
+
+Take a picture of your piece when finished and share it on the github discussions page: https://github.com/posit-conf-2023/creative-coding/discussions/10

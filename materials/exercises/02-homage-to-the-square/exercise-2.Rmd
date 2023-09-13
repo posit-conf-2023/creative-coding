@@ -1,0 +1,88 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: '02 - Homage to the Square Exercise 2'
+output: html_document
+---
+
+# Exercise 2
+
+## Part 1
+
+Explore some of the sources discussed for finding color inspiration or a palette, and extract at least four colors from it.
+
+Sources:
+
+* Music, movies, books, furniture, architecture, nature, other artists!
+
+Extracting colors from an image:
+
+* https://mattdesl.github.io/colorgrab/
+
+Palette sources:
+
+* https://artsexperiments.withgoogle.com/artpalette/
+* https://www.instagram.com/colours.cafe/
+* https://coolors.co/generate
+* https://www.color-hex.com/
+* https://mycolor.space/
+
+## Part 2
+
+Update the function `make_my_homage()` below to take your palette as the default value of the `colors` argument
+
+```{r ex-2-1}
+library(ggplot2)
+library(dplyr)
+
+make_my_homage <- function(seed = 1, colors = c("#5A9CBA", "#919EA3", "#F1EFDF", "#F5BB1D")) {
+  set.seed(seed)
+  
+  tribble(
+    ~x0, ~y0, ~size,
+    0, 0, 10,
+    1, 0.5, 8,
+    2, 1, 6,
+    3, 1.5, 4
+  ) %>%
+    mutate(
+      x1 = x0 + size,
+      y1 = y0 + size,
+      color = sample(colors, size = 4)
+    ) %>%
+    ggplot() +
+    geom_rect(aes(
+      xmin = x0, xmax = x1,
+      ymin = y0, ymax = y1,
+      fill = color
+    )) +
+    scale_fill_identity() +
+    coord_fixed() +
+    theme_void()
+}
+```
+
+What happens if you try to use less than 4 colors?
+
+## Part 3
+
+Run the function `make_my_homage()` with a few different seeds and pick your favorite output
+
+```{r ex-1-3}
+```
+
+## Part 4
+
+Share the inspiration image or palette and an output in the GitHub discussion for this exercise: https://github.com/posit-conf-2023/creative-coding/discussions/3
+
+```{r ex-2-4}
+library(glue)
+
+# seed <-
+# homage <- 
+
+ggsave(
+  filename = glue("exercises/02-homage-to-the-square/ex2-homage-{seed}.png"),
+  plot = homage,
+  width = 5, height = 5, dpi = 300
+)
+```

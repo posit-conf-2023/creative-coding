@@ -1,0 +1,280 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: '03 - o.T. (carré noir) by Vera Molnár Exercises'
+output: html_document
+---
+
+# Exercise 1
+
+## Part 1
+
+Open `exercises/03-ot/letters` - there are 6 letters in there. Select one and draw out the letter on your graphing paper.
+
+Label all the vertices of the shape with the coordinates. Reminder, minimum value for x and y coordinates should be 0 and maximum should be 1. 
+
+## Part 2
+
+```{r ex-packages}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(purrr)
+```
+
+Create a `tribble()` and save it to output `letter_tribble` with the coordinates of the letter you selected. If you are having difficulty determining the coordinates, the coordinate solutions for each letter is in `exercises/03-ot/letters_solutions`.
+
+```{r ex-1-1}
+```
+
+Confirm your coordinates are correct by running the following code chunk.
+
+```{r ex-1-1}
+ggplot(data = letter_tribble) +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  coord_fixed()
+```
+
+## Part 3
+
+Create a new function, `create_letter()` that takes `x0` and `y0` as arguments and moves the shape according to those arguments. See code/03-ot.R lines 55 through 68 for an example, if needed.
+
+```{r ex-1-2}
+```
+
+Plot your shape at the x0 and y0 of your choosing by updating the `x0` and `y0` arguments in the `create_letter()` function. 
+
+```{r ex-1-3}
+plotted_letter <- create_letter() %>%
+  ggplot() +
+  geom_polygon(aes(
+    x = x,
+    y = y
+  )) +
+  coord_fixed()
+
+plotted_letter
+```
+
+Share a picture of your output in the Github discussion for this exercise: https://github.com/posit-conf-2023/creative-coding/discussions/4
+
+```{r ex-1-4}
+ggsave(
+  filename = "ex1-shape.png",
+  plot = plotted_letter,
+  width = 5, height = 5
+)
+```
+
+Save your file when you are done with Exercise 1.
+
+# Exercise 2
+
+If you closed the file after the previous exercise, you may need to first re-run the code chunks from Exercise 1.
+
+Run the code chunk below to have access to the `initiate_rotate_shape()` function.
+
+```{r ex-2-1}
+rotate_shape <- function(data, x0, y0, degrees, shape_width) {
+  if (degrees == 90) {
+    data %>%
+      mutate(
+        x = x - x0,
+        y = y - y0
+      ) %>%
+      mutate(
+        x_new = y,
+        y_new = -x
+      ) %>%
+      mutate(
+        x = x_new + x0,
+        y = y_new + y0 + shape_width
+      )
+  } else if (degrees == 180) {
+    data %>%
+      mutate(
+        x = x - x0,
+        y = y - y0
+      ) %>%
+      mutate(
+        x_new = -x,
+        y_new = -y
+      ) %>%
+      mutate(
+        x = x_new + x0 + shape_width,
+        y = y_new + y0 + shape_width
+      )
+  } else if (degrees == 270) {
+    data %>%
+      mutate(
+        x = x - x0,
+        y = y - y0
+      ) %>%
+      mutate(
+        x_new = -y,
+        y_new = x
+      ) %>%
+      mutate(
+        x = x_new + x0 + shape_width,
+        y = y_new + y0
+      )
+  } else if (degrees == 0) {
+    data
+  }
+}
+
+initiate_rotate_shape <- function(x0, y0, degrees, shape_width) {
+  output <- create_letter(x0 = x0, y0 = y0) %>%
+    rotate_shape(
+      x0 = x0,
+      y0 = y0,
+      degrees = degrees,
+      shape_width = shape_width
+    )
+
+  return(output)
+}
+```
+
+## Part 1
+
+Experiment with changing the `x0`, `y0`, and the `degrees` argument within `initiate_rotate_shape()` to rotate and move your letter.
+
+What happens if you change `shape_width` to be greater or smaller than 1? Why does this happen?
+
+```{r ex-2-2}
+# Change x0, y0, degrees here
+# x0 <-
+# y0 <-
+# degrees <-
+shape_width <- 1
+
+rotated_shape <- initiate_rotate_shape(
+    x0 = x0,
+    y0 = y0,
+    shape_width = shape_width,
+    degrees = degrees
+  )
+
+ggplot(data = rotated_shape) +
+  geom_polygon(aes(
+    x = x,
+    y = y
+  )) +
+  geom_point(
+    aes(
+      x = x0,
+      y = y0
+    ),
+    color = "red"
+  ) +
+  coord_fixed()
+```
+
+Remember to save your file when you are done with the exercise.
+
+# Exercise 3
+
+If you closed the file after the previous exercise, you may need to first re-run the code chunks from Exercise 1 and 2.
+
+## Part 1
+
+Run the code chunk that contains the `make_exercise_molnar()` function which encompasses the whole system. It has been modified to take two additional arguments: `degree_pattern_options=` & `degree_sample_size=`. 
+
+```{r ex-3-1}
+make_exercise_molnar <-
+  function(seed, degree_pattern_options, degree_sample_size) {
+    set.seed(seed)
+
+    ncol <- 10
+    nrow <- 10
+    shape_width <- 1
+    perimeter_width <- shape_width + .25
+
+    degree_pattern <- sample(degree_pattern_options, size = degree_sample_size, replace = TRUE)
+
+    grid <-
+      expand_grid(
+        x = seq(0, by = perimeter_width, length.out = nrow),
+        y = seq(0, by = perimeter_width, length.out = ncol)
+      ) %>%
+      mutate(y = if_else(x >= 5 * perimeter_width,
+        y + perimeter_width / 2,
+        y
+      ))
+
+    degree_pattern_exp <- rep(degree_pattern,
+      length.out = nrow(grid)
+    )
+
+    output <-
+      map_dfr(
+        1:nrow(grid),
+        function(i) {
+          bind_cols(
+            group = i,
+            initiate_rotate_shape(
+              x = grid$x[i],
+              y = grid$y[i],
+              degrees = degree_pattern_exp[i],
+              shape_width = shape_width
+            )
+          )
+        }
+      )
+
+    return(output)
+  }
+```
+
+Pass a vector of degree options (ex. `c(0, 90, 180, 270)`) to `degree_pattern_options=` and a number for the `degree_sample_size=`. Remember to set a seed for your output to be reproducible. 
+
+Suggestions: 1) You do not have to use all of 0, 90, 180, and 270, and 2) You could make the sample size small or large. 
+
+If you have additional time you can experiment with colors in the `fill=` and `color=` in `geom_polygon()` and in the `plot.background` in `theme()`
+
+```{r ex-3-2}
+final_output <-
+  make_exercise_molnar(
+    degree_pattern_options = ,
+    degree_sample_size = ,
+    seed =
+    )
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    ),
+    fill = "#1a1617",
+    color = "#1a1617"
+  ) +
+  coord_fixed() +
+  theme_void() +
+  theme(
+    plot.background =
+      element_rect(
+        fill = "#e8e6e5",
+        color = "#e8e6e5"
+      )
+  )
+```
+
+## Part 2
+
+Share a picture of your output in the Github discussion for this exercise: https://github.com/posit-conf-2023/creative-coding/discussions/6
+
+```{r ex-3-3}
+ggsave(
+  filename = "ex3-piece.png",
+  plot = last_plot(),
+  width = 5, height = 5
+)
+```

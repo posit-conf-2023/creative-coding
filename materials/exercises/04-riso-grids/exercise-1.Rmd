@@ -1,0 +1,37 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: '04 - Riso Grids Exercise 1'
+output: html_document
+---
+
+# Exercise 1
+
+Determine the center point (`x` and `y`) and the starting and ending angles (`start` and `end`) of the quarter donut in the bottom left of the image. Plot it using `geom_arc_bar()`.
+
+Both a reference image of the quarter donut, and the image of the unit circle are in this folder to use as reference.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggforce)
+
+quarter_donut_3 <- tibble(
+  # Fill in donut elements here
+  # x = ,
+  # y = ,
+  # start = ,
+  # end = ,
+  r = 10,
+  r0 = 5
+)
+
+ggplot() + 
+  geom_arc_bar(
+    data = quarter_donut_3,
+    # Specify aesthetics here
+    # aes()
+  ) + 
+  coord_fixed() + 
+  theme_void()
+```
+
