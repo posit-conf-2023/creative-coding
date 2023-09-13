@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="05-infinite-truchet_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05-infinite-truchet_files/libs/quarto-html/tabby.min.js"></script>
+<script src="05-infinite-truchet_files/libs/quarto-html/popper.min.js"></script>
+<script src="05-infinite-truchet_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="05-infinite-truchet_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05-infinite-truchet_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="05-infinite-truchet_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.1.189">
+
+  <meta name="author" content="Ijeamaka Anyene Fumagalli and Sharla Gelfand">
+  <title>Infinite Truchet</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="05-infinite-truchet_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="05-infinite-truchet_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #575f66;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #575f66; } /* Normal */
+    code span.al { color: #f51818; background-color: #faefef; font-weight: bold; } /* Alert */
+    code span.an { color: #e6ba7e; } /* Annotation */
+    code span.at { color: #399ee6; } /* Attribute */
+    code span.bn { color: #ff9940; } /* BaseN */
+    code span.bu { color: #4cbf99; } /* BuiltIn */
+    code span.cf { color: #fa8d3e; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4cbf99; } /* Char */
+    code span.cn { color: #a37acc; } /* Constant */
+    code span.co { color: #607880; font-style: italic; } /* Comment */
+    code span.cv { color: #a37acc; } /* CommentVar */
+    code span.do { color: #607880; } /* Documentation */
+    code span.dt { color: #fa8d3e; } /* DataType */
+    code span.dv { color: #ff9940; } /* DecVal */
+    code span.er { color: #f51818; text-decoration: underline; } /* Error */
+    code span.ex { color: #399ee6; font-weight: bold; } /* Extension */
+    code span.fl { color: #ff9940; } /* Float */
+    code span.fu { color: #f2ae49; } /* Function */
+    code span.im { color: #86b300; } /* Import */
+    code span.in { color: #ff9940; } /* Information */
+    code span.kw { color: #fa8d3e; font-weight: bold; } /* Keyword */
+    code span.op { color: #ed9366; } /* Operator */
+    code span.ot { color: #55b4d4; } /* Other */
+    code span.pp { color: #f07171; } /* Preprocessor */
+    code span.re { color: #399ee6; background-color: #ddecf3; } /* RegionMarker */
+    code span.sc { color: #4cbf99; } /* SpecialChar */
+    code span.ss { color: #4cbf99; } /* SpecialString */
+    code span.st { color: #86b300; } /* String */
+    code span.va { color: #55b4d4; } /* Variable */
+    code span.vs { color: #86b300; } /* VerbatimString */
+    code span.wa { color: #f07171; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="05-infinite-truchet_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="05-infinite-truchet_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="05-infinite-truchet_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="05-infinite-truchet_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="05-infinite-truchet_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Steal like an Rtist: Creative Coding in R</h1>
+  <p class="subtitle">Infinite Truchet<br>Roni Kaufman</p>
+  <p class="author">Ijeamaka Anyene Fumagalli and Sharla Gelfand</p>
+  <p class="institute"><code>posit::conf(2023)</code></p>
+</section>
+
+<section id="infinite-truchet-by-roni-kaufman" class="slide level2">
+<h2>Infinite Truchet by Roni Kaufman</h2>
+<div class="columns">
+<div class="column" style="width:51%">
+<p><img data-src="05-infinite-truchet/roni_truchet_tiles.png"></p>
+</div><div class="column" style="width:49%">
+<ul>
+<li>Roni Kaufman is a self-described, creative coder and generative artist</li>
+<li>He regularly shares the code to his projects on openprocessing.org. This sketch is available at <a href="https://openprocessing.org/sketch/1929163">Infinite Processing</a></li>
+<li>Released under a CC BY-NC-SA 3.0 license (share and remix with attribution for noncommercial purposes)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="infinite-truchet-color-palette" class="slide level2">
+<h2>Infinite Truchet: Color palette</h2>
+<div class="columns">
+<div class="column" style="width:51%">
+<p><img data-src="05-infinite-truchet/roni_truchet_tiles.png"></p>
+</div><div class="column" style="width:49%">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-1_d3d7f6067e095161ccf240ec8b59104a">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>roni_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="st">"#050505"</span>, <span class="st">"#fc8405"</span>, <span class="st">"#fffbe6"</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">show_col</span>(roni_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="infinite-truchet-composition" class="slide level2">
+<h2>Infinite Truchet: Composition</h2>
+
+<img data-src="05-infinite-truchet/truchet_tiles_breakdown_01.png" class="r-stretch quarto-figure-center"></section>
+<section id="infinite-truchet-tiles" class="slide level2">
+<h2>Infinite Truchet: Tiles</h2>
+
+<img data-src="05-infinite-truchet/truchet_tiles_breakdown_02.png" class="r-stretch quarto-figure-center"></section>
+<section id="introduction-to-tiles" class="slide level2">
+<h2>Introduction to tiles</h2>
+
+<img data-src="05-infinite-truchet/tiles_type_1.png" class="r-stretch quarto-figure-center"></section>
+<section id="introduction-to-tiles-1" class="slide level2">
+<h2>Introduction to tiles</h2>
+
+<img data-src="05-infinite-truchet/tiles_type_2.png" class="r-stretch quarto-figure-center"></section>
+<section id="introduction-to-tiles-2" class="slide level2">
+<h2>Introduction to tiles</h2>
+
+<img data-src="05-infinite-truchet/truchet_tiles_breakdown_04.png" class="r-stretch quarto-figure-center"></section>
+<section id="introduction-to-tiles-3" class="slide level2">
+<h2>Introduction to tiles</h2>
+
+<img data-src="05-infinite-truchet/truchet_tiles_breakdown_05.png" class="r-stretch quarto-figure-center"></section>
+<section>
+<section id="truchet-tiles" class="title-slide slide level1 center">
+<h1>Truchet Tiles</h1>
+
+</section>
+<section id="the-father-of-truchet-tiles" class="slide level2">
+<h2>The Father of Truchet Tiles</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/father_sebastien_truchet.jpeg"></p>
+<p></p><figcaption>Jean Truchet, Father Sebastien Truchet</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column">
+<ul>
+<li>French Dominican priest, 1657–1729</li>
+<li>Studied typography and invented the first typographic point</li>
+<li>Published <em>“Memoir sur les combinaisons”</em> that invented the idea of truchet tiles</li>
+</ul>
+</div>
+</div>
+<p><span class="footer">Infinitely Variable Tiling Patterns: From Truchet to Sol LeWitt Revisited</span></p>
+</section>
+<section id="memoir-sur-les-combinaisons" class="slide level2">
+<h2>“Memoir sur les combinaisons”</h2>
+<div class="columns">
+<div class="column" style="width:40%">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/planches_de_memoir.png"></p>
+<p></p><figcaption>LES PLANCHES DE PAVAGES DE TRUCHET by Jacques André</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:60%">
+<ul>
+<li>Studied a pattern where square tiles are split by diagonal lines into two triangles with contrasting colors.</li>
+<li>By placing these tiles adjacent to each other but in different orientations, many different patterns can be formed.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="truchet-tiles-1" class="slide level2">
+<h2>Truchet Tiles</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/planches_de_memoir_02.png"></p>
+<p></p><figcaption>LES PLANCHES DE PAVAGES DE TRUCHET by Jacques André</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column">
+<p>Initially, the underlying idea of truchet tiles is that adjacent tiles of right triangles make larger connecting patterns.</p>
+</div>
+</div>
+<p><span class="footer">Infinitely Variable Tiling Patterns: From Truchet to Sol LeWitt Revisited</span></p>
+</section>
+<section id="truchet-tiles-2" class="slide level2">
+<h2>Truchet Tiles</h2>
+<p>Cyril Smith, 1987, analyzed truchet tiles and abstracted them into 1) diagonal lines, then 2) two arcs starting and ending at midpoints of the tiles edges.</p>
+
+<img data-src="05-infinite-truchet/cyril_smith.jpg" class="r-stretch quarto-figure-center"><p class="caption">Robert J. Krawczyk, 2020</p><p><span class="footer">Infinitely Variable Tiling Patterns: From Truchet to Sol LeWitt Revisited</span></p>
+</section>
+<section id="multi-scale-truchet-patterns" class="slide level2">
+<h2>Multi-Scale Truchet Patterns</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/christopher_carlson_multiscale.png"></p>
+<p></p><figcaption>Christopher Carlson</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/70s_pop_daniel_catt.png"></p>
+<p></p><figcaption>70s Pop Series One, Daniel Catt</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section id="exercise-1" class="title-slide slide level1 center">
+<h1>Exercise 1</h1>
+
+<img data-src="05-infinite-truchet/exercise_1_image.png" class="r-stretch quarto-figure-center"><div class="exercise">
+<ul>
+<li>Open the <code>exercises/05-infinite-truchet/truchet_tiles_examples</code> directory. These are different examples of truchet tiles. Choose one example.</li>
+<li>Draw four squares on your graphing paper in a 2x2 format (see above).</li>
+<li>Draw four different rotations of your selected truchet tile example.</li>
+<li>Take a picture of your piece when finished and share it on the Github Discussions page.</li>
+</ul>
+</div>
+</section>
+
+<section>
+<section id="who-actually-needs-trigonometric-functions" class="title-slide slide level1 center">
+<h1>Who actually needs trigonometric functions?</h1>
+
+</section>
+<section id="creating-arcs-in-ggforce" class="slide level2">
+<h2>Creating arcs in {ggforce}</h2>
+<h3 id="geom_arc_bar"><code>geom_arc_bar()</code></h3>
+<div class="columns">
+<div class="column">
+<p>We will use the following aesthetics</p>
+<ul>
+<li><code>x0</code>, <code>y0</code>: x, y coordinate, center of arc</li>
+<li><code>start</code>: radian value of where arc starts</li>
+<li><code>end</code>: radian value of where arc ends</li>
+<li><code>r0</code>: radius of inner arc</li>
+<li><code>r</code>: radius of outer arc</li>
+<li><code>color</code>, <code>fill</code>: color of arc</li>
+</ul>
+</div><div class="column">
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><code>r</code> vs <code>r0</code></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>In this example, we have <code>r0</code> as the inner radius and <code>r</code> as the outer radius. {ggforce} allows you to also have it be vice versa.</p></li>
+<li><p>Most important thing is to remain consistent in your definitions across your code.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-simplifying-of-trigonometry" class="slide level2">
+<h2>The simplifying of trigonometry</h2>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-2_38894a5d911506156fe4ab4ed7e5f0b7">
+
+</div>
+
+<img data-src="05-infinite-truchet/unit_circle_corners_annotated.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>You’ve seen this drawing in Sharla’s riso grids section, but the order of the arcs has changed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="creating-arcs-in-ggforce-1" class="slide level2">
+<h2>Creating arcs in {ggforce}</h2>
+<h3 id="geom_arc_bar-1"><code>geom_arc_bar()</code></h3>
+<p>We will use the following aesthetics</p>
+<ul>
+<li><span class="under"><code>x0</code>, <code>y0</code>: x, y coordinate, center of arc</span></li>
+<li><span class="under"><code>start</code>: radian value of where arc starts</span></li>
+<li><span class="under"><code>end</code>: radian value of where arc ends</span></li>
+<li><code>r0</code>: radius of inner arc</li>
+<li><code>r</code>: radius of outer arc</li>
+<li><code>color</code>, <code>fill</code>: color of arc</li>
+</ul>
+</section>
+<section id="geom_arc_bar-arguments-x0-y0-start-end" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>x0</code>, <code>y0</code>, <code>start</code>, <code>end</code></h2>
+
+<img data-src="05-infinite-truchet/arc_params_00.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-x0-y0-start-end-1" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>x0</code>, <code>y0</code>, <code>start</code>, <code>end</code></h2>
+<h3 id="always-travel-counterclockwise-starting-in-bottom-left">Always travel counterclockwise, starting in bottom left</h3>
+
+<img data-src="05-infinite-truchet/arc_params_01.png" class="r-stretch quarto-figure-center"></section>
+<section id="corner-1" class="slide level2">
+<h2>Corner 1</h2>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-3_fe1a6e423ab644e1104e91088062a634">
+
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-4_7b38d1eff318f34fe8eb294202dd7c0f">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">tribble</span>(</span>
+<span id="cb2-9"><a href="#cb2-9"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_02.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-1-1" class="slide level2">
+<h2>Corner 1</h2>
+<h3 id="x0-y0"><code>x0</code>, <code>y0</code></h3>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-5_eaa22db25316356a8373e58b5c39019b">
+
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-6_d1ee1deea6b1c754182698ce2849b36f">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">tribble</span>(</span>
+<span id="cb3-9"><a href="#cb3-9"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>             x,            y</span>
+<span id="cb3-11"><a href="#cb3-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_03.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-1-2" class="slide level2">
+<h2>Corner 1</h2>
+<h3 id="start-end"><code>start</code>, <code>end</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-7_7feb6ffbc98fe45b4895c93a9c129876">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="1,2,3,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb4-6"><a href="#cb4-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/unit_circle_corner_1.png"></p>
+</figure>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_03A.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-2" class="slide level2">
+<h2>Corner 2</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-8_0164f16d10a1e502382578c6ac0cc3ba">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1,2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb5-6"><a href="#cb5-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_05.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-2-1" class="slide level2">
+<h2>Corner 2</h2>
+<h3 id="x0-y0-1"><code>x0</code>, <code>y0</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-9_e156d8cb3c2e725b32fad23498753e1a">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1,2,3,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb6-6"><a href="#cb6-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb6-7"><a href="#cb6-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  x <span class="sc">+</span> sq_width,            y  </span>
+<span id="cb6-9"><a href="#cb6-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_07.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-2-2" class="slide level2">
+<h2>Corner 2</h2>
+<h3 id="start-end-1"><code>start</code>, <code>end</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-10_40bce420ed745919d2767cc194e74c2b">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="1,2,3,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb7-6"><a href="#cb7-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi</span>
+<span id="cb7-9"><a href="#cb7-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/unit_circle_corner_2.png"></p>
+</figure>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_06.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-3" class="slide level2">
+<h2>Corner 3</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-11_3556a85454a3225b19a124ba067a0999">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="1,2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb8-6"><a href="#cb8-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb8-7"><a href="#cb8-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb8-8"><a href="#cb8-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi</span>
+<span id="cb8-9"><a href="#cb8-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_09.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-3-1" class="slide level2">
+<h2>Corner 3</h2>
+<h3 id="x0-y0-2"><code>x0</code>, <code>y0</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-12_151fdcd797d1b5afef345722b82d3317">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="1,2,3,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb9-6"><a href="#cb9-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb9-7"><a href="#cb9-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb9-8"><a href="#cb9-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb9-9"><a href="#cb9-9"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      </span>
+<span id="cb9-10"><a href="#cb9-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_11.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-3-2" class="slide level2">
+<h2>Corner 3</h2>
+<h3 id="start-end-2"><code>start</code>, <code>end</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-13_a4ea7e08984458dc61e8eb5e1523d2fb">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1,2,3,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb10-6"><a href="#cb10-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb10-8"><a href="#cb10-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/unit_circle_corner_3.png"></p>
+</figure>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_10.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-4" class="slide level2">
+<h2>Corner 4</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-14_6f319b4aa609f97d9180021c6d81a871">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="1,2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb11-6"><a href="#cb11-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb11-8"><a href="#cb11-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb11-9"><a href="#cb11-9"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_13.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-4-1" class="slide level2">
+<h2>Corner 4</h2>
+<h3 id="x0-y0-3"><code>x0</code>, <code>y0</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-15_04e0f5eda469d16cee1dcdb09be95dbf">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="1,2,3,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb12-6"><a href="#cb12-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb12-7"><a href="#cb12-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb12-8"><a href="#cb12-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>             x, y <span class="sc">+</span> sq_width</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_15.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="corner-4-2" class="slide level2">
+<h2>Corner 4</h2>
+<h3 id="start-end-3"><code>start</code>, <code>end</code></h3>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-16_8cf0a697fe7fd18103967dc2e9a19c46">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="1,2,3,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">tribble</span>(</span>
+<span id="cb13-6"><a href="#cb13-6"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb13-7"><a href="#cb13-7"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb13-9"><a href="#cb13-9"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb13-10"><a href="#cb13-10"></a>             x, y <span class="sc">+</span> sq_width,    pi<span class="sc">/</span><span class="dv">2</span>,      pi</span>
+<span id="cb13-11"><a href="#cb13-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/unit_circle_corner_4.png"></p>
+</figure>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_14.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="wrap-it-up-in-a-function" class="slide level2">
+<h2>Wrap it up in a function</h2>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-17_34293d85d0d580231d4c81fe251cf02b">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>set_params <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, sq_width) {</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb14-3"><a href="#cb14-3"></a>            <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>              x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>   x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>   x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb14-7"><a href="#cb14-7"></a>              x, y <span class="sc">+</span> sq_width,    pi<span class="sc">/</span><span class="dv">2</span>,      pi</span>
+<span id="cb14-8"><a href="#cb14-8"></a>  )</span>
+<span id="cb14-9"><a href="#cb14-9"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise 2</h2>
+<div class="exercise">
+<ol type="1">
+<li>Open the file <code>exercise/05-infinite-truchet/exercise-2.Rmd</code></li>
+<li>Run the code chunk to have access to the <code>set_incorrect_params()</code> function and then the code chunk that plots the output of the function.</li>
+<li>As the title suggests, one of the corners in the plot has the incorrect parameters for the <code>start</code> and <code>end</code> arguments for <code>geom_arc_bar()</code>. Create a new function called <code>set_correct_params()</code> that fixes this mistake.</li>
+<li>Plot the output of your function to confirm, you corrected the mistake.</li>
+</ol>
+</div>
+</section></section>
+<section>
+<section id="building-a-system" class="title-slide slide level1 center">
+<h1>Building a System</h1>
+
+</section>
+<section id="number-of-arcs" class="slide level2">
+<h2>Number of Arcs</h2>
+<div class="columns">
+<div class="column">
+<h4 id="tile-type-1">Tile Type 1</h4>
+<p><img data-src="05-infinite-truchet/num_arcs_tile_type_1_00.png" data-fig.align="center"></p>
+</div><div class="column">
+<h4 id="tile-type-2">Tile Type 2</h4>
+<p><img data-src="05-infinite-truchet/num_arcs_tile_type_2_00.png" data-fig.align="center"></p>
+</div>
+</div>
+</section>
+<section id="update-set_params" class="slide level2">
+<h2>Update <code>set_params()</code></h2>
+<h3 id="number-of-arcs-1">Number of Arcs</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-18_88fe29cb1bc733a4818178b0a246cb38">
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="2,3,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>set_params <span class="ot">&lt;-</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="cf">function</span>(x, y, sq_width, tile_type) {</span>
+<span id="cb15-3"><a href="#cb15-3"></a>    <span class="cf">if</span> (tile_type <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb15-4"><a href="#cb15-4"></a>      <span class="fu">tribble</span>(</span>
+<span id="cb15-5"><a href="#cb15-5"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb15-6"><a href="#cb15-6"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb15-7"><a href="#cb15-7"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb15-8"><a href="#cb15-8"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb15-9"><a href="#cb15-9"></a>             x, y <span class="sc">+</span> sq_width,    pi<span class="sc">/</span><span class="dv">2</span>,      pi</span>
+<span id="cb15-10"><a href="#cb15-10"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>        <span class="fu">mutate</span>(<span class="at">num_arcs =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb15-12"><a href="#cb15-12"></a>    }</span>
+<span id="cb15-13"><a href="#cb15-13"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🔔 start bottom left, travel counter clockwise!</p>
+</div><div class="column">
+<h4 id="tile-type-1-1">Tile Type 1</h4>
+<p><img data-src="05-infinite-truchet/num_arcs_tile_type_1_01.png" data-fig.align="center"></p>
+</div>
+</div>
+</section>
+<section id="update-set_params-1" class="slide level2">
+<h2>Update <code>set_params()</code></h2>
+<h3 id="number-of-arcs-2">Number of Arcs</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-19_3c360260d7998eb2ff2158add736cdce">
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="2,12,20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>set_params <span class="ot">&lt;-</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="cf">function</span>(x, y, sq_width, tile_type) {</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="cf">if</span> (tile_type <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb16-4"><a href="#cb16-4"></a>      <span class="fu">tribble</span>(</span>
+<span id="cb16-5"><a href="#cb16-5"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb16-6"><a href="#cb16-6"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb16-7"><a href="#cb16-7"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb16-8"><a href="#cb16-8"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb16-9"><a href="#cb16-9"></a>             x, y <span class="sc">+</span> sq_width,    pi<span class="sc">/</span><span class="dv">2</span>,      pi</span>
+<span id="cb16-10"><a href="#cb16-10"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>        <span class="fu">mutate</span>(<span class="at">num_arcs =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb16-12"><a href="#cb16-12"></a>    } <span class="cf">else</span> <span class="cf">if</span> (tile_type <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb16-13"><a href="#cb16-13"></a>      <span class="fu">tribble</span>(</span>
+<span id="cb16-14"><a href="#cb16-14"></a>           <span class="sc">~</span>x0,          <span class="sc">~</span>y0,  <span class="sc">~</span>start,    <span class="sc">~</span>end,</span>
+<span id="cb16-15"><a href="#cb16-15"></a>             x,            y,       <span class="dv">0</span>,    pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb16-16"><a href="#cb16-16"></a>  x <span class="sc">+</span> sq_width,            y,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,    <span class="dv">2</span><span class="sc">*</span>pi,</span>
+<span id="cb16-17"><a href="#cb16-17"></a>  x <span class="sc">+</span> sq_width, y <span class="sc">+</span> sq_width,      pi,  <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>,</span>
+<span id="cb16-18"><a href="#cb16-18"></a>             x, y <span class="sc">+</span> sq_width,    pi<span class="sc">/</span><span class="dv">2</span>,      pi</span>
+<span id="cb16-19"><a href="#cb16-19"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-20"><a href="#cb16-20"></a>        <span class="fu">mutate</span>(<span class="at">num_arcs =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>))</span>
+<span id="cb16-21"><a href="#cb16-21"></a>    }</span>
+<span id="cb16-22"><a href="#cb16-22"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🔔 start bottom left, travel counter clockwise!</p>
+</div><div class="column">
+<h4 id="tile-type-2-1">Tile Type 2</h4>
+<p><img data-src="05-infinite-truchet/num_arcs_tile_type_2_01.png" data-fig.align="center"></p>
+</div>
+</div>
+</section>
+<section id="set_params-output" class="slide level2">
+<h2><code>set_params()</code> output</h2>
+<div class="cell columns column-output-location" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-20_ade45c76f5e5237d84210cdad264ac78">
+<div class="column">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">set_params</span>(</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="at">x =</span> <span class="dv">0</span>,</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="at">y =</span> <span class="dv">0</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="at">sq_width =</span> <span class="dv">15</span>,</span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="at">tile_type =</span> <span class="dv">1</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+     x0    y0 start   end num_arcs
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+1     0     0  0     1.57        3
+2    15     0  4.71  6.28        4
+3    15    15  3.14  4.71        3
+4     0    15  1.57  3.14        4</code></pre>
+</div>
+</div>
+</div>
+<p>This allows us to create one tile of width 15 that has the bottom left corner at <code>x</code> = 0, <code>y</code> = 0</p>
+</section>
+<section id="creating-the-grid" class="slide level2">
+<h2>Creating the grid</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-21_38dea2f2b109cb84c8c1a76e46cce57f">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>grid <span class="ot">&lt;-</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">expand_grid</span>(</span>
+<span id="cb19-7"><a href="#cb19-7"></a>    <span class="at">y =</span> <span class="fu">seq</span>(</span>
+<span id="cb19-8"><a href="#cb19-8"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb19-9"><a href="#cb19-9"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb19-10"><a href="#cb19-10"></a>      <span class="at">length.out =</span> nrow</span>
+<span id="cb19-11"><a href="#cb19-11"></a>    ),</span>
+<span id="cb19-12"><a href="#cb19-12"></a>    <span class="at">x =</span> <span class="fu">seq</span>(</span>
+<span id="cb19-13"><a href="#cb19-13"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb19-14"><a href="#cb19-14"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb19-15"><a href="#cb19-15"></a>      <span class="at">length.out =</span> ncol</span>
+<span id="cb19-16"><a href="#cb19-16"></a>    )</span>
+<span id="cb19-17"><a href="#cb19-17"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<p><img data-src="05-infinite-truchet/truchet_tiles_breakdown_01.png"></p>
+</div>
+</div>
+</section>
+<section id="creating-the-grid-1" class="slide level2">
+<h2>Creating the grid</h2>
+<div class="cell columns column-output-location" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-22_47db8439865ed1cda77999435b6e20f7">
+<div class="column">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a>grid <span class="ot">&lt;-</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="fu">expand_grid</span>(</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    <span class="at">y =</span> <span class="fu">seq</span>(</span>
+<span id="cb20-8"><a href="#cb20-8"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb20-9"><a href="#cb20-9"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb20-10"><a href="#cb20-10"></a>      <span class="at">length.out =</span> nrow</span>
+<span id="cb20-11"><a href="#cb20-11"></a>    ),</span>
+<span id="cb20-12"><a href="#cb20-12"></a>    <span class="at">x =</span> <span class="fu">seq</span>(</span>
+<span id="cb20-13"><a href="#cb20-13"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb20-14"><a href="#cb20-14"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb20-15"><a href="#cb20-15"></a>      <span class="at">length.out =</span> ncol</span>
+<span id="cb20-16"><a href="#cb20-16"></a>    )</span>
+<span id="cb20-17"><a href="#cb20-17"></a>  )</span>
+<span id="cb20-18"><a href="#cb20-18"></a></span>
+<span id="cb20-19"><a href="#cb20-19"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 2
+       y     x
+   &lt;dbl&gt; &lt;dbl&gt;
+ 1     0     0
+ 2     0    15
+ 3     0    30
+ 4     0    45
+ 5    15     0
+ 6    15    15
+ 7    15    30
+ 8    15    45
+ 9    30     0
+10    30    15
+11    30    30
+12    30    45
+13    45     0
+14    45    15
+15    45    30
+16    45    45</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="tile-selection" class="slide level2">
+<h2>Tile selection</h2>
+<h3 id="recreating-infinite-truchet">Recreating Infinite Truchet</h3>
+<div class="cell columns column-output-location" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-23_0870e8552da6a0b89e923aa11aa42c1d">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="19,20,21,22,23,24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>grid <span class="ot">&lt;-</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">expand_grid</span>(</span>
+<span id="cb22-7"><a href="#cb22-7"></a>    <span class="at">y =</span> <span class="fu">seq</span>(</span>
+<span id="cb22-8"><a href="#cb22-8"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb22-9"><a href="#cb22-9"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb22-10"><a href="#cb22-10"></a>      <span class="at">length.out =</span> nrow</span>
+<span id="cb22-11"><a href="#cb22-11"></a>    ),</span>
+<span id="cb22-12"><a href="#cb22-12"></a>    <span class="at">x =</span> <span class="fu">seq</span>(</span>
+<span id="cb22-13"><a href="#cb22-13"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb22-14"><a href="#cb22-14"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb22-15"><a href="#cb22-15"></a>      <span class="at">length.out =</span> ncol</span>
+<span id="cb22-16"><a href="#cb22-16"></a>    )</span>
+<span id="cb22-17"><a href="#cb22-17"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-18"><a href="#cb22-18"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-19"><a href="#cb22-19"></a>    <span class="at">tile_type =</span></span>
+<span id="cb22-20"><a href="#cb22-20"></a>      <span class="fu">c</span>(</span>
+<span id="cb22-21"><a href="#cb22-21"></a>        <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>,</span>
+<span id="cb22-22"><a href="#cb22-22"></a>        <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb22-23"><a href="#cb22-23"></a>        <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb22-24"><a href="#cb22-24"></a>        <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb22-25"><a href="#cb22-25"></a>      )</span>
+<span id="cb22-26"><a href="#cb22-26"></a>  )</span>
+<span id="cb22-27"><a href="#cb22-27"></a></span>
+<span id="cb22-28"><a href="#cb22-28"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 3
+       y     x tile_type
+   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+ 1     0     0         1
+ 2     0    15         1
+ 3     0    30         2
+ 4     0    45         2
+ 5    15     0         1
+ 6    15    15         1
+ 7    15    30         1
+ 8    15    45         1
+ 9    30     0         1
+10    30    15         2
+11    30    30         1
+12    30    45         1
+13    45     0         1
+14    45    15         1
+15    45    30         1
+16    45    45         1</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-the-grid-2" class="slide level2">
+<h2>Creating the grid</h2>
+<h3 id="incorporating-the-element-of-chance">Incorporating the element of chance</h3>
+<div class="cell columns column-output-location" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-24_43a587da8aa4b3f9bcc7ac4956bb910c">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="19,20,21,22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>grid <span class="ot">&lt;-</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">expand_grid</span>(</span>
+<span id="cb24-7"><a href="#cb24-7"></a>    <span class="at">y =</span> <span class="fu">seq</span>(</span>
+<span id="cb24-8"><a href="#cb24-8"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb24-9"><a href="#cb24-9"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb24-10"><a href="#cb24-10"></a>      <span class="at">length.out =</span> nrow</span>
+<span id="cb24-11"><a href="#cb24-11"></a>    ),</span>
+<span id="cb24-12"><a href="#cb24-12"></a>    <span class="at">x =</span> <span class="fu">seq</span>(</span>
+<span id="cb24-13"><a href="#cb24-13"></a>      <span class="at">from =</span> <span class="dv">0</span>,</span>
+<span id="cb24-14"><a href="#cb24-14"></a>      <span class="at">by =</span> sq_width,</span>
+<span id="cb24-15"><a href="#cb24-15"></a>      <span class="at">length.out =</span> ncol</span>
+<span id="cb24-16"><a href="#cb24-16"></a>    )</span>
+<span id="cb24-17"><a href="#cb24-17"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-19"><a href="#cb24-19"></a>    <span class="at">tile_type =</span></span>
+<span id="cb24-20"><a href="#cb24-20"></a>      <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb24-21"><a href="#cb24-21"></a>        <span class="at">size =</span> <span class="fu">n</span>(),</span>
+<span id="cb24-22"><a href="#cb24-22"></a>        <span class="at">replace =</span> <span class="cn">TRUE</span></span>
+<span id="cb24-23"><a href="#cb24-23"></a>      )</span>
+<span id="cb24-24"><a href="#cb24-24"></a>  )</span>
+<span id="cb24-25"><a href="#cb24-25"></a></span>
+<span id="cb24-26"><a href="#cb24-26"></a>grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 3
+       y     x tile_type
+   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+ 1     0     0         1
+ 2     0    15         2
+ 3     0    30         1
+ 4     0    45         1
+ 5    15     0         1
+ 6    15    15         2
+ 7    15    30         1
+ 8    15    45         2
+ 9    30     0         2
+10    30    15         2
+11    30    30         1
+12    30    45         2
+13    45     0         1
+14    45    15         2
+15    45    30         2
+16    45    45         1</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-our-system" class="slide level2">
+<h2>Creating our system</h2>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-25_8cc44ac43f47beca614030ee2db26930">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>truchet_tiles <span class="ot">&lt;-</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="cf">function</span>(seed) {</span>
+<span id="cb26-5"><a href="#cb26-5"></a>    ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>    nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>    sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a></span>
+<span id="cb26-9"><a href="#cb26-9"></a>    <span class="fu">set.seed</span>(seed)</span>
+<span id="cb26-10"><a href="#cb26-10"></a></span>
+<span id="cb26-11"><a href="#cb26-11"></a>    grid <span class="ot">&lt;-</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>      <span class="fu">expand_grid</span>(</span>
+<span id="cb26-13"><a href="#cb26-13"></a>        <span class="at">y =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">by =</span> sq_width, <span class="at">length.out =</span> ncol),</span>
+<span id="cb26-14"><a href="#cb26-14"></a>        <span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">by =</span> sq_width, <span class="at">length.out =</span> nrow)</span>
+<span id="cb26-15"><a href="#cb26-15"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb26-16"><a href="#cb26-16"></a>      <span class="fu">mutate</span>(<span class="at">tile_type =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">size =</span> <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb26-17"><a href="#cb26-17"></a></span>
+<span id="cb26-18"><a href="#cb26-18"></a>    params_grid <span class="ot">&lt;-</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a>      <span class="fu">map_dfr</span>(</span>
+<span id="cb26-20"><a href="#cb26-20"></a>        <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(grid),</span>
+<span id="cb26-21"><a href="#cb26-21"></a>        <span class="cf">function</span>(i) {</span>
+<span id="cb26-22"><a href="#cb26-22"></a>          <span class="fu">set_params</span>(</span>
+<span id="cb26-23"><a href="#cb26-23"></a>            <span class="at">x =</span> grid<span class="sc">$</span>x[i],</span>
+<span id="cb26-24"><a href="#cb26-24"></a>            <span class="at">y =</span> grid<span class="sc">$</span>y[i],</span>
+<span id="cb26-25"><a href="#cb26-25"></a>            <span class="at">sq_width =</span> sq_width,</span>
+<span id="cb26-26"><a href="#cb26-26"></a>            <span class="at">tile_type =</span> grid<span class="sc">$</span>tile_type[i]</span>
+<span id="cb26-27"><a href="#cb26-27"></a>          )</span>
+<span id="cb26-28"><a href="#cb26-28"></a>        }</span>
+<span id="cb26-29"><a href="#cb26-29"></a>      )</span>
+<span id="cb26-30"><a href="#cb26-30"></a></span>
+<span id="cb26-31"><a href="#cb26-31"></a>    <span class="fu">return</span>(params_grid)</span>
+<span id="cb26-32"><a href="#cb26-32"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="applying-our-system" class="slide level2">
+<h2>Applying our system</h2>
+<div class="cell columns column-output-location" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-26_8c421e6de62934af7e8b36d5f8af45bb">
+<div class="column">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>output_grid <span class="ot">&lt;-</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">truchet_tiles</span>(<span class="at">seed =</span> <span class="dv">150</span>)</span>
+<span id="cb27-3"><a href="#cb27-3"></a></span>
+<span id="cb27-4"><a href="#cb27-4"></a>output_grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 64 × 5
+      x0    y0 start   end num_arcs
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1     0     0  0     1.57        3
+ 2    15     0  4.71  6.28        4
+ 3    15    15  3.14  4.71        3
+ 4     0    15  1.57  3.14        4
+ 5    15     0  0     1.57        5
+ 6    30     0  4.71  6.28        2
+ 7    30    15  3.14  4.71        5
+ 8    15    15  1.57  3.14        2
+ 9    30     0  0     1.57        3
+10    45     0  4.71  6.28        4
+# ℹ 54 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-our-system-1" class="slide level2">
+<h2>Applying our system</h2>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-27_676af231d106e08524e4378cc33aa363">
+<div class="column">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb29-6"><a href="#cb29-6"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb29-7"><a href="#cb29-7"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb29-8"><a href="#cb29-8"></a>    <span class="at">start =</span> start,</span>
+<span id="cb29-9"><a href="#cb29-9"></a>    <span class="at">end =</span> end,</span>
+<span id="cb29-10"><a href="#cb29-10"></a>    <span class="at">r0 =</span> num_arcs,</span>
+<span id="cb29-11"><a href="#cb29-11"></a>    <span class="at">r =</span> num_arcs <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>  )) <span class="sc">+</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-our-system-2" class="slide level2">
+<h2>Applying our system</h2>
+<h3 id="num_arcs-r-or-r0"><code>num_arcs</code> != <code>r</code> or <code>r0</code></h3>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-28_5d08d58da2058f908497234b19b3af3a">
+<div class="column">
+<div class="sourceCode cell-code" id="cb30" data-code-line-numbers="8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb30-4"><a href="#cb30-4"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb30-6"><a href="#cb30-6"></a>    <span class="at">start =</span> start,</span>
+<span id="cb30-7"><a href="#cb30-7"></a>    <span class="at">end =</span> end,</span>
+<span id="cb30-8"><a href="#cb30-8"></a>    <span class="at">r0 =</span> num_arcs,</span>
+<span id="cb30-9"><a href="#cb30-9"></a>    <span class="at">r =</span> num_arcs <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a>  )) <span class="sc">+</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-arcs-in-ggforce-2" class="slide level2">
+<h2>Creating arcs in {ggforce}</h2>
+<h3 id="geom_arc_bar-2"><code>geom_arc_bar()</code></h3>
+<p>We will use the following aesthetics</p>
+<ul>
+<li><code>x0</code>, <code>y0</code>: x, y coordinate, center of arc</li>
+<li><code>start</code>: radian value of where arc starts</li>
+<li><code>end</code>: radian value of where arc ends</li>
+<li><span class="under"><code>r0</code>: radius of inner arc</span></li>
+<li><span class="under"><code>r</code>: radius of outer arc</span></li>
+<li><code>color</code>, <code>fill</code>: color of arc</li>
+</ul>
+</section>
+<section id="geom_arc_bar-arguments-r0-r" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="always-travel-counterclockwise-starting-in-bottom-left-1">Always travel counterclockwise, starting in bottom left</h3>
+
+<img data-src="05-infinite-truchet/arc_params_01.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-1" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+
+<img data-src="05-infinite-truchet/parameter_radius_01.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-2" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+
+<img data-src="05-infinite-truchet/parameter_radius_02.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-3" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+
+<img data-src="05-infinite-truchet/parameter_radius_03.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-4" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius">converting num_arcs to radius</h3>
+
+<img data-src="05-infinite-truchet/r0_r_01.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-5" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius-1">converting num_arcs to radius</h3>
+
+<img data-src="05-infinite-truchet/r0_r_01A.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-6" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius-2">converting num_arcs to radius</h3>
+
+<img data-src="05-infinite-truchet/r0_r_02.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-7" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius-3">converting num_arcs to radius</h3>
+
+<img data-src="05-infinite-truchet/r0_r_03.png" class="r-stretch quarto-figure-center"></section>
+<section id="geom_arc_bar-arguments-r0-r-8" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius-4">converting num_arcs to radius</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-29_995e20f11b635d7e77601cd71b3e8272">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>r0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">7</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a>r0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5 7</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/r0_r_03.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="geom_arc_bar-arguments-r0-r-9" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius-5">converting num_arcs to radius</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-30_36e647200dde113c5c0cc0a76c26bcb5">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>r0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">7</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>r <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4 6 8</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/r0_r_03.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="geom_arc_bar-arguments-r0-r-10" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>r0</code>, <code>r</code></h2>
+<h3 id="converting-num_arcs-to-radius-6">converting num_arcs to radius</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-31_3a49d815cce446624a916fbc72aa0338">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>num_arcs <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>r0 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> num_arcs)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>r0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>r <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> num_arcs)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4 6 8</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/r0_r_03.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="updating-our-system" class="slide level2">
+<h2>Updating our system</h2>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-32_80dc91ca7f4963352c1f09969f158de4">
+<div class="sourceCode cell-code" id="cb39" data-code-line-numbers="33,34,35,36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>truchet_tiles <span class="ot">&lt;-</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="cf">function</span>(seed) {</span>
+<span id="cb39-3"><a href="#cb39-3"></a>    ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>    nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>    sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a></span>
+<span id="cb39-7"><a href="#cb39-7"></a>    <span class="fu">set.seed</span>(seed)</span>
+<span id="cb39-8"><a href="#cb39-8"></a></span>
+<span id="cb39-9"><a href="#cb39-9"></a>    grid <span class="ot">&lt;-</span></span>
+<span id="cb39-10"><a href="#cb39-10"></a>      <span class="fu">expand_grid</span>(</span>
+<span id="cb39-11"><a href="#cb39-11"></a>        <span class="at">y =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">by =</span> sq_width, <span class="at">length.out =</span> ncol),</span>
+<span id="cb39-12"><a href="#cb39-12"></a>        <span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">by =</span> sq_width, <span class="at">length.out =</span> nrow)</span>
+<span id="cb39-13"><a href="#cb39-13"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb39-14"><a href="#cb39-14"></a>      <span class="fu">mutate</span>(<span class="at">tile_type =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">size =</span> <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb39-15"><a href="#cb39-15"></a></span>
+<span id="cb39-16"><a href="#cb39-16"></a>    params_grid <span class="ot">&lt;-</span></span>
+<span id="cb39-17"><a href="#cb39-17"></a>      <span class="fu">map_dfr</span>(</span>
+<span id="cb39-18"><a href="#cb39-18"></a>        <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(grid),</span>
+<span id="cb39-19"><a href="#cb39-19"></a>        <span class="cf">function</span>(i) {</span>
+<span id="cb39-20"><a href="#cb39-20"></a>          <span class="fu">set_params</span>(</span>
+<span id="cb39-21"><a href="#cb39-21"></a>            <span class="at">x =</span> grid<span class="sc">$</span>x[i],</span>
+<span id="cb39-22"><a href="#cb39-22"></a>            <span class="at">y =</span> grid<span class="sc">$</span>y[i],</span>
+<span id="cb39-23"><a href="#cb39-23"></a>            <span class="at">sq_width =</span> sq_width,</span>
+<span id="cb39-24"><a href="#cb39-24"></a>            <span class="at">tile_type =</span> grid<span class="sc">$</span>tile_type[i]</span>
+<span id="cb39-25"><a href="#cb39-25"></a>          )</span>
+<span id="cb39-26"><a href="#cb39-26"></a>        }</span>
+<span id="cb39-27"><a href="#cb39-27"></a>      )</span>
+<span id="cb39-28"><a href="#cb39-28"></a></span>
+<span id="cb39-29"><a href="#cb39-29"></a>    output <span class="ot">&lt;-</span></span>
+<span id="cb39-30"><a href="#cb39-30"></a>      <span class="fu">map_dfr</span>(</span>
+<span id="cb39-31"><a href="#cb39-31"></a>        <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(params_grid),</span>
+<span id="cb39-32"><a href="#cb39-32"></a>        <span class="cf">function</span>(i) {</span>
+<span id="cb39-33"><a href="#cb39-33"></a>          <span class="fu">bind_cols</span>(</span>
+<span id="cb39-34"><a href="#cb39-34"></a>            <span class="fu">slice</span>(params_grid, i),</span>
+<span id="cb39-35"><a href="#cb39-35"></a>            <span class="at">r0 =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> params_grid<span class="sc">$</span>num_arcs[i]),</span>
+<span id="cb39-36"><a href="#cb39-36"></a>            <span class="at">r =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> params_grid<span class="sc">$</span>num_arcs[i])</span>
+<span id="cb39-37"><a href="#cb39-37"></a>          )</span>
+<span id="cb39-38"><a href="#cb39-38"></a>        }</span>
+<span id="cb39-39"><a href="#cb39-39"></a>      )</span>
+<span id="cb39-40"><a href="#cb39-40"></a></span>
+<span id="cb39-41"><a href="#cb39-41"></a>    <span class="fu">return</span>(output)</span>
+<span id="cb39-42"><a href="#cb39-42"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="applying-our-system-3" class="slide level2">
+<h2>Applying our system</h2>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-33_25a7399ae40a0ec5c833278b186d479c">
+<div class="column">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>output_grid <span class="ot">&lt;-</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">truchet_tiles</span>(<span class="at">seed =</span> <span class="dv">150</span>)</span>
+<span id="cb40-3"><a href="#cb40-3"></a></span>
+<span id="cb40-4"><a href="#cb40-4"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb40-5"><a href="#cb40-5"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb40-7"><a href="#cb40-7"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb40-8"><a href="#cb40-8"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb40-9"><a href="#cb40-9"></a>    <span class="at">start =</span> start,</span>
+<span id="cb40-10"><a href="#cb40-10"></a>    <span class="at">end =</span> end,</span>
+<span id="cb40-11"><a href="#cb40-11"></a>    <span class="at">r0 =</span> r0,</span>
+<span id="cb40-12"><a href="#cb40-12"></a>    <span class="at">r =</span> r</span>
+<span id="cb40-13"><a href="#cb40-13"></a>  )) <span class="sc">+</span></span>
+<span id="cb40-14"><a href="#cb40-14"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="color-fill" class="title-slide slide level1 center">
+<h1>Color, Fill</h1>
+
+</section>
+<section id="original-infinite-truchet" class="slide level2">
+<h2>Original Infinite Truchet</h2>
+<p><video controls="" width="50%"> <source src="05-infinite-truchet/roni_truchet_video.mp4" type="video/mp4"> </video></p>
+<p><span class="footer">Infinite Truchet available at Open Processing</span></p>
+</section>
+<section id="geom_arc_bar-arguments-color-and-fill" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>color</code> and <code>fill</code></h2>
+<h3 id="color-order-is-the-same-in-every-corner">Color order is the same in every corner</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-34_d3d352f9647299275ead0de3bfdb8e80">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#fffbe6"</span>, <span class="st">"#fc8405"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_00.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="geom_arc_bar-arguments-color-and-fill-1" class="slide level2">
+<h2><code>geom_arc_bar()</code> arguments: <code>color</code> and <code>fill</code></h2>
+<h3 id="color-order-is-the-same-in-every-corner-1">Color order is the same in every corner</h3>
+<div class="columns">
+<div class="column">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-35_67eb882566dc936e98b8e4c812417160">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>max_num_arcs <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#fffbe6"</span>, <span class="st">"#fc8405"</span>)</span>
+<span id="cb42-3"><a href="#cb42-3"></a>color_seq <span class="ot">&lt;-</span> <span class="fu">rep</span>(color, </span>
+<span id="cb42-4"><a href="#cb42-4"></a>                 <span class="at">length.out =</span> max_num_arcs)</span>
+<span id="cb42-5"><a href="#cb42-5"></a>color_seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "#fffbe6" "#fc8405" "#fffbe6" "#fc8405" "#fffbe6"</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="05-infinite-truchet/arc_params_00.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="updating-our-system-1" class="slide level2">
+<h2>Updating our system</h2>
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-36_adb38349181fb4914e9756c24cee52f3">
+<div class="sourceCode cell-code" id="cb44" data-code-line-numbers="2,3,8,32,33,43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>truchet_tiles <span class="ot">&lt;-</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="cf">function</span>(color1,</span>
+<span id="cb44-3"><a href="#cb44-3"></a>           color2,</span>
+<span id="cb44-4"><a href="#cb44-4"></a>           seed) {</span>
+<span id="cb44-5"><a href="#cb44-5"></a>    ncol <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a>    nrow <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a>    sq_width <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb44-8"><a href="#cb44-8"></a>    max_num_arcs <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a></span>
+<span id="cb44-10"><a href="#cb44-10"></a>    <span class="fu">set.seed</span>(seed)</span>
+<span id="cb44-11"><a href="#cb44-11"></a></span>
+<span id="cb44-12"><a href="#cb44-12"></a>    grid <span class="ot">&lt;-</span></span>
+<span id="cb44-13"><a href="#cb44-13"></a>      <span class="fu">expand_grid</span>(</span>
+<span id="cb44-14"><a href="#cb44-14"></a>        <span class="at">y =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">by =</span> sq_width, <span class="at">length.out =</span> ncol),</span>
+<span id="cb44-15"><a href="#cb44-15"></a>        <span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">by =</span> sq_width, <span class="at">length.out =</span> nrow)</span>
+<span id="cb44-16"><a href="#cb44-16"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-17"><a href="#cb44-17"></a>      <span class="fu">mutate</span>(<span class="at">tile_type =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">size =</span> <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb44-18"><a href="#cb44-18"></a></span>
+<span id="cb44-19"><a href="#cb44-19"></a>    params_grid <span class="ot">&lt;-</span></span>
+<span id="cb44-20"><a href="#cb44-20"></a>      <span class="fu">map_dfr</span>(</span>
+<span id="cb44-21"><a href="#cb44-21"></a>        <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(grid),</span>
+<span id="cb44-22"><a href="#cb44-22"></a>        <span class="cf">function</span>(i) {</span>
+<span id="cb44-23"><a href="#cb44-23"></a>          <span class="fu">set_params</span>(</span>
+<span id="cb44-24"><a href="#cb44-24"></a>            <span class="at">x =</span> grid<span class="sc">$</span>x[i],</span>
+<span id="cb44-25"><a href="#cb44-25"></a>            <span class="at">y =</span> grid<span class="sc">$</span>y[i],</span>
+<span id="cb44-26"><a href="#cb44-26"></a>            <span class="at">sq_width =</span> sq_width,</span>
+<span id="cb44-27"><a href="#cb44-27"></a>            <span class="at">tile_type =</span> grid<span class="sc">$</span>tile_type[i]</span>
+<span id="cb44-28"><a href="#cb44-28"></a>          )</span>
+<span id="cb44-29"><a href="#cb44-29"></a>        }</span>
+<span id="cb44-30"><a href="#cb44-30"></a>      )</span>
+<span id="cb44-31"><a href="#cb44-31"></a></span>
+<span id="cb44-32"><a href="#cb44-32"></a>    color <span class="ot">&lt;-</span> <span class="fu">c</span>(color1, color2)</span>
+<span id="cb44-33"><a href="#cb44-33"></a>    color_seq <span class="ot">&lt;-</span> <span class="fu">rep</span>(color, <span class="at">length.out =</span> max_num_arcs)</span>
+<span id="cb44-34"><a href="#cb44-34"></a></span>
+<span id="cb44-35"><a href="#cb44-35"></a>    output <span class="ot">&lt;-</span></span>
+<span id="cb44-36"><a href="#cb44-36"></a>      <span class="fu">map_dfr</span>(</span>
+<span id="cb44-37"><a href="#cb44-37"></a>        <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(params_grid),</span>
+<span id="cb44-38"><a href="#cb44-38"></a>        <span class="cf">function</span>(i) {</span>
+<span id="cb44-39"><a href="#cb44-39"></a>          <span class="fu">bind_cols</span>(</span>
+<span id="cb44-40"><a href="#cb44-40"></a>            <span class="fu">slice</span>(params_grid, i),</span>
+<span id="cb44-41"><a href="#cb44-41"></a>            <span class="at">r0 =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> params_grid<span class="sc">$</span>num_arcs[i]),</span>
+<span id="cb44-42"><a href="#cb44-42"></a>            <span class="at">r =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">length.out =</span> params_grid<span class="sc">$</span>num_arcs[i]),</span>
+<span id="cb44-43"><a href="#cb44-43"></a>            <span class="at">color =</span> color_seq[<span class="dv">1</span><span class="sc">:</span>params_grid<span class="sc">$</span>num_arcs[i]]</span>
+<span id="cb44-44"><a href="#cb44-44"></a>          )</span>
+<span id="cb44-45"><a href="#cb44-45"></a>        }</span>
+<span id="cb44-46"><a href="#cb44-46"></a>      )</span>
+<span id="cb44-47"><a href="#cb44-47"></a></span>
+<span id="cb44-48"><a href="#cb44-48"></a>    <span class="fu">return</span>(output)</span>
+<span id="cb44-49"><a href="#cb44-49"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="applying-our-system-4" class="slide level2">
+<h2>Applying our system</h2>
+<div class="columns">
+<div class="column" style="width:40%">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-37_29edbbdfca439f5bdf268325101957a2">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>output_grid <span class="ot">&lt;-</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>  <span class="fu">truchet_tiles</span>(</span>
+<span id="cb45-3"><a href="#cb45-3"></a>    <span class="at">seed =</span> <span class="dv">150</span>,</span>
+<span id="cb45-4"><a href="#cb45-4"></a>    <span class="at">color1 =</span> <span class="st">"#fffbe6"</span>,</span>
+<span id="cb45-5"><a href="#cb45-5"></a>    <span class="at">color2 =</span> <span class="st">"#fc8405"</span></span>
+<span id="cb45-6"><a href="#cb45-6"></a>  )</span>
+<span id="cb45-7"><a href="#cb45-7"></a></span>
+<span id="cb45-8"><a href="#cb45-8"></a>output_grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%">
+<div class="cell" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-38_bc65f80bf6a8caf7226cf4c1e99f7bd5">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 224 × 8
+      x0    y0 start   end num_arcs    r0     r color  
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  
+ 1     0     0  0     1.57        3     1     2 #fffbe6
+ 2     0     0  0     1.57        3     3     4 #fc8405
+ 3     0     0  0     1.57        3     5     6 #fffbe6
+ 4    15     0  4.71  6.28        4     1     2 #fffbe6
+ 5    15     0  4.71  6.28        4     3     4 #fc8405
+ 6    15     0  4.71  6.28        4     5     6 #fffbe6
+ 7    15     0  4.71  6.28        4     7     8 #fc8405
+ 8    15    15  3.14  4.71        3     1     2 #fffbe6
+ 9    15    15  3.14  4.71        3     3     4 #fc8405
+10    15    15  3.14  4.71        3     5     6 #fffbe6
+# ℹ 214 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="final-touches" class="title-slide slide level1 center">
+<h1>Final Touches</h1>
+
+</section>
+<section id="final-piece" class="slide level2">
+<h2>Final Piece</h2>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-39_7ca537418dd63a5af7ab5a299543a3da">
+<div class="column">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb47-4"><a href="#cb47-4"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb47-5"><a href="#cb47-5"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb47-6"><a href="#cb47-6"></a>    <span class="at">start =</span> start,</span>
+<span id="cb47-7"><a href="#cb47-7"></a>    <span class="at">end =</span> end,</span>
+<span id="cb47-8"><a href="#cb47-8"></a>    <span class="at">r0 =</span> r0,</span>
+<span id="cb47-9"><a href="#cb47-9"></a>    <span class="at">r =</span> r,</span>
+<span id="cb47-10"><a href="#cb47-10"></a>    <span class="at">fill =</span> color</span>
+<span id="cb47-11"><a href="#cb47-11"></a>  )) <span class="sc">+</span></span>
+<span id="cb47-12"><a href="#cb47-12"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb47-13"><a href="#cb47-13"></a>  <span class="fu">scale_fill_identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-1" class="slide level2">
+<h2>Final Piece</h2>
+<p>if you set <code>color=</code> to NA you can see the gaps between the arcs</p>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-40_fdc3f37aacdd5a9977ccd41bdd8ca67b">
+<div class="column">
+<div class="sourceCode cell-code" id="cb48" data-code-line-numbers="13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">geom_arc_bar</span>(</span>
+<span id="cb48-4"><a href="#cb48-4"></a>    <span class="fu">aes</span>(</span>
+<span id="cb48-5"><a href="#cb48-5"></a>      <span class="at">x0 =</span> x0,</span>
+<span id="cb48-6"><a href="#cb48-6"></a>      <span class="at">y0 =</span> y0,</span>
+<span id="cb48-7"><a href="#cb48-7"></a>      <span class="at">start =</span> start,</span>
+<span id="cb48-8"><a href="#cb48-8"></a>      <span class="at">end =</span> end,</span>
+<span id="cb48-9"><a href="#cb48-9"></a>      <span class="at">r0 =</span> r0,</span>
+<span id="cb48-10"><a href="#cb48-10"></a>      <span class="at">r =</span> r,</span>
+<span id="cb48-11"><a href="#cb48-11"></a>      <span class="at">fill =</span> color</span>
+<span id="cb48-12"><a href="#cb48-12"></a>    ),</span>
+<span id="cb48-13"><a href="#cb48-13"></a>    <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb48-14"><a href="#cb48-14"></a>  ) <span class="sc">+</span></span>
+<span id="cb48-15"><a href="#cb48-15"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb48-16"><a href="#cb48-16"></a>  <span class="fu">scale_fill_identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-2" class="slide level2">
+<h2>Final Piece</h2>
+<p>if you set <code>color=</code> to NA you can see the gaps between the arcs</p>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-41_9a28ab78ceb56776d67d5de55d7f20ee">
+<div class="column">
+<div class="sourceCode cell-code" id="cb49" data-code-line-numbers="13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">geom_arc_bar</span>(</span>
+<span id="cb49-4"><a href="#cb49-4"></a>    <span class="fu">aes</span>(</span>
+<span id="cb49-5"><a href="#cb49-5"></a>      <span class="at">x0 =</span> x0,</span>
+<span id="cb49-6"><a href="#cb49-6"></a>      <span class="at">y0 =</span> y0,</span>
+<span id="cb49-7"><a href="#cb49-7"></a>      <span class="at">start =</span> start,</span>
+<span id="cb49-8"><a href="#cb49-8"></a>      <span class="at">end =</span> end,</span>
+<span id="cb49-9"><a href="#cb49-9"></a>      <span class="at">r0 =</span> r0,</span>
+<span id="cb49-10"><a href="#cb49-10"></a>      <span class="at">r =</span> r,</span>
+<span id="cb49-11"><a href="#cb49-11"></a>      <span class="at">fill =</span> color</span>
+<span id="cb49-12"><a href="#cb49-12"></a>    ),</span>
+<span id="cb49-13"><a href="#cb49-13"></a>    <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb49-14"><a href="#cb49-14"></a>  ) <span class="sc">+</span></span>
+<span id="cb49-15"><a href="#cb49-15"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb49-16"><a href="#cb49-16"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb49-17"><a href="#cb49-17"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb49-18"><a href="#cb49-18"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb49-19"><a href="#cb49-19"></a>    <span class="at">fill =</span> <span class="st">"black"</span>,</span>
+<span id="cb49-20"><a href="#cb49-20"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb49-21"><a href="#cb49-21"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-3" class="slide level2">
+<h2>Final Piece</h2>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-42_a6177f5638fcff1142a23a0f9c09a06d">
+<div class="column">
+<div class="sourceCode cell-code" id="cb50" data-code-line-numbers="11,15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb50-4"><a href="#cb50-4"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb50-5"><a href="#cb50-5"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb50-6"><a href="#cb50-6"></a>    <span class="at">start =</span> start,</span>
+<span id="cb50-7"><a href="#cb50-7"></a>    <span class="at">end =</span> end,</span>
+<span id="cb50-8"><a href="#cb50-8"></a>    <span class="at">r0 =</span> r0,</span>
+<span id="cb50-9"><a href="#cb50-9"></a>    <span class="at">r =</span> r,</span>
+<span id="cb50-10"><a href="#cb50-10"></a>    <span class="at">fill =</span> color,</span>
+<span id="cb50-11"><a href="#cb50-11"></a>    <span class="at">color =</span> color</span>
+<span id="cb50-12"><a href="#cb50-12"></a>  )) <span class="sc">+</span></span>
+<span id="cb50-13"><a href="#cb50-13"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb50-14"><a href="#cb50-14"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb50-15"><a href="#cb50-15"></a>  <span class="fu">scale_color_identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-4" class="slide level2">
+<h2>Final Piece</h2>
+<p><code>expand=</code> set to FALSE, removes margins</p>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-43_7d9de1cb378ffb5962e7b3aebcce4b5f">
+<div class="column">
+<div class="sourceCode cell-code" id="cb51" data-code-line-numbers="13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb51-4"><a href="#cb51-4"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb51-5"><a href="#cb51-5"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb51-6"><a href="#cb51-6"></a>    <span class="at">start =</span> start,</span>
+<span id="cb51-7"><a href="#cb51-7"></a>    <span class="at">end =</span> end,</span>
+<span id="cb51-8"><a href="#cb51-8"></a>    <span class="at">r0 =</span> r0,</span>
+<span id="cb51-9"><a href="#cb51-9"></a>    <span class="at">r =</span> r,</span>
+<span id="cb51-10"><a href="#cb51-10"></a>    <span class="at">fill =</span> color,</span>
+<span id="cb51-11"><a href="#cb51-11"></a>    <span class="at">color =</span> color</span>
+<span id="cb51-12"><a href="#cb51-12"></a>  )) <span class="sc">+</span></span>
+<span id="cb51-13"><a href="#cb51-13"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb51-14"><a href="#cb51-14"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb51-15"><a href="#cb51-15"></a>  <span class="fu">scale_color_identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-5" class="slide level2">
+<h2>Final Piece</h2>
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-44_9738cfe7c012292b4e58bda18608211b">
+<div class="column">
+<div class="sourceCode cell-code" id="cb52" data-code-line-numbers="16,17,18,19,20,21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>output_grid <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(</span>
+<span id="cb52-4"><a href="#cb52-4"></a>    <span class="at">x0 =</span> x0,</span>
+<span id="cb52-5"><a href="#cb52-5"></a>    <span class="at">y0 =</span> y0,</span>
+<span id="cb52-6"><a href="#cb52-6"></a>    <span class="at">start =</span> start,</span>
+<span id="cb52-7"><a href="#cb52-7"></a>    <span class="at">end =</span> end,</span>
+<span id="cb52-8"><a href="#cb52-8"></a>    <span class="at">r0 =</span> r0,</span>
+<span id="cb52-9"><a href="#cb52-9"></a>    <span class="at">r =</span> r,</span>
+<span id="cb52-10"><a href="#cb52-10"></a>    <span class="at">fill =</span> color,</span>
+<span id="cb52-11"><a href="#cb52-11"></a>    <span class="at">color =</span> color</span>
+<span id="cb52-12"><a href="#cb52-12"></a>  )) <span class="sc">+</span></span>
+<span id="cb52-13"><a href="#cb52-13"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb52-14"><a href="#cb52-14"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb52-15"><a href="#cb52-15"></a>  <span class="fu">scale_color_identity</span>() <span class="sc">+</span></span>
+<span id="cb52-16"><a href="#cb52-16"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb52-17"><a href="#cb52-17"></a>  <span class="fu">theme</span>(</span>
+<span id="cb52-18"><a href="#cb52-18"></a>    <span class="at">panel.background =</span></span>
+<span id="cb52-19"><a href="#cb52-19"></a>      <span class="fu">element_rect</span>(</span>
+<span id="cb52-20"><a href="#cb52-20"></a>        <span class="at">fill =</span> <span class="st">"#050505"</span>,</span>
+<span id="cb52-21"><a href="#cb52-21"></a>        <span class="at">color =</span> <span class="st">"#050505"</span></span>
+<span id="cb52-22"><a href="#cb52-22"></a>      )</span>
+<span id="cb52-23"><a href="#cb52-23"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-44-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-6" class="slide level2">
+<h2>Final Piece</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-45_242c3bdb296151612b5b93a17f58dbd8">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-45-1.png" width="960"></p>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-46_b743550efea21fb4e1b994c4d3d9c573">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="final-piece-vs.-infinite-truchet" class="slide level2">
+<h2>Final Piece vs.&nbsp;Infinite Truchet</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-fig.asp="1" data-hash="05-infinite-truchet_cache/revealjs/unnamed-chunk-47_543544dc7b1cbe48c3c96293c6033ea6">
+<div class="cell-output-display">
+<p><img data-src="05-infinite-truchet_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
+</div>
+</div>
+</div><div class="column">
+<p><img data-src="05-infinite-truchet/roni_truchet_tiles.png"></p>
+</div>
+</div>
+</section>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise 3</h2>
+<div class="exercise">
+<ol type="1">
+<li>Open file <code>exercises/05-infinite-truchet/exercise-3.Rmd</code></li>
+<li>Run all of the code chunks in Part 1. This will give you access to the system <code>exercise_truchet_tiles()</code>.</li>
+<li>Within <code>exercises/05-infinite-truchet/</code> there is an image <code>luft_13_roni.png</code>. Use https://mattdesl.github.io/colorgrab/ to select two colors to use in your system.</li>
+<li>Pass the hex codes for these colors to <code>color1</code> and <code>color2</code>. Modify the seed to experiment with different outputs.</li>
+<li>Save your image using <code>ggsave()</code> code provided and share on the GitHub discussion</li>
+</ol>
+</div>
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<div class="recap">
+<ul>
+<li>Learned about truchet tiles and their history (a technique from the 18th century!)</li>
+<li>Returned to <code>geom_arc_bar()</code> to create arcs and its arguments - using trigonometry without ever having to <code>sin()</code> a thing!</li>
+<li>Discussed why you need the <code>fill=</code> and <code>color=</code> for the shapes in truchet tile</li>
+</ul>
+</div>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="05-infinite-truchet_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="05-infinite-truchet_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
