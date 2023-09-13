@@ -36,14 +36,14 @@ Coming soon!
 | Time          | Activity                            |
 | ------------- | ----------------------------------- |
 | 09:00 - 10:30 | Introduction                        |
-|               | Steal like an artist                |
-|               | Homage to the square by Josef Albers|
+|               | [Steal like an artist](https://posit-conf-2023.github.io/creative-coding/slides/01-steal-like-an-artist.html)                |
+|               | [Homage to the square by Josef Albers](https://posit-conf-2023.github.io/creative-coding/slides/02-homage-to-the-square.html#/title-slide)|
 | 10:30 - 11:00 | Coffee break                        |
-| 11:00 - 12:30 | o.T. (carré noir) by Vera Molnár    |
+| 11:00 - 12:30 | [o.T. (carré noir) by Vera Molnár](https://posit-conf-2023.github.io/creative-coding/slides/03-ot.html)    |
 | 12:30 - 13:30 | Lunch break                         |
-| 13:30 - 15:00 | Riso Grids by Ryan Miglinczy        |
+| 13:30 - 15:00 | [Riso Grids by Ryan Miglinczy](https://posit-conf-2023.github.io/creative-coding/slides/04-riso-grids.html)        |
 | 15:00 - 15:30 | Coffee break                        |
-| 15:30 - 17:00 | Infinite Truchet by Roni Kaufman    |
+| 15:30 - 17:00 | [Infinite Truchet by Roni Kaufman](https://posit-conf-2023.github.io/creative-coding/slides/05-infinite-truchet.html)    |
 
 ## Instructors
 
