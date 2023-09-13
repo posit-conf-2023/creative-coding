@@ -919,7 +919,7 @@ perimeter_width <- shape_width + .25
 :::
 
 ::: column
-![](03-ot/recreation_breakdown_02.png)
+![](03-ot/recreation_breakdown_02.jpg)
 :::
 :::
 
