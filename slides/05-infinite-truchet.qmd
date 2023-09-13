@@ -1047,9 +1047,19 @@ r
 ::: {.column}
 ```{r}
 num_arcs <- 4
-r0 <- seq(from = 1, by = 2, length.out = num_arcs)
+
+r0 <- seq(
+  from = 1, by = 2,
+  length.out = num_arcs
+)
+
 r0
-r <- seq(from = 2, by = 2, length.out = num_arcs)
+
+r <- seq(
+  from = 2, by = 2,
+  length.out = num_arcs
+)
+
 r
 ```
 :::
