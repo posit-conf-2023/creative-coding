@@ -54,11 +54,11 @@ show_col(roni_colors)
 
 ## Infinite Truchet: Composition
 
-![](05-infinite-truchet/truchet_tiles_breakdown_01.png){fig-align="center"}
+![](05-infinite-truchet/truchet_tiles_breakdown_01.jpg){fig-align="center"}
 
 ## Infinite Truchet: Tiles
 
-![](05-infinite-truchet/truchet_tiles_breakdown_02.png){fig-align="center"}
+![](05-infinite-truchet/truchet_tiles_breakdown_02.jpg){fig-align="center"}
 
 
 ## Introduction to tiles
@@ -744,7 +744,7 @@ grid <-
 ```
 :::
 ::: {.column}
-![](05-infinite-truchet/truchet_tiles_breakdown_01.png)
+![](05-infinite-truchet/truchet_tiles_breakdown_01.jpg)
 :::
 ::::
 

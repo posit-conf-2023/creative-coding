@@ -19,7 +19,7 @@ execute:
 ::: columns
 ::: {.column style="width:33%"}
 
-![](00-introduction/ijeamaka_team_headshot.png){fig-align="center"}
+![](00-introduction/ijeamaka_team_headshot.jpg){fig-align="center"}
 
 **Ijeamaka Anyene Fumagalli** (she/her)
 

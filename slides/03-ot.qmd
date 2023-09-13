@@ -35,15 +35,15 @@ knitr::opts_chunk$set(dev = "png", dev.args = list(bg = "transparent"))
 
 ## o.T. (carré noir): introduction to the shape
 
-![](03-ot/receation_breakdown_00.png){fig-align="center"}
+![](03-ot/recreation_breakdown_00.jpg){fig-align="center"}
 
 ## Orientation of the letter u
 
-![](03-ot/recreation_breakdown_01.png){fig-align="center"}
+![](03-ot/recreation_breakdown_01.jpg){fig-align="center"}
 
 ## Composition of o.T. (carré noir)
 
-![](03-ot/recreation_breakdown_02.png){fig-align="center"}
+![](03-ot/recreation_breakdown_02.jpg){fig-align="center"}
 
 ## Color palette
 
@@ -1247,11 +1247,11 @@ initial_output %>%
 
 ::: columns
 ::: column
-![STRUCTURE À PARTIR DE LA LETTRE M, 2020](03-ot/random_vera_molnar.png)
+![STRUCTURE À PARTIR DE LA LETTRE M, 2020](03-ot/random_vera_molnar.jpg)
 :::
 
 ::: column
-![DE 432 OBLIQUES À 9 CARRÉS N°9, 2011](03-ot/random_vera_molnar_2.png)
+![DE 432 OBLIQUES À 9 CARRÉS N°9, 2011](03-ot/random_vera_molnar_2.jpg)
 :::
 :::
 
