@@ -32,7 +32,7 @@ execute:
 
 ::: {.column style="width:33%"}
 
-![](00-introduction/sharla-headshot.jpg){fig-align="center"}
+![](00-introduction/sharla_headshot.jpg){fig-align="center"}
 
 **Sharla Gelfand** (they/them)
 
