@@ -9,7 +9,6 @@ by Ijeamaka Anyene Fumagalli and Sharla Gelfand
 
 :spiral_calendar: September 18, 2023  
 :alarm_clock:     09:00 - 17:00  
-:hotel:           Randolph 3  
 :writing_hand:    [pos.it/conf](http://pos.it/conf)  
 :speaking_head:   [GitHub Discussions](https://github.com/posit-conf-2023/creative-coding/discussions)
 
