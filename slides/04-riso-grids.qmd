@@ -1,0 +1,1690 @@
+---
+title: "Steal like an Rtist: Creative Coding in R"
+subtitle: "Riso Grids<br>Ryan Miglinczy"
+author: "Ijeamaka Anyene Fumagalli and Sharla Gelfand"
+institute: "`posit::conf(2023)`"
+pagetitle: "Riso Grids"
+format:
+  revealjs:
+    theme: [default, css/style.scss]
+highlight-style: "ayu"
+execute:
+  echo: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, dev = "png", dev.args = list(bg = "transparent"))
+```
+
+#
+
+<div class = "columns">
+
+  <div class = "column">
+
+![*Riso Grid 18*](04-riso-grids/riso-grid-18.png)
+
+  </div>
+
+  <div class = "column">
+![*Riso Grid 16*](04-riso-grids/riso-grid-16.png)
+  </div>
+
+</div>
+
+::: {.notes}
+Geometric pieces inspired by the techniques and aesthetic of Risograph printing, comprising 30+ shapes, 3 grid sizes, and 5 palettes.
+
+Digital artists are obsessed with capturing attributes of more analog techniques
+
+Artist, designer, art director originally from the UK
+:::
+
+## Risograph printing
+
+Invented by the Riso Kagaku Corporation in the mid-1980s in Tokyo
+
+![Risograph printer, via Moniker Press](04-riso-grids/riso-printer.jpg)
+
+## Risograph printing
+
+Images are created in layers - each layer is one color, and layers are combined to create different colors and combinations
+
+::: {layout-ncol=2}
+
+![Risograph process, via Damn Fine Print](04-riso-grids/riso-process-1.jpeg)
+
+![https://damnfineprint.com/pages/risograph-guidelines](04-riso-grids/riso-process-2.jpeg)
+
+:::
+
+::: {.notes}
+
+Risograph
+  
+  https://damnfineprint.com/pages/risograph-guidelines
+
+https://www.risopop.com/what-is-riso
+
+
+How does RISO work?
+
+1. When you scan or upload an image to the machine, it first makes a paper stencil and wraps this around the ink drum - these are called masters. 
+
+2. Paper is placed on the feeder and passed through one or two of the ink drums. 
+
+3. The machine creates a ‘digital’ stamp of individual colours (which are incredibly vibrant!) and together they create a colorful image. 
+
+Why is RISO interesting?
+
+Any type of printing technique is like a puzzle - you need to think about what you are doing and how. You need to work in layers and with a limited amount of colours, this pushes you to experiment, embrace unexpected outcomes and try out new things. 
+
+The RISO, even though being a digital machine, does not guarantee perfection, which makes each piece unique. It doesn’t always do what you expect, but the more you use it the better you understand this machine. Are you ready for a challenge?
+
+Japan in 1980s
+
+https://damnfineprint.com/pages/risograph-guidelines
+
+Sources:
+
+- https://peacock.studio/shopping/products/risograph-colour-chart-a5
+- https://creativemarket.com/blog/risograph-printing
+- https://www.monikerpress.ca/printing/
+
+ A Risograph builds a print layer by layer, layering one color on top of another, resulting in a crisp but slightly imperfect print every time. While the print is imperfect, many artists believe its imperfect nature only adds charm and style to the distinct look a Risograph print has. 
+
+
+:::
+
+## Risograph printing
+
+::: {layout-ncol=2 layout-valign="bottom"}
+
+```{r echo=FALSE}
+#| out-width: 90%
+#| fig-align: center
+#| fig-cap: Risograph colour chart, via NYU Integrated Design & Media
+knitr::include_graphics("04-riso-grids/riso-chart.jpg")
+```
+
+```{r echo=FALSE}
+#| out-width: 75%
+#| fig-align: center
+#| fig-cap: Risograph colour chart, via peacock & the worm
+knitr::include_graphics("04-riso-grids/riso-color-chart.jpg")
+```
+
+:::
+
+# 
+
+<div class = "columns">
+
+  <div class = "column">
+
+![*Riso Grid 18*](04-riso-grids/riso-grid-18.png)
+
+  </div>
+  <div class = "column" style="width:49%">
+ <video controls>
+  <source src="04-riso-grids/riso-grids-video.mp4" type="video/mp4">
+</video> 
+
+</div>
+
+</div>
+
+# 
+
+<div class = "columns">
+
+  <div class = "column">
+  
+### Layer 1
+
+![](04-riso-grids/shapes-1.jpg)
+
+  </div>
+
+  <div class = "column">
+  
+### Layer 2
+  
+![](04-riso-grids/shapes-2.jpg)
+
+  </div>
+
+</div>
+
+#
+
+::: {.exercise}
+
+Using the shape types below, sketch two different 2x2 layers that could be combined to make a riso print
+
+:::
+
+::: {layout-ncol=2}
+
+![](04-riso-grids/shapes-1.jpg)
+
+![](04-riso-grids/shapes-2.jpg)
+
+:::
+
+# Polygon shapes
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square-1.jpg)
+
+:::
+
+
+::: {.column}
+
+<div class = "fragment">
+
+![](04-riso-grids/shape-oreo-square-hole.jpg)
+
+</div>
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+![](04-riso-grids/polygon-subgroup.jpg)
+
+:::
+
+
+::: {.column}
+
+
+<div class = "fragment">
+
+### Important arguments
+
+* `x`, `y`: polygon vertices
+* `group`: which polygon it is
+* `subgroup`: to differentiate outer polygon points from holes 
+
+</div>
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+library(dplyr)
+
+oreo_square_outer <- tribble(
+   ~x,  ~y,
+  1.5, 1.5,
+  8.5, 1.5,
+  8.5, 8.5,
+  1.5, 8.5
+  ) %>%
+  mutate(subgroup = 1)
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square-2.jpg)
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| output-location: fragment
+#| code-line-numbers: "1-8"
+oreo_square_hole <- tribble(
+    ~x,   ~y,
+  2.75, 2.75,
+  7.25, 2.75,
+  7.25, 7.25,
+  2.75, 7.25
+  ) %>%
+  mutate(subgroup = 2)
+
+oreo_square_outer <- bind_rows(
+  oreo_square_outer,
+  oreo_square_hole
+)
+
+oreo_square_outer
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square-3.jpg)
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| output-location: fragment
+#| code-line-numbers: "8"
+library(ggplot2)
+
+ggplot() +
+  geom_polygon(
+    data = oreo_square_outer,
+    aes(
+      x = x, y = y,
+      subgroup = subgroup
+    )
+  ) +
+  coord_fixed()
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square-3.jpg)
+
+:::
+
+::::
+
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+oreo_square_inner <- tribble(
+  ~x, ~y,
+   4,  4,
+   6,  4,
+   6,  6,
+   4,  6
+  )
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square-4.jpg)
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+
+```{r}
+#| output-location: fragment
+oreo_square <- bind_rows(
+  oreo_square_outer %>% mutate(group = 1),
+  oreo_square_inner %>% mutate(group = 2)
+)
+
+oreo_square
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square.jpg)
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+grey <- "#8F8E93"
+
+ggplot() +
+  geom_polygon(
+    data = oreo_square,
+    aes(
+      x = x, y = y,
+      group = group,
+      subgroup = subgroup
+    ),
+    fill = grey
+  ) +
+  coord_fixed(xlim = c(0, 10), ylim = c(0, 10)) +
+  theme_void()
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square.jpg)
+
+:::
+
+::::
+
+## Oreo square
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo = FALSE}
+#| fig-asp: 1
+ggplot() +
+  geom_polygon(
+    data = oreo_square,
+    aes(
+      x = x, y = y,
+      group = group,
+      subgroup = subgroup
+    ),
+    fill = grey
+  ) +
+  coord_fixed(xlim = c(0, 10), ylim = c(0, 10)) +
+  theme_void()
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-oreo-square.jpg)
+
+:::
+
+::::
+
+## Upper triangle
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+upper_triangle <- tribble(
+  ~x, ~y,
+   0,  0,
+  10, 10,
+   0, 10
+  ) %>%
+  mutate(
+    group = NA,
+    subgroup = NA
+  )
+
+upper_triangle
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-upper-triangle.jpg)
+
+:::
+
+::::
+
+## Upper triangle
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "5,11"
+yellow <- "#DDA710"
+
+ggplot() +
+  geom_polygon(
+    data = upper_triangle,
+    aes(
+      x = x, y = y,
+      group = group,
+      subgroup = subgroup
+    ),
+    fill = yellow
+  ) +
+  coord_fixed() +
+  theme_void()
+```
+
+## Lower triangle
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+lower_triangle <- tribble(
+  ~x, ~y,
+   0,  0,
+  10,  0,
+  10, 10
+  ) %>%
+  mutate(
+    group = NA,
+    subgroup = NA
+  )
+
+lower_triangle
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-lower-triangle.jpg)
+
+:::
+
+::::
+
+## Lower triangle
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "3,9"
+ggplot() +
+  geom_polygon(
+    data = lower_triangle,
+    aes(
+      x = x, y = y,
+      group = group,
+      subgroup = subgroup
+    ),
+    fill = yellow
+  ) +
+  coord_fixed() +
+  theme_void()
+```
+
+# Circle shapes
+
+## Making circles
+
+`geom_circle()` from {ggforce} draws a circle based on the center point (`x0`, `y0`) and the radius (`r`)
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+library(ggforce)
+
+ggplot() +
+  geom_circle(
+    aes(
+      x0 = 0,
+      y0 = 0,
+      r = 10
+    )
+  ) +
+  coord_fixed()
+```
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+start <- 0
+end <- 2 * pi
+x0 <- 0
+y0 <- 0
+r <- 1
+
+tau <- seq(start, end, length.out = 48)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+library(ggplot2)
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  xlim(-1, 1) +
+  ylim(-1, 1) +
+  coord_fixed() + 
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| code-line-numbers: "1-2"
+start <- 0
+end <- pi / 2
+x0 <- 0
+y0 <- 0
+r <- 1
+
+tau <- seq(start, end, length.out = 12)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  xlim(-1, 1) +
+  ylim(-1, 1) +
+  coord_fixed() + 
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| code-line-numbers: "1-2"
+start <- pi / 2
+end <- pi
+x0 <- 0
+y0 <- 0
+r <- 1
+
+tau <- seq(start, end, length.out = 12)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+library(ggplot2)
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  xlim(-1, 1) +
+  ylim(-1, 1) +
+  coord_fixed() + 
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| code-line-numbers: "1-2"
+start <- pi
+end <- 3 * pi / 2
+x0 <- 0
+y0 <- 0
+r <- 1
+
+tau <- seq(start, end, length.out = 12)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+library(ggplot2)
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  xlim(-1, 1) +
+  ylim(-1, 1) +
+  coord_fixed() + 
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| code-line-numbers: "1-2"
+start <- 3 * pi / 2
+end <- 2 * pi
+x0 <- 0
+y0 <- 0
+r <- 1
+
+tau <- seq(start, end, length.out = 12)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+library(ggplot2)
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  xlim(-1, 1) +
+  ylim(-1, 1) +
+  coord_fixed() + 
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| code-line-numbers: "3,4"
+start <- 0
+end <- 2 * pi
+x0 <- 3
+y0 <- 3
+r <- 1
+
+tau <- seq(start, end, length.out = 48)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+library(ggplot2)
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 3) +
+  geom_vline(xintercept = 3) +
+  coord_fixed() + 
+  xlim(2, 4) + 
+  ylim(2, 4) +
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| code-line-numbers: "5"
+start <- 0
+end <- 2 * pi
+x0 <- 0
+y0 <- 0
+r <- 0.5
+
+tau <- seq(start, end, length.out = 48)
+x <- x0 + sin(tau) * r
+y <- y0 + cos(tau) * r
+```
+
+:::
+
+::: {.column}
+
+```{r echo=FALSE}
+#| output-location: column
+#| fig-asp: 1
+library(ggplot2)
+ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    ),
+    size = 4
+  ) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  xlim(-1, 1) + 
+  ylim(-1, 1) +
+  coord_fixed() + 
+  theme_grey(base_size = 24)
+```
+
+:::
+
+::::
+
+## Making parts of circles
+
+Another brief math interlude...
+
+![&nbsp;](04-riso-grids/circle-quadrants.png)
+
+## Making parts of circles
+
+Another brief math interlude...
+
+:::: {.columns}
+::: {.column}
+
+`geom_arc_bar` is used to make parts of circles
+
+* `x0`, `y0`: center of circle
+* `r`: radius of circle
+* `start`: starting angle
+* `end`: ending angle
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/circle-quadrants.png)
+
+:::
+
+
+::::
+
+## Making parts of circles
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+![](04-riso-grids/shape-quarter-circle-1-01.jpg){}
+
+![](04-riso-grids/circle-quadrants.png)
+
+:::
+
+::: {.column width="70%"}
+
+```{r}
+#| output-location: fragment
+ggplot() +
+  geom_arc_bar(
+    aes(
+      x0 = 0,
+      y0 = 0,
+      r = 10,
+      r0 = 0,
+      start = 0,
+      end = pi / 2
+    )
+  ) +
+  coord_fixed()
+```
+
+:::
+
+::::
+
+## Making parts of donuts
+
+:::: {.columns}
+
+::: {.column}
+
+* `r`: radius of circle
+* `r0`: radius of inner circle (hole)
+
+![](04-riso-grids/shape-quarter-circle-1-02.jpg)
+
+:::
+
+::: {.column}
+
+<div class = "fragment">
+
+```{r}
+#| fig-asp: 0.75
+#| code-line-numbers: "7"
+ggplot() +
+  geom_arc_bar(
+    aes(
+      x0 = 0,
+      y0 = 0,
+      r = 10,
+      r0 = 5,
+      start = 0,
+      end = pi / 2
+    )
+  ) +
+  coord_fixed()
+```
+
+</div>
+
+:::
+
+::::
+
+## Quarter donut, quadrant 1
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+quarter_donut_1 <- tibble(
+  x = 0,
+  y = 0,
+  r = 10,
+  r0 = 5,
+  start = 0,
+  end = pi / 2
+)
+
+ggplot() +
+  geom_arc_bar(
+    data = quarter_donut_1,
+    aes(
+      x0 = x, y0 = y,
+      r = r, r0 = r0,
+      start = start, end = end
+    ),
+    fill = yellow,
+    color = NA
+  ) +
+  coord_fixed() +
+  theme_void()
+```
+
+## Quarter donut, quadrant 2
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+quarter_donut_2 <- tibble(
+  x = 0,
+  y = 10,
+  r = 10,
+  r0 = 5,
+  start = pi / 2,
+  end = pi
+)
+
+quarter_donut_2
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-quarter-circle-2.jpg)
+
+:::
+
+::::    
+
+## Quarter donut, quadrant 2
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+ggplot() +
+  geom_arc_bar(
+    data = quarter_donut_2,
+    aes(
+      x0 = x, y0 = y,
+      r = r, r0 = r0,
+      start = start, end = end
+    ),
+    fill = grey,
+    color = NA
+  ) +
+  coord_fixed() +
+  theme_void()
+```
+
+## Quarter donut, quadrant 3
+
+::: {.exercise style="height: 25%; min-height: revert;"}
+1. Open the file file `exercises/02-riso-grids/exercise-1.Rmd`
+2. Determine the `x`, `y`, `start`, and `end` of the bottom left circle, pictured here
+3. Plot it using `geom_arc_bar()`
+:::
+
+::: {layout-ncol=2}
+
+```{r echo=FALSE}
+#| out-width: 80%
+#| fig-align: center
+knitr::include_graphics("04-riso-grids/shape-quarter-circle-3-ex.jpg")
+```
+
+```{r echo=FALSE}
+#| out-width: 80%
+#| fig-align: center
+knitr::include_graphics("04-riso-grids/circle-quadrants.png")
+```
+
+:::
+
+```{r, echo = FALSE}
+quarter_donut_3 <- tibble(
+  x = 10,
+  y = 10,
+  r = 10,
+  r0 = 5,
+  start = pi,
+  end = 3 * pi / 2
+)
+```
+
+## Quarter donut, quadrant 4
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+quarter_donut_4 <- tibble(
+  x = 10,
+  y = 0,
+  r = 10,
+  r0 = 5,
+  start = 3 * pi / 2,
+  end = 2 * pi
+)
+
+quarter_donut_4
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shape-quarter-circle-4.jpg)
+
+:::
+
+::::    
+
+# Putting it all together
+
+## Generate shape data
+
+```{r}
+#| output-location: column-fragment
+generate_shape_data <- function(shape, color) {
+  switch(shape,
+    "oreo square" = oreo_square,
+    "upper triangle" = upper_triangle,
+    "lower triangle" = lower_triangle,
+    "quarter donut q1" = quarter_donut_1,
+    "quarter donut q2" = quarter_donut_2,
+    "quarter donut q3" = quarter_donut_3,
+    "quarter donut q4" = quarter_donut_4
+  ) %>%
+    mutate(
+      color = color,
+      shape = shape
+    )
+}
+
+yellow_oreo_square <- generate_shape_data(
+  "oreo square",
+  yellow
+)
+
+yellow_oreo_square
+```
+
+## Shape plotter
+
+```{r, eval = FALSE}
+#| code-line-numbers: "4-10"
+generate_shape_plotter <- function(data) {
+  shape <- data[["shape"]][[1]]
+
+  if (shape %in% c("oreo square", "upper triangle", "lower triangle")) {
+    geom_polygon(
+      data = data,
+      aes(
+        x = x, y = y, group = group, subgroup = subgroup, fill = color
+      )
+    )
+  } else if (shape %in% c("quarter donut q1", "quarter donut q2", "quarter donut q3", "quarter donut q4")) {
+    geom_arc_bar(
+      data = data,
+      aes(
+        x0 = x, y0 = y, r = r, r0 = r0, start = start, end = end, fill = color
+      ),
+      color = NA
+    )
+  }
+}
+```
+
+## Shape plotter
+
+```{r, eval = TRUE}
+#| code-line-numbers: "11-19"
+generate_shape_plotter <- function(data) {
+  shape <- data[["shape"]][[1]]
+
+  if (shape %in% c("oreo square", "upper triangle", "lower triangle")) {
+    geom_polygon(
+      data = data,
+      aes(
+        x = x, y = y, group = group, subgroup = subgroup, fill = color
+      )
+    )
+  } else if (shape %in% c("quarter donut q1", "quarter donut q2", "quarter donut q3", "quarter donut q4")) {
+    geom_arc_bar(
+      data = data,
+      aes(
+        x0 = x, y0 = y, r = r, r0 = r0, start = start, end = end, fill = color
+      ),
+      color = NA
+    )
+  }
+}
+```
+
+## Shape plotter
+
+```{r}
+#| output-location: fragment
+generate_shape_plotter(yellow_oreo_square)
+```
+
+::: {.fragment}
+
+Returns only the `geom_*()` function, which can be used directly in a `ggplot2` pipeline, or with multiple together in a `list()`
+
+:::
+
+. . .
+
+```{r}
+#| output-location: column-fragment
+#| fig-asp: 0.75
+#| code-line-numbers: "2"
+ggplot() +
+  generate_shape_plotter(yellow_oreo_square) +
+  scale_fill_identity() +
+  coord_fixed(xlim = c(0, 10), ylim = c(0, 10)) +
+  theme_void()
+```
+
+## Grid of shapes
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+layer_1 <- tribble(
+  ~row, ~column,             ~shape,
+     1,       1, "quarter donut q3",
+     1,       2,   "upper triangle",
+     2,       2, "quarter donut q1",
+     2,       1,   "lower triangle"
+  )  %>%
+  mutate(
+    color = yellow,
+    id = row_number()
+  )
+
+layer_1
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shapes-1-grid.jpg)
+
+:::
+
+::::
+
+## Create the grid of shapes
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+layer_1 %>%
+  split(.$id)
+```
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/shapes-1-grid.jpg)
+
+:::
+
+::::
+
+## Create the grid of shapes
+
+
+```{r}
+library(purrr)
+
+layer_1 %>%
+  split(.$id) %>%
+  map(function(data) {
+    generate_shape_data(data[["shape"]], data[["color"]])
+  })
+```
+
+## List of plotters
+
+```{r}
+#| code-line-numbers: "8,9,10,11"
+library(purrr)
+
+layer_1_plotting <- layer_1 %>%
+  split(.$id) %>%
+  map(function(data) {
+    generate_shape_data(data[["shape"]], data[["color"]])
+  }) %>%
+  map(function(data) {
+    data %>%
+      generate_shape_plotter()
+  })
+
+layer_1_plotting
+
+ggplot() +
+  layer_1_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+```
+
+## Using a list of plotters together
+
+```{r}
+#| output-location: column-fragment
+#| code-line-numbers: "2"
+ggplot() +
+  layer_1_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+```
+
+:::: {layout-ncol=2}
+
+::: {.fragment}
+???
+:::
+
+::: {.fragment}
+
+```{r echo=FALSE}
+#| out-width: 50%
+#| fig-align: center
+knitr::include_graphics("04-riso-grids/layer-1-ontop.jpg")
+```
+
+:::
+
+::::
+
+## Shifting data
+
+::: {layout-ncol=2}
+
+![](04-riso-grids/shifting-1.jpg)
+
+<div class = "fragment">
+![](04-riso-grids/shifting-2.jpg)
+</div>
+
+:::
+
+## Shifting data
+
+::: {layout-ncol=2}
+
+![](04-riso-grids/shifting-1.jpg)
+
+![](04-riso-grids/shifting-3.jpg)
+
+:::
+
+## Shifting data
+
+Shift everything over using the [size of one grid]{.under} and the [row]{.under} and [column]{.under}
+
+```{r}
+#| code-line-numbers: "10"
+layer_1_data <- layer_1 %>%
+  split(.$id) %>%
+  map_dfr(
+    function(data) {
+      generate_shape_data(data[["shape"]], data[["color"]])
+    },
+    .id = "id"
+  ) %>%
+  mutate(id = as.numeric(id)) %>%
+  left_join(layer_1, by = c("id", "color", "shape"))
+
+layer_1_data
+```
+
+## Shifting data
+
+Shift everything over using the [size of one grid]{.under} and the [row]{.under} and [column]{.under}
+
+```{r}
+#| code-line-numbers: "1,5,6"
+grid_size <- 10
+
+layer_1_data_shifted <- layer_1_data %>%
+  mutate(
+    x = x + column * grid_size,
+    y = y + row * grid_size
+  )
+
+layer_1_data_shifted
+```
+
+## Now plot!
+
+```{r}
+#| output-location: column-fragment
+#| fig-asp: 1
+layer_1_plotting <- layer_1_data_shifted %>%
+  split(.$id) %>%
+  map(function(data) {
+    data %>%
+      generate_shape_plotter()
+  })
+
+ggplot() +
+  layer_1_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+```
+
+## Do the same for the second layer!
+ 
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r, eval = FALSE}
+#| output-location: fragment
+#| code-line-numbers: "3-6"
+layer_2 <- tribble(
+  ~row, ~column,             ~shape,
+     1,       1,      "oreo square",
+     1,       2, "quarter donut q2",
+     2,       2,      "oreo square",
+     2,       1, "quarter donut q4"
+  ) %>%
+  mutate(
+    color = grey,
+    id = row_number()
+  )
+
+layer_2_plotting <- layer_2 %>%
+  split(.$id) %>%
+  map_dfr(
+    function(data) {
+      generate_shape_data(data[["shape"]], data[["color"]])
+    },
+    .id = "id"
+  ) %>%
+  mutate(id = as.numeric(id)) %>%
+  left_join(layer_2, by = c("id", "color", "shape")) %>%
+  mutate(
+    x = x + column * grid_size,
+    y = y + row * grid_size
+  ) %>%
+  split(.$id) %>%
+  map(function(data) {
+    generate_shape_plotter(data)
+  })
+
+ggplot() +
+  layer_2_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+```
+
+::: 
+
+::: {.column width="40%"}
+
+```{r, echo = FALSE}
+#| output-location: fragment
+#| fig-asp: 1
+layer_2 <- tribble(
+  ~row, ~column,             ~shape,
+     1,       1,      "oreo square",
+     1,       2, "quarter donut q2",
+     2,       2,      "oreo square",
+     2,       1, "quarter donut q4"
+  ) %>%
+  mutate(
+    color = grey,
+    id = row_number()
+  )
+
+layer_2_plotting <- layer_2 %>%
+  split(.$id) %>%
+  map(function(data) {
+    generate_shape_data(data[["shape"]], data[["color"]])
+  }) %>%
+  bind_rows(.id = "id") %>%
+  mutate(id = as.numeric(id)) %>%
+  left_join(layer_2, by = c("id", "color", "shape")) %>%
+  mutate(
+    x = x + column * grid_size,
+    y = y + row * grid_size
+  ) %>%
+  split(.$id) %>%
+  map(function(data) {
+    generate_shape_plotter(data)
+  })
+
+ggplot() +
+  layer_2_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+```
+
+:::
+
+::::
+
+## Exercise
+
+::: {.exercise}
+1. Open the file file `exercises/02-riso-grids/exercise-2-3.Rmd`
+2. Take the two layers you sketched and turn them into tribbles with columns `row`, `column`, `shape`, and `color`. Try using two of the colors listed in the file, which are common colors in riso printing.
+3. Run `generate_and_plot_two_layers()` with your two layers and save the plots in the correct dimension using `ggsave()`
+4. Share your two plots in the GitHub discussion
+:::
+
+## Put them together
+
+```{r}
+#| code-line-numbers: "2,3,4,5,"
+ggplot() +
+  list(
+    layer_1_plotting,
+    layer_2_plotting
+  ) +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+```
+
+## Risograph effect please?
+
+::: {layout-ncol=2}
+
+```{r echo=FALSE}
+#| out-width: 80%
+#| fig-align: center
+knitr::include_graphics("04-riso-grids/operator-atop.svg")
+```
+
+::: {.fragment}
+
+```{r echo=FALSE}
+#| out-width: 80%
+#| fig-align: center
+knitr::include_graphics("04-riso-grids/operator-multiply.svg")
+```
+:::
+
+:::
+
+## Risograph effect please?
+
+```{r}
+layer_1 <- ggplot() +
+  layer_1_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+
+layer_1_file <- "riso-layer-1.png"
+
+ggsave(layer_1_file, layer_1, height = 5, width = 5)
+
+layer_2 <- ggplot() +
+  layer_2_plotting +
+  scale_fill_identity() +
+  coord_fixed() +
+  theme_void()
+
+layer_2_file <- "riso-layer-2.png"
+
+ggsave(layer_2_file, layer_2, height = 5, width = 5)
+```
+
+## Risograph effect please?
+
+```{r, cache = FALSE}
+#| output-location: column-fragment
+#| fig-asp: 1
+library(magick)
+
+layer_1_img <- image_read(layer_1_file)
+layer_2_img <- image_read(layer_2_file)
+
+paper <- image_blank(
+  width = image_info(layer_1_img)[["width"]],
+  height = image_info(layer_1_img)[["height"]],
+  color = "#E1DED7"
+)
+
+paper %>%
+  image_composite(layer_1_img) %>%
+  image_composite(layer_2_img,
+    operator = "multiply"
+  )
+```
+
+```{r echo = FALSE}
+riso_output <- paper %>%
+  image_composite(layer_1_img) %>%
+  image_composite(layer_2_img, operator = "multiply")
+
+# image_write(riso_output, "slides/04-riso-grids/riso-output.png")
+```
+
+## That's not so bad!
+
+:::: {.columns}
+
+::: {.column}
+
+![](04-riso-grids/riso-grid-18.png)
+
+:::
+
+::: {.column}
+
+![](04-riso-grids/riso-output.png)
+
+:::
+
+::::
+
+## Exercise
+:::: {.exercise}
+1. Open the file `exercises/02-riso-grids/exercise-2-3.Rmd`
+2. If needed, rerun the code to define, plot, and save your two layers
+3. Use the given code to combine a "paper" layer with your two layers to create the riso print effect
+4. Share your final image on GitHub
+::::
+
+## Wrap it up!
+
+::: {.recap}
+* Risograph printing combines multiple layers, one color each, to create complex images
+* `geom_polygon()` and `geom_arc_bar()` can be used to create more complex shapes
+* A list of `geom_*()`s in a ggplot2 pipeline combine the layers
+* {magick} is a handy package for image processing and getting the risograph effect!
+:::

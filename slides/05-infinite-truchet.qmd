@@ -1,0 +1,1542 @@
+---
+title: "Steal like an Rtist: Creative Coding in R"
+subtitle: "Infinite Truchet<br>Roni Kaufman"
+author: "Ijeamaka Anyene Fumagalli and Sharla Gelfand"
+institute: "`posit::conf(2023)`"
+pagetitle: "Infinite Truchet"
+format:
+  revealjs:
+    theme: [default, css/style.scss]
+highlight-style: "ayu"
+execute:
+  echo: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE, dev = "png", dev.args = list(bg = "transparent"))
+```
+
+
+## Infinite Truchet by Roni Kaufman
+::: columns
+::: {.column style="width:51%"}
+![](05-infinite-truchet/roni_truchet_tiles.png)
+:::
+
+::: {.column style="width:49%"}
+
+* Roni Kaufman is a self-described, creative coder and generative artist
+* He regularly shares the code to his projects on openprocessing.org. 
+This sketch is available at [Infinite Processing](https://openprocessing.org/sketch/1929163)
+* Released under a CC BY-NC-SA 3.0 license (share and remix with attribution for noncommercial purposes)
+
+:::
+:::
+
+## Infinite Truchet: Color palette
+
+::: columns
+::: {.column style="width:51%"}
+![](05-infinite-truchet/roni_truchet_tiles.png)
+:::
+::: {.column style="width:49%"}
+
+```{r}
+library(scales)
+roni_colors <- c(
+  "#050505", "#fc8405", "#fffbe6"
+)
+show_col(roni_colors)
+```
+
+:::
+::::
+
+## Infinite Truchet: Composition
+
+![](05-infinite-truchet/truchet_tiles_breakdown_01.png){fig-align="center"}
+
+## Infinite Truchet: Tiles
+
+![](05-infinite-truchet/truchet_tiles_breakdown_02.png){fig-align="center"}
+
+
+## Introduction to tiles
+
+![](05-infinite-truchet/tiles_type_1.png){fig-align="center"}
+
+## Introduction to tiles
+
+![](05-infinite-truchet/tiles_type_2.png){fig-align="center"}
+
+## Introduction to tiles
+
+![](05-infinite-truchet/truchet_tiles_breakdown_04.png){fig-align="center"}
+
+
+## Introduction to tiles
+
+![](05-infinite-truchet/truchet_tiles_breakdown_05.png){fig-align="center"}
+
+# Truchet Tiles
+
+## The Father of Truchet Tiles
+
+:::: {.columns}
+
+::: {.column}
+ ![Jean Truchet, Father Sebastien Truchet](05-infinite-truchet/father_sebastien_truchet.jpeg){fig-align="center"}
+:::
+
+::: {.column}
+
+* French Dominican priest, 1657–1729
+* Studied typography and invented the first typographic point 
+* Published *"Memoir sur les combinaisons"* that invented the idea of truchet tiles
+
+:::
+
+::::
+
+[Infinitely Variable Tiling Patterns: From Truchet to Sol LeWitt Revisited]{.footer}
+
+
+## "Memoir sur les combinaisons"
+
+:::: {.columns}
+
+::: {.column style="width:40%"}
+
+![LES PLANCHES DE PAVAGES DE TRUCHET by Jacques André](05-infinite-truchet/planches_de_memoir.png){fig-align="center"}
+:::
+
+::: {.column style="width:60%"}
+
+* Studied a pattern where square tiles are split by diagonal lines into two triangles with contrasting colors. 
+* By placing these tiles adjacent to each other but in different orientations, many different patterns can be formed. 
+
+:::
+
+::::
+
+
+## Truchet Tiles
+
+:::: {.columns}
+
+::: {.column}
+![LES PLANCHES DE PAVAGES DE TRUCHET by Jacques André](05-infinite-truchet/planches_de_memoir_02.png){fig-align="center"}
+:::
+
+::: {.column}
+Initially, the underlying idea of truchet tiles is that adjacent tiles of right triangles make larger connecting patterns.
+:::
+
+::::
+
+[Infinitely Variable Tiling Patterns: From Truchet to Sol LeWitt Revisited]{.footer}
+
+## Truchet Tiles
+
+Cyril Smith, 1987, analyzed truchet tiles and abstracted them into 1) diagonal lines, then 2) two arcs starting and ending at midpoints of the tiles edges. 
+
+
+![Robert J. Krawczyk, 2020](05-infinite-truchet/cyril_smith.jpg){fig-align="center"}
+
+[Infinitely Variable Tiling Patterns: From Truchet to Sol LeWitt Revisited]{.footer}
+
+## Multi-Scale Truchet Patterns
+
+::: {layout-ncol=2 layout-valign="bottom"}
+
+
+![Christopher Carlson](05-infinite-truchet/christopher_carlson_multiscale.png){fig-align="center"}
+
+![70s Pop Series One, Daniel Catt](05-infinite-truchet/70s_pop_daniel_catt.png){fig-align="center"}
+
+:::
+
+# Exercise 1
+
+![](05-infinite-truchet/exercise_1_image.png){fig-align="center"}
+
+::: {.exercise}
+- Open the `exercises/05-infinite-truchet/truchet_tiles_examples` directory. These are different examples of truchet tiles. Choose one example.
+- Draw four squares on your graphing paper in a 2x2 format (see above).
+- Draw four different rotations of your selected truchet tile example. 
+- Take a picture of your piece when finished and share it on the Github Discussions page.
+:::
+
+# Who actually needs trigonometric functions?
+
+## Creating arcs in {ggforce}
+
+### `geom_arc_bar()` 
+
+:::: {.columns}
+
+::: {.column}
+
+We will use the following aesthetics
+
+- `x0`, `y0`: x, y coordinate, center of arc
+- `start`: radian value of where arc starts
+- `end`: radian value of where arc ends
+- `r0`: radius of inner arc
+- `r`: radius of outer arc 
+- `color`, `fill`: color of arc
+
+:::
+
+::: {.column}
+
+::: callout-important
+
+## `r` vs `r0` 
+
+* In this example, we have `r0` as the inner radius and `r` as the outer radius. {ggforce} allows you to also have it be vice versa.
+
+* Most important thing is to remain consistent in your definitions across your code. 
+
+:::
+
+:::
+
+::::
+
+## The simplifying of trigonometry
+
+```{r, echo = FALSE}
+library(ggplot2)
+
+theme_set(theme_grey())
+theme_replace(axis.text = ggplot2::element_text(color = "black", size = 20))
+```
+
+![](05-infinite-truchet/unit_circle_corners_annotated.png){fig-align="center"}
+
+::: {.notes}
+You've seen this drawing in Sharla's riso grids section, but the order of the arcs has changed. 
+:::
+
+## Creating arcs in {ggforce}
+
+### `geom_arc_bar()` 
+
+We will use the following aesthetics
+
+- [`x0`, `y0`: x, y coordinate, center of arc]{.under}
+- [`start`: radian value of where arc starts]{.under}
+- [`end`: radian value of where arc ends]{.under}
+- `r0`: radius of inner arc
+- `r`: radius of outer arc 
+- `color`, `fill`: color of arc
+
+## `geom_arc_bar()` arguments: `x0`, `y0`, `start`, `end`
+
+![](05-infinite-truchet/arc_params_00.png){fig-align="center"}
+
+
+## `geom_arc_bar()` arguments: `x0`, `y0`, `start`, `end`
+
+### Always travel counterclockwise, starting in bottom left
+
+![](05-infinite-truchet/arc_params_01.png){fig-align="center"}
+
+## Corner 1
+
+```{r, echo = FALSE}
+library(dplyr)
+library(tidyr)
+```
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval = FALSE}
+library(dplyr)
+library(tidyr)
+
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+  )
+
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_02.png){fig-align="center"}
+:::
+::::
+
+## Corner 1
+
+### `x0`, `y0`
+
+```{r, echo = FALSE}
+library(dplyr)
+library(tidyr)
+```
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval = FALSE}
+library(dplyr)
+library(tidyr)
+
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y
+  )
+
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_03.png){fig-align="center"}
+:::
+::::
+
+## Corner 1
+
+### `start`, `end`
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,7"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2
+  )
+
+```
+
+![](05-infinite-truchet/unit_circle_corner_1.png){fig-align="center"}
+
+:::
+
+::: {.column width="45%"}
+
+![](05-infinite-truchet/arc_params_03A.png){fig-align="center"}
+
+:::
+
+::::
+
+
+## Corner 2
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2
+  )
+
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_05.png){fig-align="center"}
+:::
+::::
+
+## Corner 2
+
+### `x0`, `y0`
+
+:::: {.columns}
+::: {.column width="55%"}
+
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,8"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y  
+  )
+
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_07.png){fig-align="center"}
+:::
+::::
+
+
+## Corner 2
+
+### `start`, `end`
+
+:::: {.columns}
+::: {.column width="55%"}
+
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,8"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi
+  )
+
+```
+
+![](05-infinite-truchet/unit_circle_corner_2.png){fig-align="center"}
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_06.png){fig-align="center"}
+:::
+::::
+
+## Corner 3
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi
+  )
+
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_09.png){fig-align="center"}
+:::
+::::
+
+## Corner 3
+
+### `x0`, `y0`
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,9"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      
+  )
+
+```
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_11.png){fig-align="center"}
+:::
+::::
+
+
+## Corner 3
+
+### `start`, `end`
+
+:::: {.columns}
+::: {.column width="55%"}
+
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,9"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2
+  )
+
+```
+
+![](05-infinite-truchet/unit_circle_corner_3.png){fig-align="center"}
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_10.png){fig-align="center"}
+:::
+::::
+
+## Corner 4
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2
+  )
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_13.png){fig-align="center"}
+:::
+::::
+
+## Corner 4
+
+### `x0`, `y0`
+
+:::: {.columns}
+::: {.column width="55%"}
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,10"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2,
+             x, y + sq_width
+  )
+```
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_15.png){fig-align="center"}
+:::
+::::
+
+
+## Corner 4
+
+### `start`, `end`
+
+:::: {.columns}
+::: {.column width="55%"}
+
+```{r, eval=FALSE}
+#| code-line-numbers: "1,2,3,10"
+x <- 0
+y <- 0
+sq_width <- 15
+
+tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2,
+             x, y + sq_width,    pi/2,      pi
+  )
+```
+
+![](05-infinite-truchet/unit_circle_corner_4.png){fig-align="center"}
+
+:::
+::: {.column width="45%"}
+![](05-infinite-truchet/arc_params_14.png){fig-align="center"}
+:::
+::::
+
+## Wrap it up in a function
+
+```{r}
+set_params <- function(x, y, sq_width) {
+  tribble(
+            ~x0,          ~y0,  ~start,    ~end,
+              x,            y,       0,    pi/2,
+   x + sq_width,            y,  3*pi/2,    2*pi,
+   x + sq_width, y + sq_width,      pi,  3*pi/2,
+              x, y + sq_width,    pi/2,      pi
+  )
+  }
+```
+
+## Exercise 2
+
+::: {.exercise}
+
+1. Open the file `exercise/05-infinite-truchet/exercise-2.Rmd`
+2. Run the code chunk to have access to the `set_incorrect_params()` function and then the code chunk that plots the output of the function.
+3. As the title suggests, one of the corners in the plot has the incorrect parameters for the `start` and `end` arguments for `geom_arc_bar()`. Create a new function called `set_correct_params()` that fixes this mistake. 
+4. Plot the output of your function to confirm, you corrected the mistake. 
+:::
+
+
+# Building a System
+
+## Number of Arcs
+
+:::: {.columns}
+
+::: {.column}
+#### Tile Type 1
+![](05-infinite-truchet/num_arcs_tile_type_1_00.png){fig.align="center"}
+:::
+
+::: {.column}
+#### Tile Type 2
+![](05-infinite-truchet/num_arcs_tile_type_2_00.png){fig.align="center"}
+:::
+
+::::
+
+## Update `set_params()`
+
+### Number of Arcs
+
+:::: {.columns}
+
+::: {.column}
+```{r}
+#| code-line-numbers: "2,3,11"
+set_params <-
+  function(x, y, sq_width, tile_type) {
+    if (tile_type == 1) {
+      tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2,
+             x, y + sq_width,    pi/2,      pi
+  ) %>%
+        mutate(num_arcs = c(3, 4, 3, 4))
+    }
+  }
+```
+
+
+🔔 start bottom left, travel counter clockwise!
+
+:::
+
+::: {.column}
+#### Tile Type 1
+![](05-infinite-truchet/num_arcs_tile_type_1_01.png){fig.align="center"}
+:::
+
+::::
+
+## Update `set_params()`
+
+### Number of Arcs
+
+:::: {.columns}
+
+::: {.column}
+```{r}
+#| code-line-numbers: "2,12,20"
+set_params <-
+  function(x, y, sq_width, tile_type) {
+    if (tile_type == 1) {
+      tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2,
+             x, y + sq_width,    pi/2,      pi
+  ) %>%
+        mutate(num_arcs = c(3, 4, 3, 4))
+    } else if (tile_type == 2) {
+      tribble(
+           ~x0,          ~y0,  ~start,    ~end,
+             x,            y,       0,    pi/2,
+  x + sq_width,            y,  3*pi/2,    2*pi,
+  x + sq_width, y + sq_width,      pi,  3*pi/2,
+             x, y + sq_width,    pi/2,      pi
+  ) %>%
+        mutate(num_arcs = c(5, 2, 5, 2))
+    }
+  }
+```
+
+
+🔔 start bottom left, travel counter clockwise!
+
+:::
+
+::: {.column}
+#### Tile Type 2
+![](05-infinite-truchet/num_arcs_tile_type_2_01.png){fig.align="center"}
+:::
+
+::::
+
+
+## `set_params()` output
+
+```{r}
+#| output-location: column
+set_params(
+  x = 0,
+  y = 0,
+  sq_width = 15,
+  tile_type = 1
+)
+```
+
+
+This allows us to create one tile of width 15 that has the bottom left corner at `x` = 0, `y` = 0
+
+
+## Creating the grid
+
+:::: {.columns}
+::: {.column}
+```{r}
+sq_width <- 15
+ncol <- 4
+nrow <- 4
+
+grid <-
+  expand_grid(
+    y = seq(
+      from = 0,
+      by = sq_width,
+      length.out = nrow
+    ),
+    x = seq(
+      from = 0,
+      by = sq_width,
+      length.out = ncol
+    )
+  )
+```
+:::
+::: {.column}
+![](05-infinite-truchet/truchet_tiles_breakdown_01.png)
+:::
+::::
+
+## Creating the grid
+
+```{r}
+#| output-location: column
+sq_width <- 15
+ncol <- 4
+nrow <- 4
+
+grid <-
+  expand_grid(
+    y = seq(
+      from = 0,
+      by = sq_width,
+      length.out = nrow
+    ),
+    x = seq(
+      from = 0,
+      by = sq_width,
+      length.out = ncol
+    )
+  )
+
+grid
+```
+
+## Tile selection
+
+### Recreating Infinite Truchet
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "19,20,21,22,23,24"
+sq_width <- 15
+ncol <- 4
+nrow <- 4
+
+grid <-
+  expand_grid(
+    y = seq(
+      from = 0,
+      by = sq_width,
+      length.out = nrow
+    ),
+    x = seq(
+      from = 0,
+      by = sq_width,
+      length.out = ncol
+    )
+  ) %>%
+  mutate(
+    tile_type =
+      c(
+        1, 1, 2, 2,
+        1, 1, 1, 1,
+        1, 2, 1, 1,
+        1, 1, 1, 1
+      )
+  )
+
+grid
+```
+
+
+## Creating the grid
+
+### Incorporating the element of chance
+
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "19,20,21,22"
+sq_width <- 15
+ncol <- 4
+nrow <- 4
+
+grid <-
+  expand_grid(
+    y = seq(
+      from = 0,
+      by = sq_width,
+      length.out = nrow
+    ),
+    x = seq(
+      from = 0,
+      by = sq_width,
+      length.out = ncol
+    )
+  ) %>%
+  mutate(
+    tile_type =
+      sample(c(1, 2),
+        size = n(),
+        replace = TRUE
+      )
+  )
+
+grid
+```
+
+
+## Creating our system
+
+```{r}
+library(purrr)
+
+truchet_tiles <-
+  function(seed) {
+    ncol <- 4
+    nrow <- 4
+    sq_width <- 15
+
+    set.seed(seed)
+
+    grid <-
+      expand_grid(
+        y = seq(from = 0, by = sq_width, length.out = ncol),
+        x = seq(from = 0, by = sq_width, length.out = nrow)
+      ) %>%
+      mutate(tile_type = sample(c(1, 2), size = n(), replace = TRUE))
+
+    params_grid <-
+      map_dfr(
+        1:nrow(grid),
+        function(i) {
+          set_params(
+            x = grid$x[i],
+            y = grid$y[i],
+            sq_width = sq_width,
+            tile_type = grid$tile_type[i]
+          )
+        }
+      )
+
+    return(params_grid)
+  }
+```
+
+
+## Applying our system
+
+```{r}
+#| output-location: column
+output_grid <-
+  truchet_tiles(seed = 150)
+
+output_grid
+```
+
+
+## Applying our system
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+library(ggforce)
+
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = num_arcs,
+    r = num_arcs + 1
+  )) +
+  coord_fixed()
+```
+
+## Applying our system
+
+### `num_arcs` != `r` or `r0`
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "8,9"
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = num_arcs,
+    r = num_arcs + 1
+  )) +
+  coord_fixed()
+```
+
+## Creating arcs in {ggforce}
+
+### `geom_arc_bar()` 
+
+We will use the following aesthetics
+
+- `x0`, `y0`: x, y coordinate, center of arc
+- `start`: radian value of where arc starts
+- `end`: radian value of where arc ends
+- [`r0`: radius of inner arc]{.under}
+- [`r`: radius of outer arc]{.under}
+- `color`, `fill`: color of arc
+
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### Always travel counterclockwise, starting in bottom left
+
+![](05-infinite-truchet/arc_params_01.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+![](05-infinite-truchet/parameter_radius_01.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+![](05-infinite-truchet/parameter_radius_02.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+![](05-infinite-truchet/parameter_radius_03.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+![](05-infinite-truchet/r0_r_01.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+![](05-infinite-truchet/r0_r_01A.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+![](05-infinite-truchet/r0_r_02.png){fig-align="center"}
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+![](05-infinite-truchet/r0_r_03.png){fig-align="center"}
+
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+:::: {.columns}
+
+::: {.column}
+```{r}
+r0 <- seq(from = 1, to = 7, by = 2)
+r0
+```
+:::
+
+::: {.column}
+![](05-infinite-truchet/r0_r_03.png){fig-align="center"}
+:::
+
+::::
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+r0 <- seq(from = 1, to = 7, by = 2)
+r <- seq(from = 2, to = 8, by = 2)
+r
+```
+
+:::
+
+::: {.column}
+
+![](05-infinite-truchet/r0_r_03.png){fig-align="center"}
+
+:::
+
+::::
+
+## `geom_arc_bar()` arguments: `r0`, `r`
+
+### converting num_arcs to radius
+
+:::: {.columns}
+
+::: {.column}
+```{r}
+num_arcs <- 4
+r0 <- seq(from = 1, by = 2, length.out = num_arcs)
+r0
+r <- seq(from = 2, by = 2, length.out = num_arcs)
+r
+```
+:::
+
+::: {.column}
+![](05-infinite-truchet/r0_r_03.png){fig-align="center"}
+:::
+
+::::
+
+
+## Updating our system
+
+```{r}
+#| code-line-numbers: "33,34,35,36"
+truchet_tiles <-
+  function(seed) {
+    ncol <- 4
+    nrow <- 4
+    sq_width <- 15
+
+    set.seed(seed)
+
+    grid <-
+      expand_grid(
+        y = seq(from = 0, by = sq_width, length.out = ncol),
+        x = seq(from = 0, by = sq_width, length.out = nrow)
+      ) %>%
+      mutate(tile_type = sample(c(1, 2), size = n(), replace = TRUE))
+
+    params_grid <-
+      map_dfr(
+        1:nrow(grid),
+        function(i) {
+          set_params(
+            x = grid$x[i],
+            y = grid$y[i],
+            sq_width = sq_width,
+            tile_type = grid$tile_type[i]
+          )
+        }
+      )
+
+    output <-
+      map_dfr(
+        1:nrow(params_grid),
+        function(i) {
+          bind_cols(
+            slice(params_grid, i),
+            r0 = seq(from = 1, by = 2, length.out = params_grid$num_arcs[i]),
+            r = seq(from = 2, by = 2, length.out = params_grid$num_arcs[i])
+          )
+        }
+      )
+
+
+    return(output)
+  }
+```
+
+
+## Applying our system
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+output_grid <-
+  truchet_tiles(seed = 150)
+
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r
+  )) +
+  coord_fixed()
+```
+
+
+# Color, Fill 
+
+## Original Infinite Truchet
+
+ <video controls width='50%'>
+  <source src="05-infinite-truchet/roni_truchet_video.mp4" type="video/mp4">
+</video> 
+
+[Infinite Truchet available at Open Processing]{.footer}
+
+## `geom_arc_bar()` arguments: `color` and `fill`
+
+### Color order is the same in every corner
+
+:::: {.columns}
+::: {.column}
+```{r}
+color <- c("#fffbe6", "#fc8405")
+```
+:::
+::: {.column}
+![](05-infinite-truchet/arc_params_00.png){fig-align="center"}
+:::
+::::
+
+
+## `geom_arc_bar()` arguments: `color` and `fill`
+
+### Color order is the same in every corner
+
+:::: {.columns}
+::: {.column}
+```{r}
+max_num_arcs <- 5
+color <- c("#fffbe6", "#fc8405")
+color_seq <- rep(color, 
+                 length.out = max_num_arcs)
+color_seq
+```
+:::
+::: {.column}
+![](05-infinite-truchet/arc_params_00.png){fig-align="center"}
+:::
+::::
+
+## Updating our system
+
+```{r}
+#| code-line-numbers: "2,3,8,32,33,43"
+truchet_tiles <-
+  function(color1,
+           color2,
+           seed) {
+    ncol <- 4
+    nrow <- 4
+    sq_width <- 15
+    max_num_arcs <- 5
+
+    set.seed(seed)
+
+    grid <-
+      expand_grid(
+        y = seq(from = 0, by = sq_width, length.out = ncol),
+        x = seq(from = 0, by = sq_width, length.out = nrow)
+      ) %>%
+      mutate(tile_type = sample(c(1, 2), size = n(), replace = TRUE))
+
+    params_grid <-
+      map_dfr(
+        1:nrow(grid),
+        function(i) {
+          set_params(
+            x = grid$x[i],
+            y = grid$y[i],
+            sq_width = sq_width,
+            tile_type = grid$tile_type[i]
+          )
+        }
+      )
+
+    color <- c(color1, color2)
+    color_seq <- rep(color, length.out = max_num_arcs)
+
+    output <-
+      map_dfr(
+        1:nrow(params_grid),
+        function(i) {
+          bind_cols(
+            slice(params_grid, i),
+            r0 = seq(from = 1, by = 2, length.out = params_grid$num_arcs[i]),
+            r = seq(from = 2, by = 2, length.out = params_grid$num_arcs[i]),
+            color = color_seq[1:params_grid$num_arcs[i]]
+          )
+        }
+      )
+
+
+    return(output)
+  }
+```
+
+## Applying our system
+
+:::: {.columns}
+
+::: {.column style="width:40%"}
+```{r, eval = FALSE}
+output_grid <-
+  truchet_tiles(
+    seed = 150,
+    color1 = "#fffbe6",
+    color2 = "#fc8405"
+  )
+
+output_grid
+```
+:::
+
+::: {.column style="width:60%"}
+```{r, echo = FALSE}
+output_grid <-
+  truchet_tiles(
+    seed = 150,
+    color1 = "#fffbe6",
+    color2 = "#fc8405"
+  )
+
+output_grid
+```
+:::
+
+::::
+
+# Final Touches
+
+## Final Piece
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity()
+```
+
+## Final Piece
+
+if you set `color=` to NA you can see the gaps between the arcs 
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "13"
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(
+    aes(
+      x0 = x0,
+      y0 = y0,
+      start = start,
+      end = end,
+      r0 = r0,
+      r = r,
+      fill = color
+    ),
+    color = NA
+  ) +
+  coord_fixed() +
+  scale_fill_identity()
+```
+
+
+## Final Piece
+
+if you set `color=` to NA you can see the gaps between the arcs 
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "13"
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(
+    aes(
+      x0 = x0,
+      y0 = y0,
+      start = start,
+      end = end,
+      r0 = r0,
+      r = r,
+      fill = color
+    ),
+    color = NA
+  ) +
+  coord_fixed() +
+  scale_fill_identity() +
+  theme_void() +
+  theme(panel.background = element_rect(
+    fill = "black",
+    color = "black"
+  ))
+```
+
+
+
+
+## Final Piece
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "11,15"
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color,
+    color = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity() +
+  scale_color_identity()
+```
+
+
+## Final Piece
+
+`expand=` set to FALSE, removes margins
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "13"
+
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color,
+    color = color
+  )) +
+  coord_fixed(expand = FALSE) +
+  scale_fill_identity() +
+  scale_color_identity()
+```
+
+## Final Piece
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "16,17,18,19,20,21"
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color,
+    color = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity() +
+  scale_color_identity() +
+  theme_void() +
+  theme(
+    panel.background =
+      element_rect(
+        fill = "#050505",
+        color = "#050505"
+      )
+  )
+```
+
+## Final Piece
+
+:::: {.columns}
+::: {.column}
+```{r, echo = FALSE}
+#| fig-asp: 1
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color,
+    color = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity() +
+  scale_color_identity() +
+  theme_void() +
+  theme(
+    panel.background =
+      element_rect(
+        fill = "#050505",
+        color = "#050505"
+      )
+  )
+```
+:::
+::: {.column}
+```{r, echo = FALSE}
+#| fig-asp: 1
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity()
+```
+:::
+::::
+
+## Final Piece vs. Infinite Truchet
+
+:::: {.columns}
+
+::: {.column}
+```{r, echo = FALSE}
+#| fig-asp: 1
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color,
+    color = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity() +
+  scale_color_identity() +
+  theme_void() +
+  theme(
+    panel.background =
+      element_rect(
+        fill = "#050505",
+        color = "#050505"
+      )
+  )
+```
+:::
+
+::: {.column}
+
+![](05-infinite-truchet/roni_truchet_tiles.png)
+
+:::
+
+::::
+
+## Exercise 3
+
+::: {.exercise}
+
+1. Open file `exercises/05-infinite-truchet/exercise-3.Rmd`
+2. Run all of the code chunks in Part 1. This will give you access to the system `exercise_truchet_tiles()`.
+3. Within `exercises/05-infinite-truchet/` there is an image `luft_13_roni.png`. Use https://mattdesl.github.io/colorgrab/  to select two colors to use in your system. 
+4. Pass the hex codes for these colors to `color1` and `color2`. Modify the seed to experiment with different outputs. 
+5.  Save your image using `ggsave()` code provided and share on the GitHub discussion
+:::
+
+## Recap
+
+::: recap
+-   Learned about truchet tiles and their history (a technique from the 18th century!) 
+- Returned to `geom_arc_bar()` to create arcs and its arguments - using trigonometry without ever having to `sin()` a thing!
+-   Discussed why you need the `fill=` and `color=` for the shapes in truchet tile
+:::

@@ -1,0 +1,143 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: 'Infinite Truchet by Roni Kaufman Exercise 3'
+output: html_document
+---
+
+# Exercise 3
+
+```{r setup}
+library(dplyr)
+library(ggplot2)
+library(ggforce)
+```
+
+## Part 1
+
+Run all of the code chunks in Part 1. This will give you access to the system `exercise_truchet_tiles()`.
+
+```{r ex-3-1}
+set_params <- function(x, y, sq_width, tile_type) {
+  if (tile_type == 1) {
+    tribble(
+      ~x0, ~y0, ~start, ~end,
+      x, y, 0, pi / 2,
+      x + sq_width, y, 3 * pi / 2, 2 * pi,
+      x + sq_width, y + sq_width, pi, 3 * pi / 2,
+      x, y + sq_width, pi / 2, pi
+    ) %>%
+      mutate(num_arcs = c(3, 4, 3, 4))
+  } else if (tile_type == 2) {
+    tribble(
+      ~x0, ~y0, ~start, ~end,
+      x, y, 0, pi / 2,
+      x + sq_width, y, 3 * pi / 2, 2 * pi,
+      x + sq_width, y + sq_width, pi, 3 * pi / 2,
+      x, y + sq_width, pi / 2, pi
+    ) %>%
+      mutate(num_arcs = c(5, 2, 5, 2))
+  }
+}
+```
+
+
+```{r ex-3-2}
+exercise_truchet_tiles <- function(color1, color2, seed) {
+  ncol <- 4
+  nrow <- 4
+  sq_width <- 15
+  max_num_arcs <- 5
+
+  set.seed(seed)
+
+  grid <-
+    expand_grid(
+      y = seq(from = 0, by = sq_width, length.out = ncol),
+      x = seq(from = 0, by = sq_width, length.out = nrow)
+    ) %>%
+    mutate(tile_type = sample(c(1, 2), size = n(), replace = TRUE))
+
+  params_grid <-
+    map_dfr(
+      1:nrow(grid),
+      function(i) {
+        set_params(
+          x = grid$x[i],
+          y = grid$y[i],
+          sq_width = sq_width,
+          tile_type = grid$tile_type[i]
+        )
+      }
+    )
+
+  color <- c(color1, color2)
+  color_seq <- rep(color, length.out = max_num_arcs)
+
+  output <-
+    map_dfr(
+      1:nrow(params_grid),
+      function(i) {
+        bind_cols(
+          slice(params_grid, i),
+          r0 = seq(from = 1, by = 2, length.out = params_grid$num_arcs[i]),
+          r = seq(from = 2, by = 2, length.out = params_grid$num_arcs[i]),
+          color = color_seq[1:params_grid$num_arcs[i]]
+        )
+      }
+    )
+
+
+  return(output)
+}
+```
+
+
+## Part 2
+
+Within directory `exercises/05-infinite-truchet/` there is an image named `luft_13_roni.png`. This is from the Luft project, another truchet tile project created by Roni Kaufman. 
+
+Navigate to https://mattdesl.github.io/colorgrab/ and drag and drop the image to the website. Use the colorgrab website to select two colors from the image to use in your system. Copy the hexcodes. 
+
+Pass the hexcodes for these colors to `color1=` and `color2=` for `exercise_truchet_tiles()`. Modify the seed to experiment with different outputs. Feel free to also change the background color in `panel.background`.
+
+```{r ex-3-3}
+output_grid <-
+  exercise_truchet_tiles(color1, color2, seed)
+```
+
+```{r ex-3-4}
+output_grid %>%
+  ggplot() +
+  geom_arc_bar(aes(
+    x0 = x0,
+    y0 = y0,
+    start = start,
+    end = end,
+    r0 = r0,
+    r = r,
+    fill = color,
+    color = color
+  )) +
+  coord_fixed() +
+  scale_fill_identity() +
+  scale_color_identity() +
+  theme_void() +
+  theme(
+    panel.background =
+      element_rect(
+        fill = "#050505",
+        color = "#050505"
+      )
+  )
+```
+
+
+Save your image using `ggsave()` code provided and share on GitHub discussion board: https://github.com/posit-conf-2023/creative-coding/discussions/12
+
+```{r ex-3-5}
+ggsave(
+  filename = "ex3-piece.png",
+  plot = last_plot(),
+  width = 5, height = 5
+)
+```

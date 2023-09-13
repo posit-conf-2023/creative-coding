@@ -1,0 +1,122 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap');
+
+$theme-black: #333333;
+$theme-white: #fbf7f6;
+$theme-whiter: #fdfbfa;
+$theme-dark-blue: #1c3469;
+$theme-dark-blue-faded: #495c87;
+$theme-orange: #F2994A;
+$theme-transparent: #00000000;
+$theme-green: #b6d166;
+
+$font-family-sans-serif: 'Lato', sans-serif;
+$presentation-heading-font: 'Karla', sans-serif;
+$presentation-heading-color: $theme-dark-blue;
+$presentation-font-size-root: 30px;
+
+$body-bg: $theme-white;
+$body-color: $theme-black;
+$link-color: $theme-orange;
+$code-color: $theme-orange;
+
+$code-block-bg: white;
+$code-block-border-color: $theme-transparent;
+
+$selection-bg: $theme-orange;
+
+$presentation-title-slide-text-align: left;
+
+
+/*-- scss:rules --*/
+
+/* Font sizes */
+
+p {
+  font-size: 1.5rem;
+}
+
+/* Figures */
+
+/* Fix spacing and caption size*/
+;figure > p:first-child {
+  margin-top: 0;
+  margin-bottom: -0.75rem;
+}
+
+.reveal .slide figure > figcaption {
+  font-size: 1rem;
+  margin-left: 0.75rem;
+}
+
+/* Exercise and recap */
+.exercise, .recap {
+  padding: 0.5rem 0.5rem 0.2rem 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  border-radius: 0.25em;
+  min-height: 85%;
+  background: $theme-whiter;
+}
+
+.exercise {
+  border: 0.1em solid $theme-green;
+  border-left: 0.5em solid $theme-green;
+}
+
+.recap {
+  border: 0.1em solid $theme-orange;
+  border-left: 0.5em solid $theme-orange;
+}
+
+/* Vertically center content*/
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+/* Don't make code chunks with output in column full height of output */
+.reveal .column-output-location .column:first-of-type div.sourceCode {
+  height: revert;
+}
+
+/* Highlighting */
+
+.under {
+  font-style: italic;
+  display: inline-block;
+  border-bottom: 0.2em solid $theme-orange;
+}
+
+/* Lists */
+.reveal ul {
+  list-style-type: circle;
+}
+
+del {
+  text-decoration-thickness: 0.075em;
+}
+
+/* Title slide */
+
+#title-slide .title {
+  font-size: 1.5em;
+  font-family: 'Lato';
+  font-weight: 400;
+  color: $theme-black;
+}
+
+#title-slide .subtitle {
+  font-size: 2em;
+  font-family: 'Karla';
+  font-weight: 600;
+  color: $theme-dark-blue;
+  line-height: 1;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}

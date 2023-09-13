@@ -1,0 +1,13 @@
+library(dplyr)
+
+letter_tribble <-
+  tribble(
+    ~x, ~y,
+    1/4, 0,
+    3/4, 0,
+    1, 1,
+    3/4, 1,
+    1/2, 1/4,
+    1/4, 1,
+    0, 1
+  )

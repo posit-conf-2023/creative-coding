@@ -1,0 +1,66 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: '02 - Homage to the Square Exercise 1'
+output: html_document
+---
+
+# Exercise 1
+
+## Part 1
+
+Update the function `make_homage()` to take a `seed` argument, and set the seed in the body of the function
+
+```{r ex-1-1}
+library(ggplot2)
+library(dplyr)
+
+make_homage <- function(colors = c("#5A9CBA", "#919EA3", "#F1EFDF", "#F5BB1D")) {
+  tribble(
+    ~x0, ~y0, ~size,
+    0, 0, 10,
+    1, 0.5, 8,
+    2, 1, 6,
+    3, 1.5, 4
+  ) %>%
+    mutate(
+      x1 = x0 + size,
+      y1 = y0 + size,
+      color = sample(colors, size = 4)
+    ) %>%
+    ggplot() +
+    geom_rect(aes(
+      xmin = x0, xmax = x1,
+      ymin = y0, ymax = y1,
+      fill = color
+    )) +
+    scale_fill_identity() +
+    coord_fixed(expand = FALSE) +
+    theme_void()
+}
+```
+
+What happens if there is no value given to `seed` in the function?
+
+## Part 2
+
+Verify that running `make_homage()` with the same `seed` creates the same output, and that with a different seeds creates different outputs
+
+```{r ex-1-2}
+```
+
+## Part 3
+
+Share an output and the seed that created it in the GitHub discussion for this exercise! https://github.com/posit-conf-2023/creative-coding/discussions/2
+
+```{r ex-1-3}
+library(glue)
+
+# seed <-
+# homage <- 
+
+ggsave(
+  filename = glue("exercises/02-homage-to-the-square/ex1-homage-{seed}.png"),
+  plot = homage,
+  width = 5, height = 5
+)
+```

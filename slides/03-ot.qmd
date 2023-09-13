@@ -1,0 +1,1537 @@
+---
+title: "Steal like an Rtist: Creative Coding in R"
+subtitle: "o.T. (carré noir)<br>Vera Molnár"
+author: "Ijeamaka Anyene Fumagalli and Sharla Gelfand"
+institute: "`posit::conf(2023)`"
+pagetitle: "o.T. (carré noir)"
+format:
+  revealjs:
+    theme: [default, css/style.scss]
+execute:
+  echo: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = "png", dev.args = list(bg = "transparent"))
+```
+
+## 
+
+::: columns
+::: {.column style="width:51%"}
+![O.T., *Serigraph on woven paper*](03-ot/ot-vera-molnar.png)
+:::
+
+::: {.column style="width:49%"}
+![Vera Molnár, by Catherine Panchout via Getty Images](03-ot/vera-molnar.jpeg)
+:::
+:::
+
+::: notes
+-   Vera Molnar is one of the earliest pioneers of computer and generative art, programming in Fortran, starting in the 1960s.
+
+-   She worked with a method she called *machine imaginaire* - where she created strict set of rules that replaced humans in her creative process.
+:::
+
+## o.T. (carré noir): introduction to the shape
+
+![](03-ot/receation_breakdown_00.png){fig-align="center"}
+
+## Orientation of the letter u
+
+![](03-ot/recreation_breakdown_01.png){fig-align="center"}
+
+## Composition of o.T. (carré noir)
+
+![](03-ot/recreation_breakdown_02.png){fig-align="center"}
+
+## Color palette
+
+::: columns
+::: {.column style="width:51%"}
+![](03-ot/ot-vera-molnar.png)
+:::
+
+::: {.column style="width:49%"}
+```{r}
+library(scales)
+
+ot_colors <- c("#1a1617", "#e8e6e5")
+show_col(ot_colors)
+```
+:::
+:::
+
+# Creating Letter U
+
+## Creating polygons in {ggplot2}
+
+![](03-ot/geom-polygon-02.png){fig-align="center"}
+
+## Creating polygons in {ggplot2}
+
+### `geom_polygon()`
+
+We will use the following aesthetics
+
+-   coordinates of data (`x`, `y`)
+-   color of the border of the polygon (`color`)
+-   color of the inside of the polygon (`fill`)
+-   which coordinates belong to which polygon (`group`)
+
+## Creating polygons in {ggplot2}
+
+### `geom_polygon()`
+
+We will use the following aesthetics
+
+-   coordinates of data (`x`, `y`)
+-   color of the border of the polygon (`color`)
+-   color of the inside of the polygon (`fill`)
+-   which coordinates belong to which polygon (`group`)
+
+::: callout-important
+## `geom_polygon()` tips
+
+Order of coordinates matters (a lot!)
+
+Only coordinates of interest are the vertices
+:::
+
+## Coordinates of Letter U
+
+![](03-ot/recreation_letter_u_00.png){fig-align="center"}
+
+## Coordinates of Letter U
+
+#### Go counterclockwise, starting from bottom left
+
+![](03-ot/recreation_letter_u_01.png){fig-align="center"}
+
+## Coordinates of Letter U
+
+#### Only need coordinates from vertices in the polygon
+
+![](03-ot/recreation_letter_u_02.png){fig-align="center"}
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "1,2,4,5,6"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/recreation_letter_u_00.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "7"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_01.png)
+:::
+:::
+
+## Coordinates of Letter U
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "8"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_02.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "9"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_03.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "10"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_04.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "11"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_05.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "12"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_06.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "13"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_07.png)
+:::
+:::
+
+## Coordinates of Letter U
+
+::: columns
+::: column
+```{r, message = FALSE, warning=FALSE}
+#| code-line-numbers: "14"
+
+library(dplyr)
+library(tidyr)
+
+u_shape <-
+  tribble(
+    ~x,  ~y,
+     0,   0,
+     1,   0,
+     1,   1,
+   2/3,   1,
+   2/3, 1/3,
+   1/3, 1/3,
+   1/3,   1,
+     0,   1
+  )
+```
+:::
+
+::: column
+![](03-ot/tibble_u_08.png)
+:::
+:::
+
+## Plotting Letter U
+
+```{r, echo = FALSE}
+library(ggplot2)
+
+theme_set(theme_grey())
+theme_replace(axis.text = ggplot2::element_text(color = "black", size = 20))
+```
+
+::: columns
+::: column
+```{r, eval = FALSE}
+library(ggplot2)
+
+u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  )
+```
+:::
+
+::: column
+```{r, eval = TRUE, echo = FALSE}
+#| fig-asp: 1
+
+u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  )
+```
+:::
+:::
+
+## Plotting Letter U
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "9,10,11"
+
+u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  coord_fixed(
+    xlim = c(0, 2),
+    ylim = c(0, 2)
+  )
+```
+
+## Plotting Letter U
+
+### Adding flexibility
+
+```{r}
+create_initial_shape <- function(x0, y0) {
+  tribble(
+          ~x,       ~y,
+      x0 + 0,   y0 + 0,
+      x0 + 1,   y0 + 0,
+      x0 + 1,   y0 + 1,
+    x0 + 2/3,   y0 + 1,
+    x0 + 2/3, y0 + 1/3,
+    x0 + 1/3, y0 + 1/3,
+    x0 + 1/3,   y0 + 1,
+      x0 + 0,   y0 + 1,
+      x0 + 0,   y0 + 0
+  )
+}
+```
+
+## Plotting Letter U
+
+### Adding flexibility
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+create_initial_shape(0, 0) %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  coord_fixed(
+    xlim = c(0, 2),
+    ylim = c(0, 2)
+  )
+```
+
+## Plotting Letter U
+
+### Adding flexibility
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "1"
+create_initial_shape(1, 1) %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  coord_fixed(
+    xlim = c(0, 2),
+    ylim = c(0, 2)
+  )
+```
+
+## Exercise 1
+
+::: exercise
+1.  Open file: `exercises/03-ot/exercise.Rmd`
+2.  On your graphing paper, select from letters in `exercises/03-ot/letters/` and draw out the letter.
+3.  Label all the vertices of the shape with the coordinates.
+4.  Create a `tribble()` with the coordinates of the letter you selected.
+5.  Create a new function, `create_letter()`, that takes `x0` and `y0` as arguments and moves the shape according to those arguments.
+6.  Plot your shape at the `x0` and `y0` of your choosing.
+7.  Share your output on Github discussion board.
+8.  Remember to save your file when you are done with the exercise.
+:::
+
+# Orientation of the Letter U
+
+## Exploring Geometric Abstraction
+
+#### "My life is in squares, triangles, lines"
+
+::: columns
+::: column
+Throughout her career, Vera Molnár experimented with repetitions and variations of letters, especially the letter M -- as in Molnár.
+
+She explored the balance between order and chaos.
+:::
+
+::: column
+![](03-ot/ot-vera-molnar.png){fig-align="center"}
+:::
+:::
+
+## A light trigonometry intermission
+
+### `y_new` = `-x_old` & `x_new` = `y_old`
+
+![](03-ot/trig_intermission_01A.png){fig-align="center"}
+
+## A light trigonometry intermission
+
+### `y_new` = `-y_old` & `x_new` = `-x_old`
+
+![](03-ot/trig_intermission_01B.png){fig-align="center"}
+
+## A light trigonometry intermission
+
+### `y_new` = `x_old` & `x_new` = `-y_old`
+
+![](03-ot/trig_intermission_01C.png){fig-align="center"}
+
+## A light trigonometry intermission
+
+::: columns
+::: {.column style="width:60%"}
+![](03-ot/trig_intermission_02.gif)
+:::
+
+::: {.column style="width:40%"}
+-   Step 1: Place shape
+-   Step 2: Subtract point of rotation off of each vertex
+-   Step 3: Rotate
+-   Step 4: Add back point of rotation
+-   Step 5: Correct coordinates to back at "original origin"
+:::
+:::
+
+## Applying trigonometry lesson
+
+### Step 1: Place shape
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+
+x0 <- 3
+y0 <- 3
+
+initial_u_shape <-
+  create_initial_shape(x0, y0)
+
+initial_u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  geom_point(
+    aes(
+      x = x0,
+      y = y0
+    ),
+    size = 5,
+    color = "red"
+  ) +
+  coord_fixed(
+    xlim = c(-1, 4),
+    ylim = c(-1, 4)
+  )
+```
+
+## Applying trigonometry lesson
+
+### Step 2: Subtract point of rotation off of each vertex
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "7,8"
+
+x0 <- 3
+y0 <- 3
+
+initial_u_shape <-
+  create_initial_shape(x0, y0) %>%
+  mutate(
+    x = x - x0,
+    y = y - y0
+  )
+
+initial_u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  geom_point(
+    aes(
+      x = x0,
+      y = y0
+    ),
+    size = 5,
+    color = "red"
+  ) +
+  coord_fixed(
+    xlim = c(-1, 4),
+    ylim = c(-1, 4)
+  )
+```
+
+## Applying trigonometry lesson
+
+### Step 3: Rotate
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "11,12"
+x0 <- 3
+y0 <- 3
+
+initial_u_shape <-
+  create_initial_shape(x0, y0) %>%
+  mutate(
+    x = x - x0,
+    y = y - y0
+  ) %>%
+  mutate(
+    x_new = y,
+    y_new = -x
+  )
+
+initial_u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x_new,
+      y = y_new
+    )
+  ) +
+  geom_point(
+    aes(
+      x = x0,
+      y = y0
+    ),
+    size = 5,
+    color = "red"
+  ) +
+  coord_fixed(
+    xlim = c(-1, 4),
+    ylim = c(-1, 4)
+  )
+```
+
+## Applying trigonometry lesson
+
+### Step 4: Add back point of rotation
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "15,16"
+x0 <- 3
+y0 <- 3
+
+initial_u_shape <-
+  create_initial_shape(x0, y0) %>%
+  mutate(
+    x = x - x0,
+    y = y - y0
+  ) %>%
+  mutate(
+    x_new = y,
+    y_new = -x
+  ) %>%
+  mutate(
+    x = x_new + x0,
+    y = y_new + y0
+  )
+
+initial_u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  geom_point(
+    aes(
+      x = x0,
+      y = y0
+    ),
+    size = 5,
+    color = "red"
+  ) +
+  coord_fixed(
+    xlim = c(-1, 4),
+    ylim = c(-1, 4)
+  )
+```
+
+## Applying trigonometry lesson
+
+### Step 5: Correct coordinates to back at "original origin"
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "16,17"
+x0 <- 3
+y0 <- 3
+shape_width <- 1
+
+initial_u_shape <-
+  create_initial_shape(x0, y0) %>%
+  mutate(
+    x = x - x0,
+    y = y - y0
+  ) %>%
+  mutate(
+    x_new = y,
+    y_new = -x
+  ) %>%
+  mutate(
+    x = x_new + x0,
+    y = y_new + y0 + shape_width
+  )
+
+initial_u_shape %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  geom_point(
+    aes(
+      x = x0,
+      y = y0
+    ),
+    size = 5,
+    color = "red"
+  ) +
+  coord_fixed(
+    xlim = c(-1, 4),
+    ylim = c(-1, 4)
+  )
+```
+
+## Turning lesson into a function
+
+```{r}
+rotate_shape <- function(data, x0, y0, degrees, shape_width) {
+  if (degrees == 90) {
+    data %>%
+      mutate(
+        x = x - x0,
+        y = y - y0
+      ) %>%
+      mutate(
+        x_new = y,
+        y_new = -x
+      ) %>%
+      mutate(
+        x = x_new + x0,
+        y = y_new + y0 + shape_width
+      )
+  } else if (degrees == 180) {
+    data %>%
+      mutate(
+        x = x - x0,
+        y = y - y0
+      ) %>%
+      mutate(
+        x_new = -x,
+        y_new = -y
+      ) %>%
+      mutate(
+        x = x_new + x0 + shape_width,
+        y = y_new + y0 + shape_width
+      )
+  } else if (degrees == 270) {
+    data %>%
+      mutate(
+        x = x - x0,
+        y = y - y0
+      ) %>%
+      mutate(
+        x_new = -y,
+        y_new = x
+      ) %>%
+      mutate(
+        x = x_new + x0 + shape_width,
+        y = y_new + y0
+      )
+  } else if (degrees == 0) {
+    data
+  }
+}
+```
+
+## Turning lesson\[s\] into function\[s\]
+
+```{r}
+create_rotate_shape <- function(x0, y0, degrees, shape_width = 1) {
+  output <-
+    create_initial_shape(x0 = x0, y0 = y0) %>%
+    rotate_shape(
+      data = .,
+      x0 = x0,
+      y0 = y0,
+      degrees = degrees,
+      shape_width = shape_width
+    )
+
+  return(output)
+}
+```
+
+## Turning lesson\[s\] into function\[s\]
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+x0 <- 3
+y0 <- 3
+
+rotated_shape <-
+  create_rotate_shape(
+    x0 = x0,
+    y0 = y0,
+    degrees = 180
+  )
+
+ggplot(data = rotated_shape) +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  coord_fixed(
+    xlim = c(0, 5),
+    ylim = c(0, 5)
+  )
+```
+
+## Exercise 2
+
+::: exercise
+1.  Reopen file if needed: `exercises/03-ot/exercise.Rmd`
+
+-   If you closed the file after the previous exercise, you may need to first re-run the code chunks from Exercise 1.
+
+2.  Run the code chunks to have access to the `initiate_rotate_shape()` function.
+3.  Experiment with changing the `x0`, `y0`, and the `degrees` argument within `initiate_rotate_shape()` to rotate and move your letter.
+4.  What happens if you change `shape_width` to be greater or smaller than 1? Why does this happen?
+5.  Remember to save your file when you are done with the exercise.
+:::
+
+# Composition of piece
+
+
+## Creating the grid
+
+::: columns
+::: column
+```{r}
+ncol <- 10
+nrow <- 10
+shape_width <- 1
+perimeter_width <- shape_width + .25
+```
+:::
+
+::: column
+![](03-ot/recreation_breakdown_02.png)
+:::
+:::
+
+::: {.notes}
+Remember to explain why shape_width vs. perimeter width
+:::
+
+## Creating the grid
+
+```{r}
+#| output-location: column
+
+ncol <- 10
+nrow <- 10
+shape_width <- 1
+perimeter_width <- shape_width + .25
+
+grid <-
+  expand_grid(
+    x = seq(0,
+      by = perimeter_width,
+      length.out = nrow
+    ),
+    y = seq(0,
+      by = perimeter_width,
+      length.out = ncol
+    )
+  )
+
+grid
+```
+
+## Creating the grid
+
+::: columns
+::: column
+```{r}
+#| code-line-numbers: "17,18,19"
+ncol <- 10
+nrow <- 10
+shape_width <- 1
+perimeter_width <- shape_width + .25
+
+grid <-
+  expand_grid(
+    x = seq(0,
+      by = perimeter_width,
+      length.out = nrow
+    ),
+    y = seq(0,
+      by = perimeter_width,
+      length.out = ncol
+    )
+  ) %>%
+  mutate(y = if_else(x >= 5 * perimeter_width,
+    y + perimeter_width / 2,
+    y
+  ))
+
+grid
+```
+:::
+
+::: column
+```{r}
+#| fig-asp: 0.85
+grid %>%
+  ggplot() +
+  geom_point(
+    aes(
+      x = x,
+      y = y
+    )
+  ) +
+  coord_fixed()
+```
+:::
+:::
+
+## Creating our system
+
+```{r}
+library(purrr)
+
+make_molnar_system <- function() {
+  ncol <- 10
+  nrow <- 10
+  shape_width <- 1
+  perimeter_width <- shape_width + .25
+
+  grid <-
+    expand_grid(
+      x = seq(0, by = perimeter_width, length.out = nrow),
+      y = seq(0, by = perimeter_width, length.out = ncol)
+    ) %>%
+    mutate(y = if_else(x >= 5 * perimeter_width,
+      y + perimeter_width / 2,
+      y
+    ))
+
+  output <-
+    map_dfr(
+      1:nrow(grid),
+      function(i) {
+        create_rotate_shape(
+          x = grid$x[i],
+          y = grid$y[i],
+          degrees = 180,
+          shape_width = shape_width
+        )
+      }
+    )
+
+  return(output)
+}
+```
+
+## Applying our system
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+
+initial_output <-
+  make_molnar_system()
+
+initial_output %>%
+  ggplot() +
+  geom_polygon(aes(
+    x = x,
+    y = y
+  )) +
+  coord_fixed()
+```
+
+## Creating polygons in {ggplot2}
+
+### `geom_polygon()`
+
+We will use the following aesthetics
+
+-   coordinates of data (`x`, `y`)
+-   color of the border of the polygon (`color`)
+-   color of the inside of the polygon (`fill`)
+-   [which coordinates belong to which polygon (`group`)]{.under}
+
+## Applying our system
+
+### Using group argument
+
+```{r}
+#| code-line-numbers: "21,22"
+make_molnar_system <- function() {
+  ncol <- 10
+  nrow <- 10
+  shape_width <- 1
+  perimeter_width <- shape_width + .25
+
+  grid <-
+    expand_grid(
+      x = seq(0, by = perimeter_width, length.out = nrow),
+      y = seq(0, by = perimeter_width, length.out = ncol)
+    ) %>%
+    mutate(y = if_else(x >= 5 * perimeter_width,
+      y + perimeter_width / 2,
+      y
+    ))
+
+  output <-
+    map_dfr(
+      1:nrow(grid),
+      function(i) {
+        bind_cols(
+          group = i,
+          create_rotate_shape(
+            x = grid$x[i],
+            y = grid$y[i],
+            degrees = 180,
+            shape_width = shape_width
+          )
+        )
+      }
+    )
+
+  return(output)
+}
+```
+
+## Applying our system
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "10"
+initial_output <-
+  make_molnar_system()
+
+initial_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    )
+  ) +
+  coord_fixed()
+```
+
+## Applying our system
+
+### Incorporating rotation
+
+```{r}
+#| code-line-numbers: "28"
+
+make_molnar_system <- function(seed) {
+  set.seed(seed)
+
+  ncol <- 10
+  nrow <- 10
+  shape_width <- 1
+  perimeter_width <- shape_width + .25
+
+  grid <-
+    expand_grid(
+      x = seq(0, by = perimeter_width, length.out = nrow),
+      y = seq(0, by = perimeter_width, length.out = ncol)
+    ) %>%
+    mutate(y = if_else(x >= 5 * perimeter_width,
+      y + perimeter_width / 2,
+      y
+    ))
+
+  output <-
+    map_dfr(
+      1:nrow(grid),
+      function(i) {
+        bind_cols(
+          group = i,
+          create_rotate_shape(
+            x = grid$x[i],
+            y = grid$y[i],
+            degrees = 180,
+            shape_width = shape_width
+          )
+        )
+      }
+    )
+
+  return(output)
+}
+```
+
+## Applying our system
+
+### Incorporating rotation
+
+```{r}
+#| code-line-numbers: "1,2,28,29"
+make_molnar_system <- function(seed) {
+  set.seed(seed)
+
+  ncol <- 10
+  nrow <- 10
+  shape_width <- 1
+  perimeter_width <- shape_width + .25
+
+  grid <-
+    expand_grid(
+      x = seq(0, by = perimeter_width, length.out = nrow),
+      y = seq(0, by = perimeter_width, length.out = ncol)
+    ) %>%
+    mutate(y = if_else(x >= 5 * perimeter_width,
+      y + perimeter_width / 2,
+      y
+    ))
+
+  output <-
+    map_dfr(
+      1:nrow(grid),
+      function(i) {
+        bind_cols(
+          group = i,
+          create_rotate_shape(
+            x = grid$x[i],
+            y = grid$y[i],
+            degrees = sample(c(0, 90, 180, 270),
+              size = 1
+            ),
+            shape_width = shape_width
+          )
+        )
+      }
+    )
+
+  return(output)
+}
+```
+
+## Applying our system
+
+### Incorporating rotation
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+
+initial_output <-
+  make_molnar_system(seed = 150)
+
+initial_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    )
+  ) +
+  coord_fixed()
+```
+
+## Patterns vs. Pure Random
+
+::: columns
+::: column
+![STRUCTURE À PARTIR DE LA LETTRE M, 2020](03-ot/random_vera_molnar.png)
+:::
+
+::: column
+![DE 432 OBLIQUES À 9 CARRÉS N°9, 2011](03-ot/random_vera_molnar_2.png)
+:::
+:::
+
+## Patterns vs. Pure Random
+
+::: columns
+::: column
+![Source: Saturn Clouds Icons by Ijeamaka](03-ot/saturn_cloud_ex1.png)
+:::
+
+::: column
+![Source: Saturn Clouds Icons by Ijeamaka](03-ot/saturn_cloud_ex2.png)
+:::
+:::
+
+## Patterns vs. Pure Random
+
+::: columns
+::: column
+![Source: Saturn Clouds Icons by Ijeamaka](03-ot/saturn_cloud_ex1.png)
+:::
+
+::: column
+Layout: 1, 2, 3, Skip, 4, 1, 2
+
+![](03-ot/saturn_cloud_l1.png)
+:::
+:::
+
+::: notes
+Layout: 1, 2, 3, Skip, 4, 1, 2
+:::
+
+## Patterns vs. Pure Random
+
+```{r}
+set.seed(150)
+degree_pattern_options <- c(0, 90, 180, 270)
+```
+
+## Patterns vs. Pure Random
+
+```{r}
+set.seed(150)
+degree_pattern_options <- c(0, 90, 180, 270)
+degree_pattern <- sample(degree_pattern_options, size = 6, replace = TRUE)
+degree_pattern
+```
+
+## Patterns vs. Pure Random
+
+```{r}
+#| code-line-numbers: "10,11,29,30,31,42"
+
+make_molnar_system <-
+  function(seed) {
+    set.seed(seed)
+
+    ncol <- 10
+    nrow <- 10
+    shape_width <- 1
+    perimeter_width <- shape_width + .25
+
+    degree_pattern_options <- c(0, 90, 180, 270)
+    degree_pattern <- sample(degree_pattern_options, size = 6, replace = TRUE)
+
+    grid <-
+      expand_grid(
+        x = seq(0,
+          by = perimeter_width,
+          length.out = nrow
+        ),
+        y = seq(0,
+          by = perimeter_width,
+          length.out = ncol
+        )
+      ) %>%
+      mutate(y = if_else(x >= 5 * perimeter_width,
+        y + perimeter_width / 2,
+        y
+      ))
+
+    degree_pattern_exp <- rep(degree_pattern,
+      length.out = nrow(grid)
+    )
+
+    output <-
+      map_dfr(
+        1:nrow(grid),
+        function(i) {
+          bind_cols(
+            group = i,
+            create_rotate_shape(
+              x = grid$x[i],
+              y = grid$y[i],
+              degrees = degree_pattern_exp[i],
+              shape_width = shape_width
+            )
+          )
+        }
+      )
+
+    return(output)
+  }
+```
+
+## Patterns vs. Pure Random
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+final_output <-
+  make_molnar_system(seed = 150)
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    )
+  ) +
+  coord_fixed()
+```
+
+## Patterns vs. Pure Random
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "2"
+final_output <-
+  make_molnar_system(seed = 55)
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    )
+  ) +
+  coord_fixed()
+```
+
+# Final Touches 
+
+## Final Piece
+
+```{r, echo = FALSE}
+final_output <-
+  make_molnar_system(seed = 150)
+```
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "9,10"
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    ),
+    fill = "#1a1617",
+    color = "#1a1617"
+  ) +
+  coord_fixed()
+```
+
+## Final Piece
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "13"
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    ),
+    fill = "#1a1617",
+    color = "#1a1617"
+  ) +
+  coord_fixed() +
+  theme_void()
+```
+
+## Final Piece
+
+```{r}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "14,15,16,17,18"
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    ),
+    fill = "#1a1617",
+    color = "#1a1617"
+  ) +
+  coord_fixed() +
+  theme_void() +
+  theme(
+    plot.background =
+      element_rect(
+        fill = "#e8e6e5",
+        color = "#e8e6e5"
+      )
+  )
+```
+
+## Final Piece
+
+:::: {.columns}
+
+::: {.column}
+![](03-ot/ot-vera-molnar.png)
+:::
+
+::: {.column}
+```{r, echo = FALSE}
+#| fig-asp: 1
+
+final_output %>%
+  ggplot() +
+  geom_polygon(
+    aes(
+      x = x,
+      y = y,
+      group = group
+    ),
+    fill = "#1a1617",
+    color = "#1a1617"
+  ) +
+  coord_fixed() +
+  theme_void() +
+  theme(
+    plot.background =
+      element_rect(
+        fill = "#e8e6e5",
+        color = "#e8e6e5"
+      )
+  )
+```
+:::
+::::
+
+## Exercise 3
+
+::: exercise
+1.  Reopen file if needed: `exercises/03-ot/exercise.Rmd`
+2.  Review the code chunk that contains the `make_exercise_molnar()` function which encompasses the whole system.
+3.  Update the arguments `degree_pattern_options=` and `degree_sample_size=` for the function `make_exercise_molnar()` to experiment with modifying the rotation patterns to one of your choice. (Degrees options are 0, 90, 80, 270)
+4.  Save your image using `ggsave()` code provided and share on GitHub discussion board.
+5.  If you have extra time, here are some suggestion for customizing your piece:
+
+-   Experiment with colors in the `fill=` and `color=` in `geom_polygon()`
+-   Experiment with colors in the `plot.background` in `theme()`
+:::
+
+## Recap
+
+::: recap
+-   Created a shape using `geom_polygon()`
+-   Explored the intricacies of `geom_polygon()` arguments: order matters and group is important!
+-   Rotated a shape 0, 90, 180, and 270 degrees using trigonometry
+-   Explored implementing pure randomness or randomness to create patterns
+:::

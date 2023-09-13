@@ -1,0 +1,80 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: 'Infinite Truchet by Roni Kaufman Exercise 2'
+output: html_document
+---
+
+# Exercise 2
+
+## Part 1
+
+```{r setup}
+library(dplyr)
+library(ggplot2)
+library(ggforce)
+```
+
+Run the code chunk below to have access to the `set_incorrect_params()` function and then the code chunk that plots the output of the function.
+
+```{r ex-2-1}
+set_incorrect_params <- function(x, y, sq_width) {
+  tribble(
+    ~x0, ~y0, ~start, ~end,
+    x, y, 0, pi / 2,
+    x + sq_width, y, 3 * pi / 2, 2 * pi,
+    x + sq_width, y + sq_width, pi / 2, pi,
+    x, y + sq_width, pi / 2, pi
+  )
+}
+```
+
+Run the code chunk below to see the output of `set_incorrect_params()` function. Our intention was to have four arcs on the inside corners of the square. However, as the title suggests, one of the corners in the plot has the incorrect parameters for `start` and `end` arguments for `geom_arc_bar()`. 
+
+```{r ex-2-2}
+set_incorrect_params(x = 0, y = 0, sq_width = 1) %>%
+  ggplot() +
+  geom_arc_bar(
+    aes(
+      x0 = x0,
+      y0 = y0,
+      start = start,
+      end = end,
+      r0 = .25,
+      r = .5
+    )
+  ) +
+  geom_rect(
+    aes(
+      xmin = 0,
+      xmax = 1,
+      ymin = 0,
+      ymax = 1
+    ),
+    fill = NA,
+    color = "black"
+  ) +
+  coord_fixed()
+```
+
+Create a new function called `set_correct_params()` that fixes this mistake. Remember each row of the `tribble()` in `set_incorrect_params()` function corresponds to a corner of the square, starting with the bottom left row and going counter clockwise. 
+
+```{r ex-2-3}
+```
+
+Plot the output of `set_correct_params()` using the same arguments above to confirm you corrected the mistake. 
+
+```{r ex-2-4}
+set_correct_params(x = 0, y = 0, sq_width = 1) %>%
+  ggplot() +
+  geom_arc_bar(
+    aes(
+      x0 = x0,
+      y0 = y0,
+      start = start,
+      end = end,
+      r0 = .25,
+      r = .5
+    )
+  ) +
+  coord_fixed()
+```

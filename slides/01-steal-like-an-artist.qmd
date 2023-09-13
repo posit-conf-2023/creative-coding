@@ -1,0 +1,131 @@
+---
+title: "Steal like an Rtist: Creative Coding in R"
+subtitle: "Steal like an Artist"
+author: "Ijeamaka Anyene Fumagalli and Sharla Gelfand"
+institute: "`posit::conf(2023)`"
+pagetitle: "Steal like an Artist"
+format:
+  revealjs:
+    theme: [default, css/style.scss]
+execute:
+  echo: true
+---
+
+#
+
+![ ](01-steal-like-an-artist/book.jpg)
+
+# Who am I as an artist?
+
+![ ](01-steal-like-an-artist/cliff.jpg)
+
+# ~~Who am I as an artist?~~
+
+![ ](01-steal-like-an-artist/cliff.jpg)
+
+# What do I like?
+
+![ ](01-steal-like-an-artist/cliff-bridge.jpg)
+
+## What do I like?
+
+:::: {.columns}
+
+::: {.column width="57%"}
+
+![](01-steal-like-an-artist/inspo-ije-1.jpg)
+
+![](01-steal-like-an-artist/inspo-ije-2.jpg)
+
+:::
+
+::: {.column width="43%"}
+
+![](01-steal-like-an-artist/inspo-sharla-2.jpg)
+
+:::
+
+::::
+
+
+::: {.notes}
+You are a mash up of what you're interested in.
+
+You are the sum of your influences.
+:::
+
+## How do you start?
+
+Free yourself from the burden of being original!
+
+Copy, and keep copying.
+
+![ ](01-steal-like-an-artist/worth-stealing.jpg)
+
+## Recreate
+
+### Copying is reverse engineering
+
+::: {layout-ncol="4" .v-center-container}
+![*Homage to the Square -- Ascending*, Josef Albers](01-steal-like-an-artist/HomageToTheSquareAscending.png)
+
+![*O.T., Serigraph on woven paper*, Vera Molnár](01-steal-like-an-artist/ot-vera-molnar.png)
+
+![*Riso Grid 18*, Ryan Miglinczy](01-steal-like-an-artist/riso-grid-18.png)
+
+![*Infinite Truchet*, Roni Kaufman](01-steal-like-an-artist/roni_truchet_tiles.png)
+:::
+
+## Remix
+
+### A perfect copy is hard
+
+Where do you fall short? What makes you different? Amplify that, and transform it
+
+![ ](01-steal-like-an-artist/imperfect-copy.jpg)
+
+## Reinterpret
+
+### Once you know how to copy...
+
+Move on from imitation to emulation
+
+You don't want to [look]{.under} like your influences, you want to [see]{.under} like them
+
+::: {layout="[0.75, 1, 1, 1]" layout-valign="bottom"}
+
+![Roger Brown, 1993](01-steal-like-an-artist/roger-brown.jpeg)
+
+![Sharla Gelfand, 2023](01-steal-like-an-artist/sharla-gelfand.jpg)
+
+![@ayeyokp_, 2023](01-steal-like-an-artist/bauhaus.jpg)
+
+![Ijeamaka Anyene Fumagalli, 2023](01-steal-like-an-artist/ijeamaka.jpg)
+
+:::
+
+::: {.notes}
+Steal the thinking behind the style
+:::
+
+# 
+
+:::: {.columns .v-center-container}
+
+::: {.column width="40%"}
+
+### 🎨 Recreate 
+
+### 🎲 Remix 
+
+### 💡 Reinterpret
+
+:::
+
+::: {.column width="60%"}
+
+![ ](01-steal-like-an-artist/good-bad-theft.jpg)
+
+:::
+
+::::

@@ -1,0 +1,246 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: '04 - Riso Grids Exercises 2 and 3'
+output: html_document
+---
+
+The following code chunk is set up for the exercises below, in order to make sure you have the shapes and functions loaded in. Please run it (feel free to read over to re-familiarize yourself with the code!) and then proceed to the exercise below.
+
+```{r}
+library(dplyr)
+library(purrr)
+library(ggplot2)
+
+grid_size <- 10
+
+oreo_square <- tribble(
+    ~x,   ~y, ~subgroup, ~group,
+   1.5,  1.5,         1,      1,
+   8.5,  1.5,         1,      1,
+   8.5,  8.5,         1,      1,
+   1.5,  8.5,         1,      1,
+  2.75, 2.75,         2,      1,
+  7.25, 2.75,         2,      1,
+  7.25, 7.25,         2,      1,
+  2.75, 7.25,         2,      1,
+     4,    4,        NA,      2,
+     6,    4,        NA,      2,
+     6,    6,        NA,      2,
+     4,    6,        NA,      2
+  )
+
+upper_triangle <- tribble(
+  ~x, ~y, ~group, ~subgroup,
+   0,  0,     NA,        NA,
+  10, 10,     NA,        NA,
+   0, 10,     NA,        NA
+  )
+
+lower_triangle <- tribble(
+  ~x, ~y, ~group, ~subgroup,
+   0,  0,     NA,        NA,
+  10,  0,     NA,        NA,
+  10, 10,     NA,        NA
+  )
+
+quarter_donut_1 <- tribble(
+  ~x, ~y, ~r, ~r0, ~start,   ~end,
+   0,  0, 10,   5,      0, pi / 2
+)
+
+quarter_donut_2 <- tribble(
+  ~x, ~y, ~r, ~r0, ~start, ~end,
+   0, 10, 10,   5,   pi/2,  pi
+)
+
+quarter_donut_3 <- tribble(
+  ~x, ~y, ~r, ~r0, ~start,   ~end,
+  10, 10, 10,   5,     pi, 3*pi/2
+)
+
+quarter_donut_4 <- tribble(
+  ~x, ~y, ~r, ~r0, ~start, ~end,
+  10,  0, 10,   5, 3*pi/2, 2*pi
+)
+
+generate_shape_data <- function(shape, color) {
+  switch(shape,
+    "oreo square" = oreo_square,
+    "upper triangle" = upper_triangle,
+    "lower triangle" = lower_triangle,
+    "quarter donut q1" = quarter_donut_1,
+    "quarter donut q2" = quarter_donut_2,
+    "quarter donut q3" = quarter_donut_3,
+    "quarter donut q4" = quarter_donut_4
+  ) %>%
+    mutate(
+      color = color,
+      shape = shape
+    )
+}
+
+generate_shape_plotter <- function(data) {
+  shape <- data[["shape"]][[1]]
+
+  if (shape %in% c("oreo square", "upper triangle", "lower triangle")) {
+    geom_polygon(
+      data = data,
+      aes(
+        x = x, y = y, group = group, subgroup = subgroup, fill = color
+      )
+    )
+  } else if (shape %in% c("quarter donut q1", "quarter donut q2", "quarter donut q3", "quarter donut q4")) {
+    geom_arc_bar(
+      data = data,
+      aes(
+        x0 = x, y0 = y, r = r, r0 = r0, start = start, end = end, fill = color
+      ),
+      color = NA
+    )
+  }
+}
+```
+
+# Exercise 2
+
+## Part 1
+
+Take the two layers you sketched and turn them into tribbles with columns `row`, `column`, `shape name`, and `color`. Try using two of the colors listed below, which are common colors in a risograph printer. You can preview them on https://www.stencil.wiki/colors, or feel free to select colors from the "Special Edition" section if they inspire you!
+
+```{r ex-2-1}
+black <- "#000000"
+burgundy <- "#914e72"
+blue <- "#0078bf"
+green <- "#00a95c"
+medium_blue <- "#3255a4"
+bright_red <- "#f15060"
+risofederal_blue <- "#3D5588"
+purple <- "#765ba7"
+teal <- "#00838a"
+flat_gold <- "#bb8b41"
+hunter_green <- "#407060"
+red <- "#ff665e"
+brown <- "#925f52"
+yellow <- "#ffe800"
+marine_red <- "#d2515e"
+orange <- "#ff6c2f"
+fluorescent_pink <- "#ff48b0"
+light_grey <- "#88898a"
+
+layer_1 <- tribble(
+  ~x, ~y, ~shape,
+  # List x, y, and shape names here
+) %>%
+  mutate(
+    color = , # Color here
+    id = row_number()
+  )
+
+layer_2 <- tribble(
+  ~x, ~y, ~shape,
+  # List x, y, and shape names here
+) %>%
+  mutate(
+    color = , # Color here
+    id = row_number()
+  )
+```
+
+## Part 2
+
+Run the function `generate_and_plot_two_layers` below with your `layer_1` and `layer_2` as inputs. The function returns a list of two plots, so you can view one after the other by printing `riso_layers` and save them by accessing `riso_layers[[1]]` and `riso_layers[[2]]`.
+
+Save the plots in the correct dimension using `ggsave()` and share in the GitHub discussion: https://github.com/posit-conf-2023/creative-coding/discussions/8
+
+```{r ex-2-2}
+generate_and_plot_two_layers <- function(layer_1, layer_2) {
+  layer_1_plotting <- layer_1 %>%
+    split(.$id) %>%
+    map_dfr(
+      function(data) {
+        generate_shape_data(data[["shape"]], data[["color"]])
+      },
+      .id = "id"
+    ) %>%
+    mutate(id = as.numeric(id)) %>%
+    left_join(layer_1, by = c("id", "color", "shape")) %>%
+    mutate(
+      x = x + column * grid_size,
+      y = y + row * grid_size
+    ) %>%
+    split(.$id) %>%
+    map(function(data) {
+      data %>%
+        generate_shape_plotter()
+    })
+
+  layer_2_plotting <- layer_2 %>%
+    split(.$id) %>%
+    map_dfr(
+      function(data) {
+        generate_shape_data(data[["shape"]], data[["color"]])
+      },
+      .id = "id"
+    ) %>%
+    mutate(id = as.numeric(id)) %>%
+    left_join(layer_2, by = c("id", "color", "shape")) %>%
+    mutate(
+      x = x + column * grid_size,
+      y = y + row * grid_size
+    ) %>%
+    split(.$id) %>%
+    map(function(data) {
+      data %>%
+        generate_shape_plotter()
+    })
+
+  layer_1_p <- ggplot() +
+    layer_1_plotting +
+    scale_fill_identity() +
+    coord_fixed() +
+    theme_void()
+
+  layer_2_p <- ggplot() +
+    layer_2_plotting +
+    scale_fill_identity() +
+    coord_fixed() +
+    theme_void()
+
+  list(layer_1_p, layer_2_p)
+}
+
+riso_layers <- generate_and_plot_two_layers(layer_1, layer_2)
+
+# Use ggsave() to save using the correct dimensions
+```
+
+# Exercise 3
+
+If you need to, re-run the above code chunks to define, plot, and save your two layers
+
+Use the code below to read your plot images back in and then combine them into a riso print style image. Try changing around the `paper` image color to see what best suits your colors!
+
+Share your final image on the GitHub discussion for this exercise: https://github.com/posit-conf-2023/creative-coding/discussions/9
+
+```{r ex-2-1}
+library(magick)
+
+# Specify your input files here
+# layer_1_img <- image_read()
+# layer_2_img <- image_read()
+
+paper <- image_blank(
+  width = image_info(layer_1_img)[["width"]],
+  height = image_info(layer_1_img)[["height"]],
+  color = "#E1DED7"
+)
+
+riso_img <- paper %>%
+  image_composite(layer_1_img) %>%
+  image_composite(layer_2_img,
+    operator = "multiply"
+  )
+
+# Specify your output path here
+# image_write(riso_img, path = )
+```

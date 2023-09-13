@@ -1,0 +1,100 @@
+---
+title: "posit::conf September 2023"
+subtitle: 'Steal like an Rtist: Creative Coding in R'
+author: "Ijeamaka Anyene Fumagalli and Sharla Gelfand"
+institute: "`posit::conf(2023)`"
+pagetitle: "Steal like an Rtist: Creative Coding in R"
+format:
+  revealjs:
+    theme: [default, css/style.scss]
+highlight-style: "ayu"
+execute:
+  echo: true
+---
+
+# Hello! 👋
+
+## Meet the Teaching Team
+
+::: columns
+::: {.column style="width:33%"}
+
+![](00-introduction/ijeamaka_team_headshot.png){fig-align="center"}
+
+**Ijeamaka Anyene Fumagalli** (she/her)
+
+*Workshop Instructor*
+
+❤️ color: Olive green
+
+🥴 color: Purple
+:::
+
+::: {.column style="width:33%"}
+
+![](00-introduction/sharla-headshot.JPG){fig-align="center"}
+
+**Sharla Gelfand** (they/them)
+
+*Workshop Instructor*
+
+❤️ color: Orange
+
+🥴 color: Anything neutral
+:::
+
+::: {.column style="width:33%"}
+
+![](00-introduction/martinez-headshot.jpg){fig-align="center"}
+
+
+**Ciera Martinez** (she/her)
+
+*Teaching Assistant*
+
+❤️ color: Blue
+
+🥴 color: Orange
+:::
+:::
+
+# Meet each other!
+
+## Announcements
+
+(PLACEHOLDER FOR MINE ANNOUNCEMENTS)
+
+## Communication Strategy
+
+:::: {.columns}
+
+::: {.column style="width:60%"}
+![](00-introduction/pink-sticky-note-taped.png){fig-align="center"}
+:::
+
+::: {.column style="width:40%"}
+![](00-introduction/green-sticky-note-taped.png){fig-align="center"}
+:::
+
+::::
+
+
+## Communication Strategy
+
+* Github discussion will be used only for sharing outputs from certain exercises. 
+* Please feel free to ask questions at any time during the workshop. 
+* There will be exercises where you will be asked to draw on graphing paper. If this is not accessible to you, feel free to use other software for drawing, use the solutions, or skip to the next part of the exercise.
+
+## Schedule 
+
+| Time          | Activity                            |
+| ------------- | ----------------------------------- |
+| 09:00 - 10:30 | Introduction                        |
+|               | Steal like an artist                |
+|               | Homage to the square by Josef Albers|
+| 10:30 - 11:00 | Coffee break                        |
+| 11:00 - 12:30 | o.T. (carré noir) by Vera Molnár    |
+| 12:30 - 13:30 | Lunch break                         |
+| 13:30 - 15:00 | Riso Grids by Ryan Miglinczy        |
+| 15:00 - 15:30 | Coffee break                        |
+| 15:30 - 17:00 | Infinite Truchet by Roni Kaufman    |
