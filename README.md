@@ -28,7 +28,9 @@ This workshop is hands on and will cover colour theory and manipulation, a reint
 
 ## Prework
 
-Coming soon!
+We've set up a Posit Cloud environment with all of our workshop packages and content - this has what’s needed for doing exercises in the workshop, as well as the code that accompanies all of our slides. If you're participating in the workshop, you'll have received the link in an email. Click the link and set up a Posit Cloud account if you don’t already have one, then click "Yes" to join the space. If you’re going with this option, please join the space beforehand and then just bring a laptop that can connect to the conference WiFi.
+
+If you’d rather work locally on your own RStudio, then we ask that you please come with the required packages and content downloaded. The code to install the packages and download the content is [here](https://github.com/posit-conf-2023/creative-coding/blob/main/code/00-setup.R).
 
 ## Schedule
 
@@ -37,11 +39,11 @@ Coming soon!
 | 09:00 - 10:30 | Introduction                        |
 |               | [Steal like an artist](https://posit-conf-2023.github.io/creative-coding/slides/01-steal-like-an-artist.html)                |
 |               | [Homage to the square by Josef Albers](https://posit-conf-2023.github.io/creative-coding/slides/02-homage-to-the-square.html#/title-slide)|
-| 10:30 - 11:00 | Coffee break                        |
+| 10:30 - 11:00 | *Coffee break*                        |
 | 11:00 - 12:30 | [o.T. (carré noir) by Vera Molnár](https://posit-conf-2023.github.io/creative-coding/slides/03-ot.html)    |
-| 12:30 - 13:30 | Lunch break                         |
+| 12:30 - 13:30 | *Lunch break*                         |
 | 13:30 - 15:00 | [Riso Grids by Ryan Miglinczy](https://posit-conf-2023.github.io/creative-coding/slides/04-riso-grids.html)        |
-| 15:00 - 15:30 | Coffee break                        |
+| 15:00 - 15:30 | *Coffee break*                       |
 | 15:30 - 17:00 | [Infinite Truchet by Roni Kaufman](https://posit-conf-2023.github.io/creative-coding/slides/05-infinite-truchet.html)    |
 
 ## Instructors
