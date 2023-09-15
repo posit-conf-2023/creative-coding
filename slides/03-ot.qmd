@@ -589,7 +589,7 @@ And we are going to do the same!
 
 ::: {.column style="width:40%"}
 -   Step 1: Place shape
--   Step 2: Subtract point of rotation off of each vertices
+-   Step 2: Subtract point of rotation off of each vertex
 -   Step 3: Rotate
 -   Step 4: Add back point of rotation
 -   Step 5: Correct coordinates to back at "original origin"
@@ -634,7 +634,7 @@ initial_u_shape %>%
 
 ## Applying trigonometry lesson
 
-### Step 2: Subtract point of rotation off of each vertices
+### Step 2: Subtract point of rotation off of each vertex
 
 ```{r}
 #| output-location: column
