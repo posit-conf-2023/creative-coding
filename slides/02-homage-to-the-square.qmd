@@ -360,6 +360,10 @@ homage_p <- ggplot(homage) +
 homage_p
 ```
 
+::: notes
+ggplot2 thinks color is a categorical variable that needs to be represented by a fill color
+::::
+
 ## Recreate
 
 ```{r}
@@ -378,9 +382,7 @@ homage_p <- ggplot(homage) +
 homage_p
 ```
 
-. . .
-
-`scale_fill_identity()` tells ggplot2 the variable in `fill` is a color value it can use directly, not a categorical variable that needs to be represented by a fill color
+`scale_fill_identity()` tells ggplot2 the variable in `color` is a color value it can use directly, not a categorical variable that needs to be represented by a fill color
 
 ## Recreate
 
@@ -401,8 +403,6 @@ homage_p <- ggplot(homage) +
 
 homage_p
 ```
-
-. . . 
 
 `coord_fixed()` sets a fixed coordinate system, with an aspect ratio of 1, to ensure one unit on the x-axis is the same as one unit on the y-axis (aka: a square is a square)
 
@@ -427,8 +427,6 @@ homage_p <- ggplot(homage) +
 homage_p
 ```
 
-. . . 
-
 `theme_void()` is a completely empty theme, creating a blank canvas for us to work on
 
 ## Recreate
@@ -452,11 +450,13 @@ homage_p <- ggplot(homage) +
 homage_p
 ```
 
-. . . 
-
 `coord_fixed()` with `expand = FALSE` removes any margin
 
 ## Save your work
+
+::: notes
+go to Rstudio
+:::
 
 <div class = "columns">
 
@@ -519,7 +519,7 @@ knitr::include_graphics("02-homage-to-the-square/homage_square_temp.jpg")
 
 ![*Homage to the Square – Ascending*, 1953](02-homage-to-the-square/HomageToTheSquareAscending.png)
 
-![*Homage to the Square – Ascending*, recreation](02-homage-to-the-square/homage_square_temp.jpg)
+![*Homage to the Square – Ascending*, recreation, 2023](02-homage-to-the-square/homage_square_temp.jpg)
 
 :::
 
@@ -588,6 +588,10 @@ Each call of the function creates a different output, since the order of the col
 :::
 
 ## `set.seed()`
+
+::: notes
+What if you like an output?
+:::
 
 Setting a seed controls the state of the random number generator in R
 
@@ -729,7 +733,7 @@ Original is top middle - how do different ones affect how we see the piece, how 
 
 Albers started with neutrals, exploring the relative lightness and darkness of colors
 
-He sought the yellow tint in white, the blue and brown in black
+He sought the yellow tint in white, the blue and brown in black -> impurities of white and black on screen vs life
 
 He explored how grey can be violet, how opposite colors accentuate each other, how some colors seem brighter than others
 :::
@@ -755,7 +759,7 @@ show_col(palette)
 
 ## RGB
 
-How much red, green, and blue make up a color
+How much red, green, and blue make up a color (0 to 255)
 
 ```{r}
 mystery_color <- "#5A9CBA"
@@ -763,12 +767,8 @@ mystery_color <- "#5A9CBA"
 col2rgb(mystery_color)
 ```
 
-. . .
-
 ::: notes
-
 What does this actually tell you? It's not so red, it's kinda green, and more blue?
-
 :::
 
 ## HSL
@@ -1045,7 +1045,7 @@ c(saturated_color, mystery_color, desaturated_color) %>%
 Desaturation generally makes things more interesting... compare to our palette in full saturation
 
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.3
 homage[["color"]] %>%
   color() %>%
@@ -1158,6 +1158,7 @@ mystery_color %>%
 
 ```{r}
 #| fig-asp: 0.3
+#| output-location: fragment
 lighter_color <- mystery_color %>%
   clr_lighten(shift = 0.2)
 
@@ -1179,14 +1180,34 @@ c(lighter_color, mystery_color, darker_color) %>%
 
 ::: notes
 Go through each of H, S, L for the different colors
+
+Note that we'll still use hex to specify colors, but HSL is good for understanding, shifting, etc
 :::
 
 ::: {.columns}
 
 ::: {.column}
 
-```{r}
-#| output-location: fragment
+```{r, eval = FALSE}
+extract_hsl <- function(data) {
+  data %>%
+    mutate(
+      color = color(color),
+      h = clr_extract_hue(color),
+      s = clr_extract_saturation(color),
+      l = clr_extract_lightness(color)
+    ) %>%
+    select(color, h, s, l)
+}
+
+homage_hsl <- homage %>%
+  extract_hsl()
+
+homage_hsl
+```
+
+::: fragment
+```{r, echo = FALSE}
 extract_hsl <- function(data) {
   data %>%
     mutate(
@@ -1205,10 +1226,10 @@ homage_hsl
 ```
 
 ```{r, echo = FALSE}
-#| output-location: fragment
 #| fig-asp: 0.3
 plot(homage_hsl[["color"]])
 ```
+:::
 
 
 :::
@@ -1275,8 +1296,12 @@ Same yellow from different paint companies
 
 ## Monochromatic
 
+::: notes
+Provides a subtle and conservative color combination. This is a versatile color combination that is easy to apply to design projects for a harmonious look. 
+:::
+
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
 #| code-line-numbers: "4,5,6"
 monochromatic <- tribble(
@@ -1313,8 +1338,12 @@ Three colors side by side on the color wheel
 
 ## Analogous
 
+::: notes
+This color combination is versatile, but can be overwhelming. To balance an analogous color scheme, choose one dominant color, and use the others as accents. 
+:::
+
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
 #| code-line-numbers: "5,6"
 analogous <- tribble(
@@ -1344,9 +1373,9 @@ make_homage(
 That was a bit ugly - add contrast in other ways
 
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "6,8"
+#| code-line-numbers: "3,6,8"
 analogous_better <- tribble(
   ~color,
   mystery_color %>% clr_lighten(shift = 0.50),
@@ -1374,7 +1403,11 @@ make_homage(
 
 ## Complementary
 
-Two colors on opposite sides of the color wheel - provides high contrast
+::: notes
+This combination provides a high contrast and high impact color combination – together, these colors will appear brighter and more prominent. 
+:::
+
+Two colors on opposite sides of the color wheel
 
 ![](02-homage-to-the-square/canva-complementary.jpg)
 
@@ -1385,7 +1418,7 @@ Two colors on opposite sides of the color wheel - provides high contrast
 ## Complementary
 
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
 #| code-line-numbers: "11,12,13"
 monochromatic_mini <- tribble(
@@ -1423,9 +1456,9 @@ make_homage(
 Having the same saturation and lightness doesn't always work!
 
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "14,15,16"
+#| code-line-numbers: "3,14,15,16"
 monochromatic_mini <- tribble(
   ~color,
   mystery_color %>% clr_lighten(shift = 0.75),
@@ -1476,12 +1509,18 @@ This is the hue of the colors of our original piece - not exactly opposite on th
 
 ## Triadic
 
+Three colors evenly spaced on the color wheel
+
+::: notes
+This provides a high contrast color scheme, but less so than the complementary color combination — making it more versatile. This combination creates bold, vibrant color palettes. 
+:::
+
 ![](02-homage-to-the-square/canva-triadic.jpg)
 
 ## Triadic
 
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
 #| code-line-numbers: "6,8"
 triadic <- tribble(
@@ -1513,9 +1552,9 @@ make_homage(
 ## Triadic
 
 ```{r}
-#| output-location: column
+#| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "2,7,10"
+#| code-line-numbers: "3,7,10"
 triadic <- tribble(
   ~color,
   mystery_color %>% clr_lighten(shift = 0.50),

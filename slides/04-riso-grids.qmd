@@ -13,7 +13,7 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = FALSE, dev = "png", dev.args = list(bg = "transparent"))
+knitr::opts_chunk$set(cache = TRUE, dev = "png", dev.args = list(bg = "transparent"))
 ```
 
 #
@@ -54,46 +54,23 @@ Images are created in layers - each layer is one color, and layers are combined 
 
 ![Risograph process, via Damn Fine Print](04-riso-grids/riso-process-1.jpeg)
 
-![https://damnfineprint.com/pages/risograph-guidelines](04-riso-grids/riso-process-2.jpeg)
+::: fragment
+![&nbsp;](04-riso-grids/riso-process-2.jpeg)
+:::
 
 :::
 
 ::: {.notes}
 
-Risograph
-  
-  https://damnfineprint.com/pages/risograph-guidelines
+stamp of individual colors
 
-https://www.risopop.com/what-is-riso
+like a puzzle - you need to think about what you are doing and how
 
+layers, limited colors
 
-How does RISO work?
+experiment, embrace unexpected
 
-1. When you scan or upload an image to the machine, it first makes a paper stencil and wraps this around the ink drum - these are called masters. 
-
-2. Paper is placed on the feeder and passed through one or two of the ink drums. 
-
-3. The machine creates a ‘digital’ stamp of individual colours (which are incredibly vibrant!) and together they create a colorful image. 
-
-Why is RISO interesting?
-
-Any type of printing technique is like a puzzle - you need to think about what you are doing and how. You need to work in layers and with a limited amount of colours, this pushes you to experiment, embrace unexpected outcomes and try out new things. 
-
-The RISO, even though being a digital machine, does not guarantee perfection, which makes each piece unique. It doesn’t always do what you expect, but the more you use it the better you understand this machine. Are you ready for a challenge?
-
-Japan in 1980s
-
-https://damnfineprint.com/pages/risograph-guidelines
-
-Sources:
-
-- https://peacock.studio/shopping/products/risograph-colour-chart-a5
-- https://creativemarket.com/blog/risograph-printing
-- https://www.monikerpress.ca/printing/
-
- A Risograph builds a print layer by layer, layering one color on top of another, resulting in a crisp but slightly imperfect print every time. While the print is imperfect, many artists believe its imperfect nature only adds charm and style to the distinct look a Risograph print has. 
-
-
+not perfect, part of its charm 
 :::
 
 ## Risograph printing
@@ -156,11 +133,11 @@ knitr::include_graphics("04-riso-grids/riso-color-chart.jpg")
 
 </div>
 
-#
-
 ::: notes
 Split the shapes into two types - polygon shapes and circle shapes
 :::
+
+#
 
 ::: {.exercise}
 
@@ -1450,7 +1427,7 @@ layer_1_data <- layer_1 %>%
   mutate(id = as.numeric(id)) %>%
   left_join(layer_1, by = c("id", "color", "shape"))
 
-layer_1_data
+layer_1_data %>% select(-id)
 ```
 
 ## Shifting data
@@ -1467,7 +1444,7 @@ layer_1_data_shifted <- layer_1_data %>%
     y = y + row * grid_size
   )
 
-layer_1_data_shifted
+layer_1_data_shifted %>% select(-id)
 ```
 
 ## Now plot!
@@ -1595,7 +1572,9 @@ ggplot() +
 ## Put them together
 
 ```{r}
+#| output-location: fragment
 #| code-line-numbers: "2,3,4,5,"
+#| out-width: 50%
 ggplot() +
   list(
     layer_1_plotting,
@@ -1605,6 +1584,10 @@ ggplot() +
   coord_fixed() +
   theme_void()
 ```
+
+::: fragment
+Risograph effect please?
+:::
 
 ## Risograph effect please?
 
@@ -1671,9 +1654,51 @@ paper <- image_blank(
   color = "#E1DED7"
 )
 
+paper
+```
+
+## Risograph effect please?
+
+```{r, cache = FALSE}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "13"
+library(magick)
+
+layer_1_img <- image_read(layer_1_file)
+layer_2_img <- image_read(layer_2_file)
+
+paper <- image_blank(
+  width = image_info(layer_1_img)[["width"]],
+  height = image_info(layer_1_img)[["height"]],
+  color = "#E1DED7"
+)
+
+paper %>%
+  image_composite(layer_1_img)
+```
+
+## Risograph effect please?
+
+```{r, cache = FALSE}
+#| output-location: column
+#| fig-asp: 1
+#| code-line-numbers: "14-16"
+library(magick)
+
+layer_1_img <- image_read(layer_1_file)
+layer_2_img <- image_read(layer_2_file)
+
+paper <- image_blank(
+  width = image_info(layer_1_img)[["width"]],
+  height = image_info(layer_1_img)[["height"]],
+  color = "#E1DED7"
+)
+
 paper %>%
   image_composite(layer_1_img) %>%
-  image_composite(layer_2_img,
+  image_composite(
+    layer_2_img,
     operator = "multiply"
   )
 ```
@@ -1692,13 +1717,13 @@ riso_output <- paper %>%
 
 ::: {.column}
 
-![](04-riso-grids/riso-grid-18.png)
+![*Riso Grid 18*](04-riso-grids/riso-grid-18.png)
 
 :::
 
 ::: {.column}
 
-![](04-riso-grids/riso-output.png)
+![*Riso Grid 18*, recreation](04-riso-grids/riso-output.png)
 
 :::
 

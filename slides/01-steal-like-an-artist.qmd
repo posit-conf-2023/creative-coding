@@ -115,13 +115,21 @@ You don't want to [look]{.under} like your influences, you want to [see]{.under}
 
 ::: {layout="[0.75, 1, 1, 1]" layout-valign="bottom"}
 
-![Roger Brown, 1993](01-steal-like-an-artist/roger-brown.jpeg)
+::: fragment
+![*Sarajevo, the Serbian Way*, Roger Brown, 1993](01-steal-like-an-artist/roger-brown.jpeg)
+:::
 
-![Sharla Gelfand, 2023](01-steal-like-an-artist/sharla-gelfand.jpg)
+::: fragment
+![*Reflection of a Reflection*, Sharla Gelfand, 2023](01-steal-like-an-artist/sharla-gelfand.jpg)
+:::
 
-![@ayeyokp_, 2023](01-steal-like-an-artist/bauhaus.jpg)
+::: fragment
+![*BAUHAUS 03*, @ayeyokp_, 2023](01-steal-like-an-artist/bauhaus.jpg)
+:::
 
-![Ijeamaka Anyene Fumagalli, 2023](01-steal-like-an-artist/ijeamaka.jpg)
+::: fragment
+![*zoom zoom zoom 25*, Ijeamaka Anyene Fumagalli, 2023](01-steal-like-an-artist/ijeamaka.jpg)
+:::
 
 :::
 
@@ -133,19 +141,22 @@ Steal the thinking behind the style
 
 :::: {.columns}
 
+::: {.column width="60%"}
+
+![ ](01-steal-like-an-artist/good-bad-theft.jpg)
+
+:::
+
 ::: {.column width="40%"}
+
+::: fragment
 
 ### 🎨 Recreate 
 
 ### 🎲 Remix 
 
 ### 💡 Reinterpret
-
 :::
-
-::: {.column width="60%"}
-
-![ ](01-steal-like-an-artist/good-bad-theft.jpg)
 
 :::
 

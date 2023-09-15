@@ -1501,8 +1501,15 @@ output_grid %>%
 :::: {.columns}
 
 ::: {.column}
+
+![*Infinite Truchet*](05-infinite-truchet/roni_truchet_tiles.png)
+
+:::
+
+::: {.column}
 ```{r, echo = FALSE}
 #| fig-asp: 1
+#| fig-cap: "*Infinite Truchet*, recreation"
 output_grid %>%
   ggplot() +
   geom_arc_bar(aes(
@@ -1527,12 +1534,6 @@ output_grid %>%
       )
   )
 ```
-:::
-
-::: {.column}
-
-![](05-infinite-truchet/roni_truchet_tiles.png)
-
 :::
 
 ::::

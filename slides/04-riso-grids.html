@@ -448,38 +448,22 @@
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="fragment quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="04-riso-grids/riso-process-2.jpeg"></p>
-<p></p><figcaption>https://damnfineprint.com/pages/risograph-guidelines</figcaption><p></p>
+<p></p><figcaption>&nbsp;</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Risograph</p>
-<p>https://damnfineprint.com/pages/risograph-guidelines</p>
-<p>https://www.risopop.com/what-is-riso</p>
-<p>How does RISO work?</p>
-<ol type="1">
-<li><p>When you scan or upload an image to the machine, it first makes a paper stencil and wraps this around the ink drum - these are called masters.</p></li>
-<li><p>Paper is placed on the feeder and passed through one or two of the ink drums.</p></li>
-<li><p>The machine creates a ‘digital’ stamp of individual colours (which are incredibly vibrant!) and together they create a colorful image.</p></li>
-</ol>
-<p>Why is RISO interesting?</p>
-<p>Any type of printing technique is like a puzzle - you need to think about what you are doing and how. You need to work in layers and with a limited amount of colours, this pushes you to experiment, embrace unexpected outcomes and try out new things.</p>
-<p>The RISO, even though being a digital machine, does not guarantee perfection, which makes each piece unique. It doesn’t always do what you expect, but the more you use it the better you understand this machine. Are you ready for a challenge?</p>
-<p>Japan in 1980s</p>
-<p>https://damnfineprint.com/pages/risograph-guidelines</p>
-<p>Sources:</p>
-<ul>
-<li>https://peacock.studio/shopping/products/risograph-colour-chart-a5</li>
-<li>https://creativemarket.com/blog/risograph-printing</li>
-<li>https://www.monikerpress.ca/printing/</li>
-</ul>
-<p>A Risograph builds a print layer by layer, layering one color on top of another, resulting in a crisp but slightly imperfect print every time. While the print is imperfect, many artists believe its imperfect nature only adds charm and style to the distinct look a Risograph print has.</p>
+<p>stamp of individual colors</p>
+<p>like a puzzle - you need to think about what you are doing and how</p>
+<p>layers, limited colors</p>
+<p>experiment, embrace unexpected</p>
+<p>not perfect, part of its charm</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -548,9 +532,7 @@
 <h3 id="layer-2">Layer 2</h3>
 <p><img data-src="04-riso-grids/shapes-2.jpg"></p>
 </div>
-</div></section>
-<section id="section-3" class="title-slide slide level1 center">
-<h1></h1>
+</div>
 <aside class="notes">
 <p>Split the shapes into two types - polygon shapes and circle shapes</p>
 <style type="text/css">
@@ -563,7 +545,9 @@
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside>
+      }</style></aside></section>
+<section id="section-3" class="title-slide slide level1 center">
+<h1></h1>
 <div class="exercise">
 <p>Using the shape types below, sketch two different 2x2 layers that could be combined to make a riso print</p>
 </div>
@@ -1735,7 +1719,7 @@ position_identity </code></pre>
 <section id="shifting-data-2" class="slide level2">
 <h2>Shifting data</h2>
 <p>Shift everything over using the <span class="under">size of one grid</span> and the <span class="under">row</span> and <span class="under">column</span></p>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-48_8435ae49d249f125888dea3eede4ee59">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-48_8597a151ac48157964207ae3c84b6fef">
 <div class="sourceCode cell-code" id="cb48" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>layer_1_data <span class="ot">&lt;-</span> layer_1 <span class="sc">%&gt;%</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
 <span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">map_dfr</span>(</span>
@@ -1747,27 +1731,26 @@ position_identity </code></pre>
 <span id="cb48-9"><a href="#cb48-9"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">as.numeric</span>(id)) <span class="sc">%&gt;%</span></span>
 <span id="cb48-10"><a href="#cb48-10"></a>  <span class="fu">left_join</span>(layer_1, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"color"</span>, <span class="st">"shape"</span>))</span>
 <span id="cb48-11"><a href="#cb48-11"></a></span>
-<span id="cb48-12"><a href="#cb48-12"></a>layer_1_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-12"><a href="#cb48-12"></a>layer_1_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 13
-     id     x     y     r    r0 start   end color   shape   group subgroup   row
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt;    &lt;dbl&gt;
-1     1    10    10    10     5  3.14  4.71 #DDA710 quarte… NA    NA           1
-2     2     0     0    NA    NA NA    NA    #DDA710 upper … NA    NA           1
-3     2    10    10    NA    NA NA    NA    #DDA710 upper … NA    NA           1
-4     2     0    10    NA    NA NA    NA    #DDA710 upper … NA    NA           1
-5     3     0     0    10     5  0     1.57 #DDA710 quarte… NA    NA           2
-6     4     0     0    NA    NA NA    NA    #DDA710 lower … NA    NA           2
-7     4    10     0    NA    NA NA    NA    #DDA710 lower … NA    NA           2
-8     4    10    10    NA    NA NA    NA    #DDA710 lower … NA    NA           2
-# ℹ 1 more variable: column &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 8 × 12
+      x     y     r    r0 start   end color   shape  group subgroup   row column
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1    10    10    10     5  3.14  4.71 #DDA710 quart… NA    NA           1      1
+2     0     0    NA    NA NA    NA    #DDA710 upper… NA    NA           1      2
+3    10    10    NA    NA NA    NA    #DDA710 upper… NA    NA           1      2
+4     0    10    NA    NA NA    NA    #DDA710 upper… NA    NA           1      2
+5     0     0    10     5  0     1.57 #DDA710 quart… NA    NA           2      2
+6     0     0    NA    NA NA    NA    #DDA710 lower… NA    NA           2      1
+7    10     0    NA    NA NA    NA    #DDA710 lower… NA    NA           2      1
+8    10    10    NA    NA NA    NA    #DDA710 lower… NA    NA           2      1</code></pre>
 </div>
 </div>
 </section>
 <section id="shifting-data-3" class="slide level2">
 <h2>Shifting data</h2>
 <p>Shift everything over using the <span class="under">size of one grid</span> and the <span class="under">row</span> and <span class="under">column</span></p>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-49_c48293b7789431a0aeae2db5b0b543a1">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-49_0ad8e32528ab3a64ff43e5e00bfc1ff2">
 <div class="sourceCode cell-code" id="cb50" data-code-line-numbers="1,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>grid_size <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a></span>
 <span id="cb50-3"><a href="#cb50-3"></a>layer_1_data_shifted <span class="ot">&lt;-</span> layer_1_data <span class="sc">%&gt;%</span></span>
@@ -1776,20 +1759,19 @@ position_identity </code></pre>
 <span id="cb50-6"><a href="#cb50-6"></a>    <span class="at">y =</span> y <span class="sc">+</span> row <span class="sc">*</span> grid_size</span>
 <span id="cb50-7"><a href="#cb50-7"></a>  )</span>
 <span id="cb50-8"><a href="#cb50-8"></a></span>
-<span id="cb50-9"><a href="#cb50-9"></a>layer_1_data_shifted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-9"><a href="#cb50-9"></a>layer_1_data_shifted <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 13
-     id     x     y     r    r0 start   end color   shape   group subgroup   row
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt;    &lt;dbl&gt;
-1     1    20    20    10     5  3.14  4.71 #DDA710 quarte… NA    NA           1
-2     2    20    10    NA    NA NA    NA    #DDA710 upper … NA    NA           1
-3     2    30    20    NA    NA NA    NA    #DDA710 upper … NA    NA           1
-4     2    20    20    NA    NA NA    NA    #DDA710 upper … NA    NA           1
-5     3    20    20    10     5  0     1.57 #DDA710 quarte… NA    NA           2
-6     4    10    20    NA    NA NA    NA    #DDA710 lower … NA    NA           2
-7     4    20    20    NA    NA NA    NA    #DDA710 lower … NA    NA           2
-8     4    20    30    NA    NA NA    NA    #DDA710 lower … NA    NA           2
-# ℹ 1 more variable: column &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 8 × 12
+      x     y     r    r0 start   end color   shape  group subgroup   row column
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1    20    20    10     5  3.14  4.71 #DDA710 quart… NA    NA           1      1
+2    20    10    NA    NA NA    NA    #DDA710 upper… NA    NA           1      2
+3    30    20    NA    NA NA    NA    #DDA710 upper… NA    NA           1      2
+4    20    20    NA    NA NA    NA    #DDA710 upper… NA    NA           1      2
+5    20    20    10     5  0     1.57 #DDA710 quart… NA    NA           2      2
+6    10    20    NA    NA NA    NA    #DDA710 lower… NA    NA           2      1
+7    20    20    NA    NA NA    NA    #DDA710 lower… NA    NA           2      1
+8    20    30    NA    NA NA    NA    #DDA710 lower… NA    NA           2      1</code></pre>
 </div>
 </div>
 </section>
@@ -1880,7 +1862,7 @@ position_identity </code></pre>
 </section>
 <section id="put-them-together" class="slide level2">
 <h2>Put them together</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-53_acd5e0d0ce88371c981ceffc06f80435">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-53_c62e9854ed2dcc5177820d08bf47714e">
 <div class="sourceCode cell-code" id="cb54" data-code-line-numbers="2,3,4,5,"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">list</span>(</span>
 <span id="cb54-3"><a href="#cb54-3"></a>    layer_1_plotting,</span>
@@ -1889,9 +1871,16 @@ position_identity </code></pre>
 <span id="cb54-6"><a href="#cb54-6"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
 <span id="cb54-7"><a href="#cb54-7"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
 <span id="cb54-8"><a href="#cb54-8"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
 </div>
-<img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch"></section>
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-53_c62e9854ed2dcc5177820d08bf47714e">
+<div class="cell-output-display">
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-53-1.png" style="width:50.0%"></p>
+</div>
+</div>
+<div class="fragment">
+<p>Risograph effect please?</p>
+</div>
+</section>
 <section id="risograph-effect-please" class="slide level2">
 <h2>Risograph effect please?</h2>
 <aside class="notes">
@@ -1971,18 +1960,66 @@ position_identity </code></pre>
 <span id="cb56-9"><a href="#cb56-9"></a>  <span class="at">color =</span> <span class="st">"#E1DED7"</span></span>
 <span id="cb56-10"><a href="#cb56-10"></a>)</span>
 <span id="cb56-11"><a href="#cb56-11"></a></span>
-<span id="cb56-12"><a href="#cb56-12"></a>paper <span class="sc">%&gt;%</span></span>
-<span id="cb56-13"><a href="#cb56-13"></a>  <span class="fu">image_composite</span>(layer_1_img) <span class="sc">%&gt;%</span></span>
-<span id="cb56-14"><a href="#cb56-14"></a>  <span class="fu">image_composite</span>(layer_2_img,</span>
-<span id="cb56-15"><a href="#cb56-15"></a>    <span class="at">operator =</span> <span class="st">"multiply"</span></span>
-<span id="cb56-16"><a href="#cb56-16"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-12"><a href="#cb56-12"></a>paper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-57-1.png" width="750"></p>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-58_dd9c16a523eaf23709031be09fc8a3c4">
+</section>
+<section id="risograph-effect-please-3" class="slide level2">
+<h2>Risograph effect please?</h2>
+<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="column">
+<div class="sourceCode cell-code" id="cb57" data-code-line-numbers="13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb57-2"><a href="#cb57-2"></a></span>
+<span id="cb57-3"><a href="#cb57-3"></a>layer_1_img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(layer_1_file)</span>
+<span id="cb57-4"><a href="#cb57-4"></a>layer_2_img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(layer_2_file)</span>
+<span id="cb57-5"><a href="#cb57-5"></a></span>
+<span id="cb57-6"><a href="#cb57-6"></a>paper <span class="ot">&lt;-</span> <span class="fu">image_blank</span>(</span>
+<span id="cb57-7"><a href="#cb57-7"></a>  <span class="at">width =</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"width"</span>]],</span>
+<span id="cb57-8"><a href="#cb57-8"></a>  <span class="at">height =</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"height"</span>]],</span>
+<span id="cb57-9"><a href="#cb57-9"></a>  <span class="at">color =</span> <span class="st">"#E1DED7"</span></span>
+<span id="cb57-10"><a href="#cb57-10"></a>)</span>
+<span id="cb57-11"><a href="#cb57-11"></a></span>
+<span id="cb57-12"><a href="#cb57-12"></a>paper <span class="sc">%&gt;%</span></span>
+<span id="cb57-13"><a href="#cb57-13"></a>  <span class="fu">image_composite</span>(layer_1_img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-58-1.png" width="750"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="risograph-effect-please-4" class="slide level2">
+<h2>Risograph effect please?</h2>
+<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="column">
+<div class="sourceCode cell-code" id="cb58" data-code-line-numbers="14-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb58-2"><a href="#cb58-2"></a></span>
+<span id="cb58-3"><a href="#cb58-3"></a>layer_1_img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(layer_1_file)</span>
+<span id="cb58-4"><a href="#cb58-4"></a>layer_2_img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(layer_2_file)</span>
+<span id="cb58-5"><a href="#cb58-5"></a></span>
+<span id="cb58-6"><a href="#cb58-6"></a>paper <span class="ot">&lt;-</span> <span class="fu">image_blank</span>(</span>
+<span id="cb58-7"><a href="#cb58-7"></a>  <span class="at">width =</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"width"</span>]],</span>
+<span id="cb58-8"><a href="#cb58-8"></a>  <span class="at">height =</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"height"</span>]],</span>
+<span id="cb58-9"><a href="#cb58-9"></a>  <span class="at">color =</span> <span class="st">"#E1DED7"</span></span>
+<span id="cb58-10"><a href="#cb58-10"></a>)</span>
+<span id="cb58-11"><a href="#cb58-11"></a></span>
+<span id="cb58-12"><a href="#cb58-12"></a>paper <span class="sc">%&gt;%</span></span>
+<span id="cb58-13"><a href="#cb58-13"></a>  <span class="fu">image_composite</span>(layer_1_img) <span class="sc">%&gt;%</span></span>
+<span id="cb58-14"><a href="#cb58-14"></a>  <span class="fu">image_composite</span>(</span>
+<span id="cb58-15"><a href="#cb58-15"></a>    layer_2_img,</span>
+<span id="cb58-16"><a href="#cb58-16"></a>    <span class="at">operator =</span> <span class="st">"multiply"</span></span>
+<span id="cb58-17"><a href="#cb58-17"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-59-1.png" width="750"></p>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-60_b4e1ac2059aa82a535fefe3390774790">
 
 </div>
 </section>
@@ -1990,9 +2027,19 @@ position_identity </code></pre>
 <h2>That’s not so bad!</h2>
 <div class="columns">
 <div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="04-riso-grids/riso-grid-18.png"></p>
+<p></p><figcaption><em>Riso Grid 18</em></figcaption><p></p>
+</figure>
+</div>
 </div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="04-riso-grids/riso-output.png"></p>
+<p></p><figcaption><em>Riso Grid 18</em>, recreation</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section>

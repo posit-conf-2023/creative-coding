@@ -1512,13 +1512,13 @@ final_output %>%
 :::: {.columns}
 
 ::: {.column}
-![](03-ot/ot-vera-molnar.png)
+![*O.T., Serigraph on woven paper*](03-ot/ot-vera-molnar.png)
 :::
 
 ::: {.column}
 ```{r, echo = FALSE}
 #| fig-asp: 1
-
+#| fig-cap: "*O.T., Serigraph on woven paper*, recreation"
 final_output %>%
   ggplot() +
   geom_polygon(
