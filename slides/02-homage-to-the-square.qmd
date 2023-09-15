@@ -33,16 +33,30 @@ knitr::opts_chunk$set(cache = FALSE, dev = "png", dev.args = list(bg = "transpar
 </div>
 
 ::: {.notes}
-- Josef Albers was a prominent German artist in the 20th century
+Josef Albers was a prominent German artist in the 20th century
 
-- Educator at Bauhaus and Black Mountain College
+Educator at Bauhaus, Black Mountain College in North Carolina, and Yale
 
-- Series of thousands of paintings from 1950 to 1976 focused on color
+Expert at studying and teaching color
+
+Series of paintings from 1950 to 1976 focused on color
+
+Recreating the one pictured here
 :::
 
 ---
 
 ![&nbsp;](02-homage-to-the-square/Homage-to-the-square-set.jpg)
+
+::: {.notes}
+Thousands of paintings
+
+Applied color directly from the tube with a palette knife, not traditionally "painted"
+
+All of the colors, etc, codified on the backs of the paintings
+
+Exploring color and relationships, subjectivity
+:::
 
 ---
 
@@ -515,6 +529,10 @@ knitr::include_graphics("02-homage-to-the-square/homage_square_temp.jpg")
 
 --- Charlotte Kent, Beyond the Janus-Faced Typologies of Art and Technology
 
+::: notes
+Done with recreation, how do we move on to remix it? Create a generative art system
+:::
+
 # What is generative art?
 
 ```{r echo=FALSE}
@@ -565,6 +583,10 @@ make_homage()
 make_homage()
 ```
 
+::: notes
+Each call of the function creates a different output, since the order of the colors is sampled
+:::
+
 ## `set.seed()`
 
 Setting a seed controls the state of the random number generator in R
@@ -585,6 +607,10 @@ set.seed(1234)
 make_homage()
 ```
 
+::: notes
+Setting the same seed creates the same output, since the random number generator is at the same "state" each time the sample is taken
+:::
+
 ## Your turn!
 
 ::: {.exercise}
@@ -602,6 +628,11 @@ Deliberately simple and consistent in structure, the nested squares were a platf
 *Homages* are all about mutability of color relationships and the malleability of subjective perceptions of colors.
 
 ![*Planes and Frames: Spatial Layering in Josef Albers' Homage to the Square Paintings*, J. Mai, 2016](02-homage-to-the-square/schemata.png)
+
+::: notes
+Series was based on mathematically determined format - we can appreciate this!
+:::
+
 ---
 
 ```{r include = FALSE}
@@ -666,10 +697,11 @@ make_homage(6)
 
 ::::
 
-# Color
+::: notes
+Original is top middle - how do different ones affect how we see the piece, how the colors interact? Visual effect
+:::
 
-```{r}
-```
+# Color
 
 # 
 
@@ -695,12 +727,11 @@ make_homage(6)
 
 ::: {.notes}
 
-Albers started with neutrals, exploring the relative lightness and darkness of colors.
+Albers started with neutrals, exploring the relative lightness and darkness of colors
 
-He sought the yellow tint in white, the blue and brown in black.
+He sought the yellow tint in white, the blue and brown in black
 
-He explored how grey can be violet, how opposite colors accentuate each other, how some colors seem brighter than others.
-
+He explored how grey can be violet, how opposite colors accentuate each other, how some colors seem brighter than others
 :::
 
 
@@ -734,11 +765,19 @@ col2rgb(mystery_color)
 
 . . .
 
+::: notes
+
 What does this actually tell you? It's not so red, it's kinda green, and more blue?
+
+:::
 
 ## HSL
 
-<!-- ![](02-homage-to-the-square/canva-hsl.jpg) -->
+::: notes
+HSL is a clearer color system that is easier for a human to understand
+
+Also easier to alter colors
+:::
 
 :::: {.columns}
 
@@ -936,6 +975,12 @@ color_wheel +
 
 ## Saturation
 
+::: notes
+
+Same hue and lightness (50%), saturation from 0% to 100%
+
+:::
+
 ::::: {.columns}
 
 :::: {.column width=20%}
@@ -1065,6 +1110,12 @@ tribble(
 
 ## Lightness
 
+::: notes
+
+Same hue and saturation (50%), lightness from 0% to 100%
+
+:::
+
 ::::: {.columns}
 
 :::: {.column width=20%}
@@ -1125,6 +1176,10 @@ c(lighter_color, mystery_color, darker_color) %>%
 :::::
 
 ## Back to the *Homages*...
+
+::: notes
+Go through each of H, S, L for the different colors
+:::
 
 ::: {.columns}
 
@@ -1214,6 +1269,9 @@ Multiple tones of one color
 
 ![*Study to Homage to the Square - Endless*, 1964](02-homage-to-the-square/homage-study-endless.jpeg)
 
+::: notes
+Same yellow from different paint companies
+:::
 
 ## Monochromatic
 
@@ -1412,6 +1470,10 @@ color_wheel +
   geom_segment(data = homage_hsl, aes(x = h, xend = h, y = 5, yend = 10), linetype = "dashed", alpha = 0.75)
 ```
 
+::: notes
+This is the hue of the colors of our original piece - not exactly opposite on the color wheel, but very close!
+:::
+
 ## Triadic
 
 ![](02-homage-to-the-square/canva-triadic.jpg)
@@ -1513,6 +1575,9 @@ make_homage(
 ![IKEA, 1984](02-homage-to-the-square/inspo-ikea-2.jpg)
 :::
 
+::: notes
+Furniture, art, clothing, music, movies, nature, books
+:::
 
 ## What inspires you?
 
@@ -1527,6 +1592,10 @@ make_homage(
 :::
 
 ## When in doubt, steal
+
+::: notes
+Show upload and link, good time to show system in R and paste colors in
+:::
 
 ![[ColorGrab](https://mattdesl.github.io/colorgrab/)](02-homage-to-the-square/colorgrab.jpg)
 
@@ -1587,10 +1656,5 @@ make_homage(
 :::
 
 ::: {.notes}
-
-* More bio on Albers
-https://magazine.artland.com/the-monochrome-a-history-of-simplicity-in-painting/
-
-* Not painted palette knife
-
+Break during break pls
 :::
