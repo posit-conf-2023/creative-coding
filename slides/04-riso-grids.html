@@ -496,7 +496,7 @@
 <h2>Risograph printing</h2>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-1_053eae03f66f4bf8f85a95d89b0c53f6" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -506,7 +506,7 @@
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-2_1e55ee1a9910321ba95a09c189ca3a8b" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -551,6 +551,19 @@
 </div></section>
 <section id="section-3" class="title-slide slide level1 center">
 <h1></h1>
+<aside class="notes">
+<p>Split the shapes into two types - polygon shapes and circle shapes</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="exercise">
 <p>Using the shape types below, sketch two different 2x2 layers that could be combined to make a riso print</p>
 </div>
@@ -573,6 +586,20 @@
 </section>
 <section id="oreo-square" class="slide level2">
 <h2>Oreo square</h2>
+<aside class="notes">
+<p>If you were to try to split this into polygons the way we know how, a bit complicated</p>
+<p>But ggplot2 allows you to define a polygon by its outside vertices, and then vertices of a “hole” in it</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns">
 <div class="column">
 <p><img data-src="04-riso-grids/shape-oreo-square-1.jpg"></p>
@@ -605,7 +632,7 @@
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-3_8360cf1aed6c31cfc3905c78fb725518">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>oreo_square_outer <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -626,7 +653,7 @@
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-output-location="fragment">
+<div class="cell" data-output-location="fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-4_2778ca03f1b90788b84ed5349e8c07ac">
 <div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>oreo_square_hole <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="sc">~</span>x,   <span class="sc">~</span>y,</span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="fl">2.75</span>, <span class="fl">2.75</span>,</span>
@@ -663,9 +690,22 @@
 </section>
 <section id="oreo-square-4" class="slide level2">
 <h2>Oreo square</h2>
+<aside class="notes">
+<p>Highlight that xlim and ylim are being used here</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns">
 <div class="column">
-<div class="cell" data-output-location="fragment">
+<div class="cell" data-output-location="fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-5_b7fe6ec7fffb94e78227eea1ab9b7542">
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -676,7 +716,7 @@
 <span id="cb4-8"><a href="#cb4-8"></a>      <span class="at">subgroup =</span> subgroup</span>
 <span id="cb4-9"><a href="#cb4-9"></a>    )</span>
 <span id="cb4-10"><a href="#cb4-10"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </div>
@@ -690,7 +730,7 @@
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-6_8bf67549384247275ef158366bf849cf">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>oreo_square_inner <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb5-3"><a href="#cb5-3"></a>   <span class="dv">4</span>,  <span class="dv">4</span>,</span>
@@ -708,7 +748,7 @@
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-output-location="fragment">
+<div class="cell" data-output-location="fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-7_9b9faf7e2f251efcfd4bb2a1d20a0e95">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>oreo_square <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  oreo_square_outer <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  oreo_square_inner <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="dv">2</span>)</span>
@@ -742,7 +782,7 @@
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-8_8e8db9f1c8dc92884c1436d074ebec9d">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>grey <span class="ot">&lt;-</span> <span class="st">"#8F8E93"</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -770,7 +810,7 @@
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-fig.asp="1">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-9_5aae4c2edb5c6f5a8364718f7d722c2d">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </div>
@@ -782,9 +822,22 @@
 </section>
 <section id="upper-triangle" class="slide level2">
 <h2>Upper triangle</h2>
+<aside class="notes">
+<p>NA subgroup</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-10_dbec6e5e5eb756e944b565e0f1d09107">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>upper_triangle <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb9-3"><a href="#cb9-3"></a>   <span class="dv">0</span>,  <span class="dv">0</span>,</span>
@@ -813,7 +866,7 @@
 </section>
 <section id="upper-triangle-1" class="slide level2">
 <h2>Upper triangle</h2>
-<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-11_f8132499e5c49a790fc8dc0c758d763d">
 <div class="column">
 <div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>yellow <span class="ot">&lt;-</span> <span class="st">"#DDA710"</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
@@ -840,7 +893,7 @@
 <h2>Lower triangle</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-12_0f532324e680d7f301ac936d87ee45f1">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>lower_triangle <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb12-3"><a href="#cb12-3"></a>   <span class="dv">0</span>,  <span class="dv">0</span>,</span>
@@ -869,7 +922,7 @@
 </section>
 <section id="lower-triangle-1" class="slide level2">
 <h2>Lower triangle</h2>
-<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-13_04bf62aed27d6dce7ea4b767f1e6b877">
 <div class="column">
 <div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_polygon</span>(</span>
@@ -898,7 +951,7 @@
 <section id="making-circles" class="slide level2">
 <h2>Making circles</h2>
 <p><code>geom_circle()</code> from {ggforce} draws a circle based on the center point (<code>x0</code>, <code>y0</code>) and the radius (<code>r</code>)</p>
-<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-14_9ba0b50e79ff3c43ac416ad3c034c6d3">
 <div class="column">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(ggforce)</span>
 <span id="cb15-2"><a href="#cb15-2"></a></span>
@@ -923,7 +976,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-15_d4ddeb413c1f0b6b09909e483ac70a85">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb16-3"><a href="#cb16-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -935,7 +988,7 @@
 <span id="cb16-9"><a href="#cb16-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-16_9e147011f09b10fbeb703daae0876a7e">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </div>
@@ -948,7 +1001,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-17_76d26cf8ead6f1698a2cd271875a24e9">
 <div class="sourceCode cell-code" id="cb17" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>end <span class="ot">&lt;-</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -960,7 +1013,7 @@
 <span id="cb17-9"><a href="#cb17-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-18_ab3e5b5a9ef27d2728fce152af591874">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </div>
@@ -973,7 +1026,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-19_9199334e5ea8815bb1016e8a2b89cc5c">
 <div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>start <span class="ot">&lt;-</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>end <span class="ot">&lt;-</span> pi</span>
 <span id="cb18-3"><a href="#cb18-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -985,7 +1038,7 @@
 <span id="cb18-9"><a href="#cb18-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-20_a0050fe4b22b879ccf26dcdca32e97b8">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </div>
@@ -998,7 +1051,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-21_5d0f54f3a767867ca171f6077ab56b10">
 <div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>start <span class="ot">&lt;-</span> pi</span>
 <span id="cb19-2"><a href="#cb19-2"></a>end <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1010,7 +1063,7 @@
 <span id="cb19-9"><a href="#cb19-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-22_51c99582ac51ec897e5be17bf4399ff5">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </div>
@@ -1023,7 +1076,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-23_fa0cee9e29b3bb0a05de712cec69ae23">
 <div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>start <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb20-3"><a href="#cb20-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1035,7 +1088,7 @@
 <span id="cb20-9"><a href="#cb20-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-24_ceb26908c33ec2b2c94a1596ade8427d">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </div>
@@ -1048,7 +1101,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-25_2d91f462aa9e644f4da7f6ee98630432">
 <div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb21-3"><a href="#cb21-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -1060,7 +1113,7 @@
 <span id="cb21-9"><a href="#cb21-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-26_4d37d26087450abfe3b2ffaa0d04e3b5">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </div>
@@ -1073,7 +1126,7 @@
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-27_0a2a65aec9862a43a8ef5308a8a41f23">
 <div class="sourceCode cell-code" id="cb22" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb22-3"><a href="#cb22-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1085,7 +1138,7 @@
 <span id="cb22-9"><a href="#cb22-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-output-location="column" data-fig.asp="1">
+<div class="cell" data-output-location="column" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-28_dd47dc8fbe71ff820ed1720ba7ba0e68">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
 </div>
@@ -1122,7 +1175,7 @@
 <p><img data-src="04-riso-grids/shape-quarter-circle-1-01.jpg"></p>
 <p><img data-src="04-riso-grids/circle-quadrants.png"></p>
 </div><div class="column" style="width:70%;">
-<div class="cell" data-output-location="fragment">
+<div class="cell" data-output-location="fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-29_20da129e8429141e7cc0796c180658aa">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_arc_bar</span>(</span>
 <span id="cb23-3"><a href="#cb23-3"></a>    <span class="fu">aes</span>(</span>
@@ -1153,7 +1206,7 @@
 <p><img data-src="04-riso-grids/shape-quarter-circle-1-02.jpg"></p>
 </div><div class="column">
 <div class="fragment">
-<div class="cell" data-fig.asp="0.75">
+<div class="cell" data-fig.asp="0.75" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-30_d15beb1923ac0639c5b2ef8b578964f6">
 <div class="sourceCode cell-code" id="cb24" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">geom_arc_bar</span>(</span>
 <span id="cb24-3"><a href="#cb24-3"></a>    <span class="fu">aes</span>(</span>
@@ -1176,7 +1229,7 @@
 </section>
 <section id="quarter-donut-quadrant-1" class="slide level2">
 <h2>Quarter donut, quadrant 1</h2>
-<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-31_336e6c3ab250519d4f9cd9aa7ec839c7">
 <div class="column">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>quarter_donut_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="at">x =</span> <span class="dv">0</span>,</span>
@@ -1211,7 +1264,7 @@
 <h2>Quarter donut, quadrant 2</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-32_6cb9748c29bf1aa7df843e8742c38920">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>quarter_donut_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="at">x =</span> <span class="dv">0</span>,</span>
 <span id="cb26-3"><a href="#cb26-3"></a>  <span class="at">y =</span> <span class="dv">10</span>,</span>
@@ -1236,7 +1289,7 @@
 </section>
 <section id="quarter-donut-quadrant-2-1" class="slide level2">
 <h2>Quarter donut, quadrant 2</h2>
-<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-33_472ef178ec536c2b6dda988c837bc761">
 <div class="column">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">geom_arc_bar</span>(</span>
@@ -1269,7 +1322,7 @@
 </div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-34_245c01a79286dc082c5d991d0aed82fa" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1278,7 +1331,7 @@
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-35_2d7e67691898ac5490cc0064a3fd2a39" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1289,7 +1342,7 @@
 </div>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-36_c9053189973e31ce9cc391f687595285">
 
 </div>
 </section>
@@ -1297,7 +1350,7 @@
 <h2>Quarter donut, quadrant 4</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-37_b3af583482a07ec2c285e4aa070cab11">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>quarter_donut_4 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb29-2"><a href="#cb29-2"></a>  <span class="at">x =</span> <span class="dv">10</span>,</span>
 <span id="cb29-3"><a href="#cb29-3"></a>  <span class="at">y =</span> <span class="dv">0</span>,</span>
@@ -1327,7 +1380,7 @@
 </section>
 <section id="generate-shape-data" class="slide level2">
 <h2>Generate shape data</h2>
-<div class="cell columns column-output-location">
+<div class="cell columns column-output-location" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-38_b7a4b5fe4f41671b18629089b47a6664">
 <div class="column">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>generate_shape_data <span class="ot">&lt;-</span> <span class="cf">function</span>(shape, color) {</span>
 <span id="cb31-2"><a href="#cb31-2"></a>  <span class="cf">switch</span>(shape,</span>
@@ -1374,7 +1427,7 @@
 </section>
 <section id="shape-plotter" class="slide level2">
 <h2>Shape plotter</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-39_beb4b55569b224ba8c8e6e7b243b5cdb">
 <div class="sourceCode cell-code" id="cb33" data-code-line-numbers="4-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>generate_shape_plotter <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
 <span id="cb33-2"><a href="#cb33-2"></a>  shape <span class="ot">&lt;-</span> data[[<span class="st">"shape"</span>]][[<span class="dv">1</span>]]</span>
 <span id="cb33-3"><a href="#cb33-3"></a></span>
@@ -1399,7 +1452,7 @@
 </section>
 <section id="shape-plotter-1" class="slide level2">
 <h2>Shape plotter</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-40_f0d751ebba1a868ce0c526edca770f79">
 <div class="sourceCode cell-code" id="cb34" data-code-line-numbers="11-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>generate_shape_plotter <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
 <span id="cb34-2"><a href="#cb34-2"></a>  shape <span class="ot">&lt;-</span> data[[<span class="st">"shape"</span>]][[<span class="dv">1</span>]]</span>
 <span id="cb34-3"><a href="#cb34-3"></a></span>
@@ -1424,10 +1477,10 @@
 </section>
 <section id="shape-plotter-2" class="slide level2">
 <h2>Shape plotter</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-41_80685b0e191273e5c616096b1c3b59ed">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">generate_shape_plotter</span>(yellow_oreo_square)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-41_80685b0e191273e5c616096b1c3b59ed">
 <div class="cell-output cell-output-stdout">
 <pre><code>mapping: x = ~x, y = ~y, group = ~group, subgroup = ~subgroup, fill = ~color 
 geom_polygon: na.rm = FALSE, rule = evenodd
@@ -1439,7 +1492,7 @@ position_identity </code></pre>
 <p>Returns only the <code>geom_*()</code> function, which can be used directly in a <code>ggplot2</code> pipeline, or with multiple together in a <code>list()</code></p>
 </div>
 <div class="fragment">
-<div class="cell columns column-output-location" data-fig.asp="0.75">
+<div class="cell columns column-output-location" data-fig.asp="0.75" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-42_1f4f6f115b0e1750ce9a6f5c21e685a9">
 <div class="column">
 <div class="sourceCode cell-code" id="cb37" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">generate_shape_plotter</span>(yellow_oreo_square) <span class="sc">+</span></span>
@@ -1458,7 +1511,7 @@ position_identity </code></pre>
 <h2>Grid of shapes</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-43_11db3459f0f7f65f55751aa4699d027b">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>layer_1 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb38-2"><a href="#cb38-2"></a>  <span class="sc">~</span>row, <span class="sc">~</span>column,             <span class="sc">~</span>shape,</span>
 <span id="cb38-3"><a href="#cb38-3"></a>     <span class="dv">1</span>,       <span class="dv">1</span>, <span class="st">"quarter donut q3"</span>,</span>
@@ -1491,7 +1544,7 @@ position_identity </code></pre>
 <h2>Create the grid of shapes</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-44_ad67b5262a74c209f0e39a61dfdccd47">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>layer_1 <span class="sc">%&gt;%</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1527,7 +1580,7 @@ $`4`
 </section>
 <section id="create-the-grid-of-shapes-1" class="slide level2">
 <h2>Create the grid of shapes</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-45_e0152f9569925b90fd0df3adff99b744">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb42-2"><a href="#cb42-2"></a></span>
 <span id="cb42-3"><a href="#cb42-3"></a>layer_1 <span class="sc">%&gt;%</span></span>
@@ -1568,7 +1621,7 @@ $`4`
 </section>
 <section id="list-of-plotters" class="slide level2">
 <h2>List of plotters</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-46_e9ced2e1835e407f8ad0f3a59e146d70">
 <div class="sourceCode cell-code" id="cb44" data-code-line-numbers="8,9,10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb44-2"><a href="#cb44-2"></a></span>
 <span id="cb44-3"><a href="#cb44-3"></a>layer_1_plotting <span class="ot">&lt;-</span> layer_1 <span class="sc">%&gt;%</span></span>
@@ -1617,7 +1670,7 @@ position_identity </code></pre>
 <img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-46-1.png" width="960" class="r-stretch"></section>
 <section id="using-a-list-of-plotters-together" class="slide level2">
 <h2>Using a list of plotters together</h2>
-<div class="cell columns column-output-location">
+<div class="cell columns column-output-location" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-47_43afca3288476251625e30a986ed8a6d">
 <div class="column">
 <div class="sourceCode cell-code" id="cb47" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb47-2"><a href="#cb47-2"></a>  layer_1_plotting <span class="sc">+</span></span>
@@ -1632,19 +1685,23 @@ position_identity </code></pre>
 </div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="fragment quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="fragment quarto-layout-cell" style="flex-basis: 4.8%;justify-content: center;">
 <p>???</p>
 </div>
-<div class="fragment quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="04-riso-grids/layer-1-ontop.jpg" style="width:50.0%"></p>
-</figure>
+<div class="fragment quarto-layout-cell" style="flex-basis: 19.1%;justify-content: center;">
+<p><img data-src="04-riso-grids/shape-quarter-circle-3.jpg"></p>
 </div>
+<div class="fragment quarto-layout-cell" style="flex-basis: 19.1%;justify-content: center;">
+<p><img data-src="04-riso-grids/shape-upper-triangle.jpg"></p>
 </div>
+<div class="fragment quarto-layout-cell" style="flex-basis: 19.1%;justify-content: center;">
+<p><img data-src="04-riso-grids/shape-quarter-circle-1.jpg"></p>
 </div>
+<div class="fragment quarto-layout-cell" style="flex-basis: 19.1%;justify-content: center;">
+<p><img data-src="04-riso-grids/shape-lower-triangle.jpg"></p>
+</div>
+<div class="fragment quarto-layout-cell" style="flex-basis: 19.1%;justify-content: center;">
+<p><img data-src="04-riso-grids/layer-1-ontop.jpg"></p>
 </div>
 </div>
 </div>
@@ -1678,7 +1735,7 @@ position_identity </code></pre>
 <section id="shifting-data-2" class="slide level2">
 <h2>Shifting data</h2>
 <p>Shift everything over using the <span class="under">size of one grid</span> and the <span class="under">row</span> and <span class="under">column</span></p>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-48_8435ae49d249f125888dea3eede4ee59">
 <div class="sourceCode cell-code" id="cb48" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>layer_1_data <span class="ot">&lt;-</span> layer_1 <span class="sc">%&gt;%</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
 <span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">map_dfr</span>(</span>
@@ -1710,7 +1767,7 @@ position_identity </code></pre>
 <section id="shifting-data-3" class="slide level2">
 <h2>Shifting data</h2>
 <p>Shift everything over using the <span class="under">size of one grid</span> and the <span class="under">row</span> and <span class="under">column</span></p>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-49_c48293b7789431a0aeae2db5b0b543a1">
 <div class="sourceCode cell-code" id="cb50" data-code-line-numbers="1,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>grid_size <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a></span>
 <span id="cb50-3"><a href="#cb50-3"></a>layer_1_data_shifted <span class="ot">&lt;-</span> layer_1_data <span class="sc">%&gt;%</span></span>
@@ -1738,7 +1795,7 @@ position_identity </code></pre>
 </section>
 <section id="now-plot" class="slide level2">
 <h2>Now plot!</h2>
-<div class="cell columns column-output-location" data-fig.asp="1">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-50_2d364367b499a024eb292b98984ce00a">
 <div class="column">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>layer_1_plotting <span class="ot">&lt;-</span> layer_1_data_shifted <span class="sc">%&gt;%</span></span>
 <span id="cb52-2"><a href="#cb52-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
@@ -1754,7 +1811,7 @@ position_identity </code></pre>
 <span id="cb52-12"><a href="#cb52-12"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-51-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-50-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1763,7 +1820,7 @@ position_identity </code></pre>
 <h2>Do the same for the second layer!</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell" data-output-location="fragment">
+<div class="cell" data-output-location="fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-51_4a89c758575803db32615968bad7454b">
 <div class="sourceCode cell-code" id="cb53" data-code-line-numbers="3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>layer_2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb53-2"><a href="#cb53-2"></a>  <span class="sc">~</span>row, <span class="sc">~</span>column,             <span class="sc">~</span>shape,</span>
 <span id="cb53-3"><a href="#cb53-3"></a>     <span class="dv">1</span>,       <span class="dv">1</span>,      <span class="st">"oreo square"</span>,</span>
@@ -1802,9 +1859,9 @@ position_identity </code></pre>
 <span id="cb53-36"><a href="#cb53-36"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-output-location="fragment" data-fig.asp="1">
+<div class="cell" data-output-location="fragment" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-52_65d59076b084575f34a2aace0aed08cd">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-52-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1823,7 +1880,7 @@ position_identity </code></pre>
 </section>
 <section id="put-them-together" class="slide level2">
 <h2>Put them together</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-53_acd5e0d0ce88371c981ceffc06f80435">
 <div class="sourceCode cell-code" id="cb54" data-code-line-numbers="2,3,4,5,"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">list</span>(</span>
 <span id="cb54-3"><a href="#cb54-3"></a>    layer_1_plotting,</span>
@@ -1834,12 +1891,25 @@ position_identity </code></pre>
 <span id="cb54-8"><a href="#cb54-8"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-54-1.png" width="960" class="r-stretch"></section>
+<img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch"></section>
 <section id="risograph-effect-please" class="slide level2">
 <h2>Risograph effect please?</h2>
+<aside class="notes">
+<p>Overlay shapes, vs with “multiply” mode in e.g.&nbsp;photoshop, procreate, etc</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-54_4add61212aec31ab9210eb3c41114bf3" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1849,7 +1919,7 @@ position_identity </code></pre>
 </div>
 </div>
 <div class="fragment quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-55_2de65ab53164b9e787cb80cfeb0b05a9">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1864,7 +1934,7 @@ position_identity </code></pre>
 </section>
 <section id="risograph-effect-please-1" class="slide level2">
 <h2>Risograph effect please?</h2>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-56_70460effc569666ff86e3eb0249534a4">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>layer_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb55-2"><a href="#cb55-2"></a>  layer_1_plotting <span class="sc">+</span></span>
 <span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
@@ -1908,11 +1978,11 @@ position_identity </code></pre>
 <span id="cb56-16"><a href="#cb56-16"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-58-1.png" width="750"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-57-1.png" width="750"></p>
 </div>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-58_dd9c16a523eaf23709031be09fc8a3c4">
 
 </div>
 </section>

@@ -158,6 +158,10 @@ knitr::include_graphics("04-riso-grids/riso-color-chart.jpg")
 
 #
 
+::: notes
+Split the shapes into two types - polygon shapes and circle shapes
+:::
+
 ::: {.exercise}
 
 Using the shape types below, sketch two different 2x2 layers that could be combined to make a riso print
@@ -175,6 +179,12 @@ Using the shape types below, sketch two different 2x2 layers that could be combi
 # Polygon shapes
 
 ## Oreo square
+
+::: notes
+If you were to try to split this into polygons the way we know how, a bit complicated
+
+But ggplot2 allows you to define a polygon by its outside vertices, and then vertices of a "hole" in it
+:::
 
 :::: {.columns}
 
@@ -292,6 +302,10 @@ oreo_square_outer
 
 ## Oreo square
 
+::: notes
+Highlight that xlim and ylim are being used here
+:::
+
 :::: {.columns}
 
 ::: {.column}
@@ -309,7 +323,7 @@ ggplot() +
       subgroup = subgroup
     )
   ) +
-  coord_fixed()
+  coord_fixed(xlim = c(0, 10), ylim = c(0, 10))
 ```
 
 :::
@@ -442,6 +456,10 @@ ggplot() +
 ::::
 
 ## Upper triangle
+
+::: notes
+NA subgroup
+:::
 
 :::: {.columns}
 
@@ -1365,20 +1383,30 @@ ggplot() +
   theme_void()
 ```
 
-:::: {layout-ncol=2}
+:::: {layout="[[0.25, 1, 1, 1, 1, 1]]"}
 
 ::: {.fragment}
 ???
 :::
 
 ::: {.fragment}
+![](04-riso-grids/shape-quarter-circle-3.jpg)
+:::
 
-```{r echo=FALSE}
-#| out-width: 50%
-#| fig-align: center
-knitr::include_graphics("04-riso-grids/layer-1-ontop.jpg")
-```
+::: {.fragment}
+![](04-riso-grids/shape-upper-triangle.jpg)
+:::
 
+::: {.fragment}
+![](04-riso-grids/shape-quarter-circle-1.jpg)
+:::
+
+::: {.fragment}
+![](04-riso-grids/shape-lower-triangle.jpg)
+:::
+
+::: {.fragment}
+![](04-riso-grids/layer-1-ontop.jpg)
 :::
 
 ::::
@@ -1579,6 +1607,10 @@ ggplot() +
 ```
 
 ## Risograph effect please?
+
+::: notes
+Overlay shapes, vs with "multiply" mode in e.g. photoshop, procreate, etc
+:::
 
 ::: {layout-ncol=2}
 
