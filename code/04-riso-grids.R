@@ -101,8 +101,8 @@ upper_triangle <- tribble(
    0, 10
 ) %>%
   mutate(
-    group = 1,
-    subgroup = 1
+    group = NA,
+    subgroup = NA
   )
 
 upper_triangle
@@ -131,8 +131,8 @@ lower_triangle <- tribble(
   10, 10
 ) %>%
   mutate(
-    group = 1,
-    subgroup = 1
+    group = NA,
+    subgroup = NA
   )
 
 lower_triangle

@@ -172,6 +172,35 @@ set.seed(1234)
 
 make_homage()
 
+make_homage <- function(seed = 1, colors = c("#5A9CBA", "#919EA3", "#F1EFDF", "#F5BB1D")) {
+  set.seed(seed)
+  
+  tribble(
+    ~x0, ~y0, ~size,
+      0,   0,    10,
+      1, 0.5,     8,
+      2,   1,     6,
+      3, 1.5,     4
+  ) %>%
+    mutate(
+      x1 = x0 + size,
+      y1 = y0 + size,
+      color = sample(colors, size = 4)
+    ) %>%
+    ggplot() +
+    geom_rect(aes(
+      xmin = x0, xmax = x1,
+      ymin = y0, ymax = y1,
+      fill = color
+    )) +
+    scale_fill_identity() +
+    coord_fixed() +
+    theme_void()
+}
+
+make_homage(5)
+make_homage(5)
+
 # Color ------------------------------------------------------------------------
 
 ## Hex -------------------------------------------------------------------------
@@ -223,9 +252,11 @@ c(saturated_color, mystery_color, desaturated_color) %>%
 
 # Looking at Homage palette in full saturation
 
-homage[["color"]] %>%
+colors_full_saturation <- homage[["color"]] %>%
   color() %>%
-  clr_saturate(shift = 1) %>%
+  clr_saturate(shift = 1)
+
+colors_full_saturation %>%
   plot()
 
 # Homage in full saturation
@@ -431,3 +462,4 @@ triadic <- tribble(
 )
 
 plot(triadic[["color"]])
+

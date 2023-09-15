@@ -19,7 +19,6 @@ library(tidyr)
 library(purrr)
 library(ggforce)
 
-
 # Who actually needs trigonometric functions -----------------------------------
 
 ## Corner 1 --------------------------------------------------------------------

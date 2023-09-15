@@ -395,20 +395,19 @@ grid
 
 ### adding shift in y
 
-grid <-
-  expand_grid(
-    x = seq(0,
-            by = perimeter_width,
-            length.out = ncol
-    ),
-    y = seq(0,
-            by = perimeter_width,
-            length.out = nrow
-    )
-  ) %>%
+grid <- expand_grid(
+  x = seq(0,
+    by = perimeter_width,
+    length.out = ncol
+  ),
+  y = seq(0,
+    by = perimeter_width,
+    length.out = nrow
+  )
+) %>%
   mutate(y = if_else(x >= 5 * perimeter_width,
-                     y + perimeter_width / 2,
-                     y
+    y + perimeter_width / 2,
+    y
   ))
 
 grid %>%
