@@ -15,6 +15,10 @@ execute:
 
 ![ ](01-steal-like-an-artist/book.jpg)
 
+::: notes
+Ideas from this book
+:::
+
 # Who am I as an artist?
 
 ![ ](01-steal-like-an-artist/cliff.jpg)
@@ -23,11 +27,25 @@ execute:
 
 ![ ](01-steal-like-an-artist/cliff.jpg)
 
+::: notes
+That's a big question to ask
+:::
+
 # What do I like?
 
 ![ ](01-steal-like-an-artist/cliff-bridge.jpg)
 
 ## What do I like?
+
+::: notes
+Pinterest from me and Ije
+
+Sum of your influences
+
+Mash up of everything you like
+
+You already like stuff - start collecting it if you don't already!
+:::
 
 :::: {.columns}
 
@@ -46,13 +64,6 @@ execute:
 :::
 
 ::::
-
-
-::: {.notes}
-You are a mash up of what you're interested in.
-
-You are the sum of your influences.
-:::
 
 ## How do you start?
 
@@ -74,6 +85,12 @@ Copy, and keep copying.
 ![*Riso Grid 18*, Ryan Miglinczy](01-steal-like-an-artist/riso-grid-18.png)
 
 ![*Infinite Truchet*, Roni Kaufman](01-steal-like-an-artist/roni_truchet_tiles.png)
+::: 
+
+::: notes
+We'll be going over 4 pieces for this workshop - reverse engineering each one, breaking them down (that's what the graph paper is for!)
+
+By recreating each, you'll learn techniques for creative coding
 :::
 
 ## Remix
@@ -83,6 +100,10 @@ Copy, and keep copying.
 Where do you fall short? What makes you different? Amplify that, and transform it
 
 ![ ](01-steal-like-an-artist/imperfect-copy.jpg)
+
+::: notes
+Make changes to copies based on what you like - you don't have the _exact_ same taste or style as your influences!
+:::
 
 ## Reinterpret
 
@@ -108,9 +129,9 @@ You don't want to [look]{.under} like your influences, you want to [see]{.under}
 Steal the thinking behind the style
 :::
 
-# 
+---
 
-:::: {.columns .v-center-container}
+:::: {.columns}
 
 ::: {.column width="40%"}
 
