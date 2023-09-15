@@ -27,7 +27,7 @@ knitr::opts_chunk$set(cache = TRUE, dev = "png", dev.args = list(bg = "transpare
 
 * Roni Kaufman is a self-described, creative coder and generative artist
 * He regularly shares the code to his projects on openprocessing.org. 
-This sketch is available at [Infinite Processing](https://openprocessing.org/sketch/1929163)
+This sketch is available at [Open Processing](https://openprocessing.org/sketch/1929163)
 * Released under a CC BY-NC-SA 3.0 license (share and remix with attribution for noncommercial purposes)
 
 :::
@@ -591,6 +591,11 @@ set_params <- function(x, y, sq_width) {
   )
   }
 ```
+
+::: notes
+- Takes in the x,y, coordinate for the grid (bottom left anchor point). Then for the tile that will be placed in said grid (that has a sq_width always of 15 in this case). 
+- Travels around the tile - the four corners, and give you the x0, y0, start and end in radians for the arcs for each tile. 
+:::
 
 ## Exercise 2
 
@@ -1550,3 +1555,9 @@ output_grid %>%
 - Returned to `geom_arc_bar()` to create arcs and its arguments - using trigonometry without ever having to `sin()` a thing!
 -   Discussed why you need the `fill=` and `color=` for the shapes in truchet tile
 :::
+
+# Thank you! 
+
+## Feedback for Workshop
+
+Please go to pos.it/conf-workshop-survey. Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.
