@@ -28,9 +28,11 @@ knitr::opts_chunk$set(dev = "png", dev.args = list(bg = "transparent"))
 :::
 
 ::: notes
--   Vera Molnar is one of the earliest pioneers of computer and generative art, programming in Fortran, starting in the 1960s.
+Vera Molnar born in 1924 is a Hungarian born media artist who is widely considered to be a pioneer of computer art and generative art. 
 
--   She worked with a method she called *machine imaginaire* - where she created strict set of rules that replaced humans in her creative process.
+She started creating generative art, though it wasn’t called that yet in 1968, when she gained access to a computer and taught herself Fortran. Some of her earliest work actually used a plotter - where she fed instructions into the computer which then was outputted to a plotter that produced line drawings with a moving pen. 
+
+O.T. Serigraph - which is part of a larger body of work where she experimented with repetition and variations of letters. But more on that later. 
 :::
 
 ## o.T. (carré noir): introduction to the shape
@@ -108,11 +110,21 @@ Only coordinates of interest are the vertices
 
 ![](03-ot/recreation_letter_u_01.png){fig-align="center"}
 
+::: notes
+
+The start point is the anchor point of the shape. This is a term that I made up, but I will use that to refer to where our polygons are located. 
+
+:::
+
 ## Coordinates of Letter U
 
 #### Only need coordinates from vertices in the polygon
 
 ![](03-ot/recreation_letter_u_02.png){fig-align="center"}
+
+::: notes
+Vertices are the points where two or more line segments or edges meet (like a corner)
+:::
 
 ## Coordinates of Letter U
 
@@ -540,6 +552,16 @@ She explored the balance between order and chaos.
 :::
 :::
 
+::: notes 
+Geometric abstraction is a form of abstract art based on the use of geometric forms - often used in non-representational compositions. 
+
+Geometric abstraction is at the foundation of Molnar’s work. She is famously known for saying “My life is in squares, triangles, and lines”. You can see this in how she experimented with repetition and variation of letters. She was especially fond of the letter M. 
+
+However Molnar, introduced a certain amount of chance in her work, a “hint of disorder” she has referred to it as. This allowed her to explore the balance between order and chaos. 
+
+And we are going to do the same! 
+:::
+
 ## A light trigonometry intermission
 
 ### `y_new` = `-x_old` & `x_new` = `y_old`
@@ -567,7 +589,7 @@ She explored the balance between order and chaos.
 
 ::: {.column style="width:40%"}
 -   Step 1: Place shape
--   Step 2: Subtract point of rotation off of each vertex
+-   Step 2: Subtract point of rotation off of each vertices
 -   Step 3: Rotate
 -   Step 4: Add back point of rotation
 -   Step 5: Correct coordinates to back at "original origin"
@@ -612,7 +634,7 @@ initial_u_shape %>%
 
 ## Applying trigonometry lesson
 
-### Step 2: Subtract point of rotation off of each vertex
+### Step 2: Subtract point of rotation off of each vertices
 
 ```{r}
 #| output-location: column
@@ -941,11 +963,11 @@ grid <-
   expand_grid(
     x = seq(0,
       by = perimeter_width,
-      length.out = nrow
+      length.out = ncol
     ),
     y = seq(0,
       by = perimeter_width,
-      length.out = ncol
+      length.out = nrow
     )
   )
 
@@ -967,11 +989,11 @@ grid <-
   expand_grid(
     x = seq(0,
       by = perimeter_width,
-      length.out = nrow
+      length.out = ncol
     ),
     y = seq(0,
       by = perimeter_width,
-      length.out = ncol
+      length.out = nrow
     )
   ) %>%
   mutate(y = if_else(x >= 5 * perimeter_width,
@@ -1012,8 +1034,8 @@ make_molnar_system <- function() {
 
   grid <-
     expand_grid(
-      x = seq(0, by = perimeter_width, length.out = nrow),
-      y = seq(0, by = perimeter_width, length.out = ncol)
+      x = seq(0, by = perimeter_width, length.out = ncol),
+      y = seq(0, by = perimeter_width, length.out = nrow)
     ) %>%
     mutate(y = if_else(x >= 5 * perimeter_width,
       y + perimeter_width / 2,
@@ -1254,6 +1276,13 @@ initial_output %>%
 ![DE 432 OBLIQUES À 9 CARRÉS N°9, 2011](03-ot/random_vera_molnar_2.jpg)
 :::
 :::
+
+::: notes
+Neither of these pieces are completely random. At least to my eye, the left you can as you travel through the piece there is an increasing amount of inverted and non-inverted Ms. It goes from 2 cols, to 4 cols, to 8 cols. On the right these lines are randomly tilted, but there are boundaries clearly being placed on how much they can tilt. For example, none of the lines are perfectly horizontal. 
+
+This is a little soap box for me, but I actually am not the biggest fan of pure randomness. It definitely has its purpose and its place - but controlled randomness is more visually interesting to me. Some ways that people have “controlled randomness” is by incorporating probability where you say “I want more of this to happen, but less of this other thing”. Another option is to lean more into coherence - by encouraging patterns to arise.
+:::
+
 
 ## Patterns vs. Pure Random
 
