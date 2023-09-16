@@ -300,7 +300,10 @@ ggplot() +
       subgroup = subgroup
     )
   ) +
-  coord_fixed(xlim = c(0, 10), ylim = c(0, 10))
+  coord_fixed(
+    xlim = c(0, 10),
+    ylim = c(0, 10)
+  )
 ```
 
 :::
@@ -350,8 +353,10 @@ oreo_square_inner <- tribble(
 ```{r}
 #| output-location: fragment
 oreo_square <- bind_rows(
-  oreo_square_outer %>% mutate(group = 1),
-  oreo_square_inner %>% mutate(group = 2)
+  oreo_square_outer %>%
+    mutate(group = 1),
+  oreo_square_inner %>% 
+    mutate(group = 2)
 )
 
 oreo_square
@@ -561,6 +566,23 @@ ggplot() +
   ) +
   coord_fixed()
 ```
+
+## Making parts of circles
+
+Another brief math interlude...
+
+\~the parametric equation\~
+
+For a circle:
+
+* centered at `x0`, `y0`
+* with a radius of `r`
+
+The coordinates a point at an angle `tau` from the center are:
+
+* `x = x0 + sin(tau) * r`
+
+* `y = y0 + cos(tau) * r`
 
 ## Making parts of circles
 
@@ -985,7 +1007,7 @@ ggplot() +
 <div class = "fragment">
 
 ```{r}
-#| fig-asp: 0.75
+#| fig-asp: 0.7
 #| code-line-numbers: "7"
 ggplot() +
   geom_arc_bar(
@@ -1154,7 +1176,6 @@ quarter_donut_4
 ## Generate shape data
 
 ```{r}
-#| output-location: column-fragment
 generate_shape_data <- function(shape, color) {
   switch(shape,
     "oreo square" = oreo_square,
@@ -1170,7 +1191,11 @@ generate_shape_data <- function(shape, color) {
       shape = shape
     )
 }
+```
 
+## Generate shape data
+
+```{r}
 yellow_oreo_square <- generate_shape_data(
   "oreo square",
   yellow

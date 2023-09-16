@@ -13,7 +13,7 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = FALSE, dev = "png", dev.args = list(bg = "transparent"))
+knitr::opts_chunk$set(cache = TRUE, dev = "png", dev.args = list(bg = "transparent"))
 ```
 
 #
@@ -331,6 +331,8 @@ homage
 ```{r}
 #| output-location: column
 #| code-line-numbers: "3,4,5,6"
+#| out-width: 75%
+#| fig-align: center
 homage_p <- ggplot(homage) +
   geom_rect(aes(
     xmin = x0,
@@ -348,6 +350,8 @@ homage_p
 ```{r}
 #| output-location: column
 #| code-line-numbers: "7"
+#| out-width: 75%
+#| fig-align: center
 homage_p <- ggplot(homage) +
   geom_rect(aes(
     xmin = x0,
@@ -369,6 +373,8 @@ ggplot2 thinks color is a categorical variable that needs to be represented by a
 ```{r}
 #| output-location: column
 #| code-line-numbers: "9"
+#| out-width: 75%
+#| fig-align: center
 homage_p <- ggplot(homage) +
   geom_rect(aes(
     xmin = x0,
@@ -390,6 +396,8 @@ homage_p
 #| output-location: column
 #| code-line-numbers: "10"
 #| fig-asp: 1
+#| out-width: 75%
+#| fig-align: center
 homage_p <- ggplot(homage) +
   geom_rect(aes(
     xmin = x0,
@@ -412,6 +420,8 @@ homage_p
 #| output-location: column
 #| code-line-numbers: "11"
 #| fig-asp: 1
+#| out-width: 75%
+#| fig-align: center
 homage_p <- ggplot(homage) +
   geom_rect(aes(
     xmin = x0,
@@ -435,6 +445,8 @@ homage_p
 #| output-location: column
 #| code-line-numbers: "10"
 #| fig-asp: 1
+#| out-width: 75%
+#| fig-align: center
 homage_p <- ggplot(homage) +
   geom_rect(aes(
     xmin = x0,
@@ -467,7 +479,10 @@ ggsave("02-homage-to-the-square/homage_rect_temp.jpg", homage_p, bg = "black")
 ```
 
 ```{r, eval = FALSE}
-ggsave("homage.png", homage_p, bg = "black")
+ggsave("homage.png",
+  homage_p,
+  bg = "black"
+)
 ```
   </div>
 
@@ -818,7 +833,7 @@ From black to white (0% to 100%)
 ::: {.column width="33%"}
 
 ```{r, echo = FALSE}
-#| fig-asp: 1.25
+#| fig-asp: 1
 library(dplyr)
 library(prismatic)
 
@@ -855,7 +870,7 @@ tibble(color = palette) %>%
 ::: {.column width="33%"}
 
 ```{r, echo = FALSE}
-#| fig-asp: 1.25
+#| fig-asp: 1
 tibble(
   s = seq(0, 100, length.out = 5)
 ) %>%
@@ -876,7 +891,7 @@ tibble(
 ::: {.column width="33%"}
 
 ```{r, echo = FALSE}
-#| fig-asp: 1.25
+#| fig-asp: 1
 tibble(
   l = seq(0, 100, length.out = 5)
 ) %>%
@@ -1053,11 +1068,11 @@ homage[["color"]] %>%
   plot()
 ```
 
- <div class = "fragment">
+<div class = "fragment">
  
 ```{r echo = FALSE}
 #| layout-ncol: 2
-#| fig-asp: 0.75
+#| fig-asp: 0.6
 tribble(
   ~x0, ~y0, ~size,
     0,   0,    10,
@@ -1189,19 +1204,14 @@ Note that we'll still use hex to specify colors, but HSL is good for understandi
 ::: {.column}
 
 ```{r, eval = FALSE}
-extract_hsl <- function(data) {
-  data %>%
-    mutate(
-      color = color(color),
-      h = clr_extract_hue(color),
-      s = clr_extract_saturation(color),
-      l = clr_extract_lightness(color)
-    ) %>%
-    select(color, h, s, l)
-}
-
 homage_hsl <- homage %>%
-  extract_hsl()
+  mutate(
+    color = color(color),
+    h = clr_extract_hue(color),
+    s = clr_extract_saturation(color),
+    l = clr_extract_lightness(color)
+  ) %>%
+  select(color, h, s, l)
 
 homage_hsl
 ```
@@ -1303,13 +1313,16 @@ Provides a subtle and conservative color combination. This is a versatile color 
 ```{r}
 #| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "4,5,6"
+#| code-line-numbers: "5,7,9"
 monochromatic <- tribble(
   ~color,
   mystery_color,
-  mystery_color %>% clr_lighten(shift = 0.20),
-  mystery_color %>% clr_lighten(shift = 0.40),
-  mystery_color %>% clr_lighten(shift = 0.60)
+  mystery_color %>% 
+    clr_lighten(shift = 0.20),
+  mystery_color %>% 
+    clr_lighten(shift = 0.40),
+  mystery_color %>% 
+    clr_lighten(shift = 0.60)
 )
 
 plot(monochromatic[["color"]])
@@ -1319,7 +1332,7 @@ plot(monochromatic[["color"]])
 
 ```{r}
 #| output-location: column
-#| fig-asp: 0.75
+#| fig-asp: 0.65
 make_homage(
   seed = 1,
   colors = monochromatic[["color"]]
@@ -1345,13 +1358,16 @@ This color combination is versatile, but can be overwhelming. To balance an anal
 ```{r}
 #| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "5,6"
+#| code-line-numbers: "7,9"
 analogous <- tribble(
   ~color,
-  mystery_color %>% clr_lighten(shift = 0.20),
+  mystery_color %>% 
+    clr_lighten(shift = 0.20),
   mystery_color,
-  mystery_color %>% clr_rotate(degrees = 30),
-  mystery_color %>% clr_rotate(degrees = 60)
+  mystery_color %>% 
+    clr_rotate(degrees = 30),
+  mystery_color %>% 
+    clr_rotate(degrees = 60)
 )
 
 plot(analogous[["color"]])
@@ -1361,7 +1377,7 @@ plot(analogous[["color"]])
 
 ```{r}
 #| output-location: column
-#| fig-asp: 0.75
+#| fig-asp: 0.6
 make_homage(
   seed = 2,
   colors = analogous[["color"]]
@@ -1375,10 +1391,11 @@ That was a bit ugly - add contrast in other ways
 ```{r}
 #| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "3,6,8"
+#| code-line-numbers: "4,7,9"
 analogous_better <- tribble(
   ~color,
-  mystery_color %>% clr_lighten(shift = 0.50),
+  mystery_color %>% 
+    clr_lighten(shift = 0.50),
   mystery_color,
   mystery_color %>% clr_rotate(degrees = 30) %>%
     clr_lighten(shift = 0.25),
@@ -1391,10 +1408,9 @@ plot(analogous_better[["color"]])
 
 . . . 
 
-<br>
 ```{r}
 #| output-location: column
-#| fig-asp: 0.5
+#| fig-asp: 0.6
 make_homage(
   seed = 3,
   colors = analogous_better[["color"]]
@@ -1420,13 +1436,12 @@ Two colors on opposite sides of the color wheel
 ```{r}
 #| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "11,12,13"
+#| code-line-numbers: "10,11,12"
 monochromatic_mini <- tribble(
   ~color,
   mystery_color %>% clr_lighten(shift = 0.20),
   mystery_color
 )
-
 complementary <- bind_rows(
   monochromatic_mini,
   monochromatic_mini %>%
@@ -1436,7 +1451,6 @@ complementary <- bind_rows(
       )
     )
 )
-
 plot(complementary[["color"]])
 ```
 
@@ -1458,10 +1472,11 @@ Having the same saturation and lightness doesn't always work!
 ```{r}
 #| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "3,14,15,16"
+#| code-line-numbers: "4,15,16,17"
 monochromatic_mini <- tribble(
   ~color,
-  mystery_color %>% clr_lighten(shift = 0.75),
+  mystery_color %>%
+    clr_lighten(shift = 0.75),
   mystery_color
 )
 
@@ -1525,7 +1540,8 @@ This provides a high contrast color scheme, but less so than the complementary c
 #| code-line-numbers: "6,8"
 triadic <- tribble(
   ~color,
-  mystery_color %>% clr_lighten(shift = 0.20),
+  mystery_color %>% 
+    clr_lighten(shift = 0.20),
   mystery_color,
   mystery_color %>%
     clr_rotate(degrees = 360 / 3),
@@ -1554,10 +1570,11 @@ make_homage(
 ```{r}
 #| output-location: column-fragment
 #| fig-asp: 0.4
-#| code-line-numbers: "3,7,10"
+#| code-line-numbers: "4,8,11"
 triadic <- tribble(
   ~color,
-  mystery_color %>% clr_lighten(shift = 0.50),
+  mystery_color %>% 
+    clr_lighten(shift = 0.50),
   mystery_color,
   mystery_color %>%
     clr_rotate(degrees = 360 / 3) %>%
@@ -1571,8 +1588,6 @@ plot(triadic[["color"]])
 ```
 
 . . . 
-
-<br>
 
 ```{r}
 #| output-location: column

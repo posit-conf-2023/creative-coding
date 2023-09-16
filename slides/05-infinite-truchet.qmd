@@ -13,7 +13,7 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE, dev = "png", dev.args = list(bg = "transparent"))
+knitr::opts_chunk$set(cache = FALSE, dev = "png", dev.args = list(bg = "transparent"))
 ```
 
 
@@ -250,11 +250,8 @@ library(dplyr)
 library(tidyr)
 ```
 
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval = FALSE}
 library(dplyr)
-library(tidyr)
 
 x <- 0
 y <- 0
@@ -266,26 +263,21 @@ tribble(
 
 ```
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_02.png){fig-align="center"}
 :::
 ::::
 
-## Corner 1
-
-### `x0`, `y0`
+## Corner 1: `x0`, `y0`
 
 ```{r, echo = FALSE}
 library(dplyr)
 library(tidyr)
 ```
 
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval = FALSE}
 library(dplyr)
-library(tidyr)
 
 x <- 0
 y <- 0
@@ -298,20 +290,17 @@ tribble(
 
 ```
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_03.png){fig-align="center"}
 :::
 ::::
 
-## Corner 1
+## Corner 1: `start`, `end`
 
-### `start`, `end`
-
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,7"
+
 x <- 0
 y <- 0
 sq_width <- 15
@@ -323,13 +312,19 @@ tribble(
 
 ```
 
-![](05-infinite-truchet/unit_circle_corner_1.png){fig-align="center"}
 
-:::
+:::: {.columns}
 
 ::: {.column width="45%"}
 
 ![](05-infinite-truchet/arc_params_03A.png){fig-align="center"}
+
+:::
+
+::: {.column width="55%"}
+
+
+![](05-infinite-truchet/unit_circle_corner_1.png){fig-align="center"}
 
 :::
 
@@ -338,8 +333,6 @@ tribble(
 
 ## Corner 2
 
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3"
 x <- 0
@@ -353,18 +346,15 @@ tribble(
 
 ```
 
-:::
+:::: {.columns}   
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_05.png){fig-align="center"}
 :::
 ::::
 
-## Corner 2
+## Corner 2: `x0`, `y0`
 
-### `x0`, `y0`
 
-:::: {.columns}
-::: {.column width="55%"}
 
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,8"
@@ -380,19 +370,14 @@ tribble(
 
 ```
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_07.png){fig-align="center"}
 :::
 ::::
 
 
-## Corner 2
-
-### `start`, `end`
-
-:::: {.columns}
-::: {.column width="55%"}
+## Corner 2: `start`, `end`
 
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,8"
@@ -408,18 +393,19 @@ tribble(
 
 ```
 
-![](05-infinite-truchet/unit_circle_corner_2.png){fig-align="center"}
-
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_06.png){fig-align="center"}
+:::
+::: {.column width="55%"}
+
+![](05-infinite-truchet/unit_circle_corner_2.png){fig-align="center"}
+
 :::
 ::::
 
 ## Corner 3
 
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3"
 x <- 0
@@ -434,18 +420,14 @@ tribble(
 
 ```
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_09.png){fig-align="center"}
 :::
 ::::
 
-## Corner 3
+## Corner 3: `x0`, `y0`
 
-### `x0`, `y0`
-
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,9"
 x <- 0
@@ -460,19 +442,15 @@ tribble(
   )
 
 ```
-:::
+
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_11.png){fig-align="center"}
 :::
 ::::
 
 
-## Corner 3
-
-### `start`, `end`
-
-:::: {.columns}
-::: {.column width="55%"}
+## Corner 3: `start`, `end`
 
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,9"
@@ -489,17 +467,19 @@ tribble(
 
 ```
 
-![](05-infinite-truchet/unit_circle_corner_3.png){fig-align="center"}
-:::
+
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_10.png){fig-align="center"}
+:::
+::: {.column width="55%"}
+
+![](05-infinite-truchet/unit_circle_corner_3.png){fig-align="center"}
 :::
 ::::
 
 ## Corner 4
 
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3"
 x <- 0
@@ -514,18 +494,15 @@ tribble(
   )
 ```
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_13.png){fig-align="center"}
 :::
 ::::
 
-## Corner 4
+## Corner 4: `x0`, `y0`
 
-### `x0`, `y0`
 
-:::: {.columns}
-::: {.column width="55%"}
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,10"
 x <- 0
@@ -541,19 +518,14 @@ tribble(
   )
 ```
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_15.png){fig-align="center"}
 :::
 ::::
 
 
-## Corner 4
-
-### `start`, `end`
-
-:::: {.columns}
-::: {.column width="55%"}
+## Corner 4: `start`, `end`
 
 ```{r, eval=FALSE}
 #| code-line-numbers: "1,2,3,10"
@@ -570,11 +542,14 @@ tribble(
   )
 ```
 
-![](05-infinite-truchet/unit_circle_corner_4.png){fig-align="center"}
 
-:::
+:::: {.columns}
 ::: {.column width="45%"}
 ![](05-infinite-truchet/arc_params_14.png){fig-align="center"}
+:::
+::: {.column width="55%"}
+![](05-infinite-truchet/unit_circle_corner_4.png){fig-align="center"}
+
 :::
 ::::
 
@@ -634,17 +609,18 @@ set_params <- function(x, y, sq_width) {
 
 ::: {.column}
 ```{r}
-#| code-line-numbers: "2,3,11"
+#| code-line-numbers: "10-13"
 set_params <-
   function(x, y, sq_width, tile_type) {
-    if (tile_type == 1) {
-      tribble(
+    tile <- tribble(
            ~x0,          ~y0,  ~start,    ~end,
              x,            y,       0,    pi/2,
   x + sq_width,            y,  3*pi/2,    2*pi,
   x + sq_width, y + sq_width,      pi,  3*pi/2,
              x, y + sq_width,    pi/2,      pi
-  ) %>%
+  )
+    if (tile_type == 1) {
+       tile %>%
         mutate(num_arcs = c(3, 4, 3, 4))
     }
   }
@@ -670,26 +646,21 @@ set_params <-
 
 ::: {.column}
 ```{r}
-#| code-line-numbers: "2,12,20"
+#| code-line-numbers: "13-16"
 set_params <-
   function(x, y, sq_width, tile_type) {
-    if (tile_type == 1) {
-      tribble(
+    tile <- tribble(
            ~x0,          ~y0,  ~start,    ~end,
              x,            y,       0,    pi/2,
   x + sq_width,            y,  3*pi/2,    2*pi,
   x + sq_width, y + sq_width,      pi,  3*pi/2,
              x, y + sq_width,    pi/2,      pi
-  ) %>%
+  )
+    if (tile_type == 1) {
+       tile %>%
         mutate(num_arcs = c(3, 4, 3, 4))
     } else if (tile_type == 2) {
-      tribble(
-           ~x0,          ~y0,  ~start,    ~end,
-             x,            y,       0,    pi/2,
-  x + sq_width,            y,  3*pi/2,    2*pi,
-  x + sq_width, y + sq_width,      pi,  3*pi/2,
-             x, y + sq_width,    pi/2,      pi
-  ) %>%
+      tile %>%
         mutate(num_arcs = c(5, 2, 5, 2))
     }
   }
@@ -1183,8 +1154,10 @@ color <- c("#fffbe6", "#fc8405")
 ```{r}
 max_num_arcs <- 5
 color <- c("#fffbe6", "#fc8405")
-color_seq <- rep(color, 
-                 length.out = max_num_arcs)
+color_seq <- rep(
+  color,
+  length.out = max_num_arcs
+)
 color_seq
 ```
 :::
@@ -1253,7 +1226,7 @@ truchet_tiles <-
 
 :::: {.columns}
 
-::: {.column style="width:40%"}
+::: {.column style="width:35%"}
 ```{r, eval = FALSE}
 output_grid <-
   truchet_tiles(
@@ -1266,7 +1239,7 @@ output_grid
 ```
 :::
 
-::: {.column style="width:60%"}
+::: {.column style="width:65%"}
 ```{r, echo = FALSE}
 output_grid <-
   truchet_tiles(
@@ -1561,4 +1534,4 @@ output_grid %>%
 
 ## Feedback for Workshop
 
-Please go to pos.it/conf-workshop-survey. Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.
+Please go to [pos.it/conf-workshop-survey](pos.it/conf-workshop-survey). Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.

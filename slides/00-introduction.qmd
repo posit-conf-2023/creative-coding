@@ -73,8 +73,10 @@ execute:
 ## Announcements
 
 - There are [gender-neutral bathrooms]{.under} located among the Grand Suite Bathrooms.
-- There are [two meditation/prayer rooms]{.under}: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
-- The [lactation room]{.under} is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
+- There are [two meditation/prayer rooms]{.under} in Grand Suite 2A and Grand Suite 2B
+  - Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
+- The [lactation room]{.under} is located in Grand Suite 1
+  - Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
 - Participants who [do not wish to be photographed have red lanyards]{.under}; please note everyone's lanyard colors before taking a photo and respect their choices.
 - The [Code of Conduct and COVID policies]{.under}     can be found at [https://posit.co/code-of-conduct/](https://posit.co/code-of-conduct/). Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
 
