@@ -980,6 +980,8 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <section id="making-parts-of-circles" class="slide level2">
 <h2>Making parts of circles</h2>
 <p>Another brief math interlude…</p>
+<div class="columns">
+<div class="column">
 <p>~the parametric equation~</p>
 <p>For a circle:</p>
 <ul>
@@ -991,6 +993,10 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <li><p><code>x = x0 + sin(tau) * r</code></p></li>
 <li><p><code>y = y0 + cos(tau) * r</code></p></li>
 </ul>
+</div><div class="column">
+<p><img data-src="04-riso-grids/parametric-equation.jpg"></p>
+</div>
+</div>
 </section>
 <section id="making-parts-of-circles-1" class="slide level2">
 <h2>Making parts of circles</h2>
@@ -1994,16 +2000,13 @@ position_identity </code></pre>
 <span id="cb57-3"><a href="#cb57-3"></a>layer_1_img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(layer_1_file)</span>
 <span id="cb57-4"><a href="#cb57-4"></a>layer_2_img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(layer_2_file)</span>
 <span id="cb57-5"><a href="#cb57-5"></a></span>
-<span id="cb57-6"><a href="#cb57-6"></a>riso_width <span class="ot">&lt;-</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"width"</span>]]</span>
-<span id="cb57-7"><a href="#cb57-7"></a>riso_height <span class="ot">&lt;-</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"height"</span>]]</span>
-<span id="cb57-8"><a href="#cb57-8"></a></span>
-<span id="cb57-9"><a href="#cb57-9"></a>paper <span class="ot">&lt;-</span> <span class="fu">image_blank</span>(</span>
-<span id="cb57-10"><a href="#cb57-10"></a>  <span class="at">width =</span> riso_width,</span>
-<span id="cb57-11"><a href="#cb57-11"></a>  <span class="at">height =</span> riso_width,</span>
-<span id="cb57-12"><a href="#cb57-12"></a>  <span class="at">color =</span> <span class="st">"#E1DED7"</span></span>
-<span id="cb57-13"><a href="#cb57-13"></a>)</span>
-<span id="cb57-14"><a href="#cb57-14"></a></span>
-<span id="cb57-15"><a href="#cb57-15"></a>paper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-6"><a href="#cb57-6"></a>paper <span class="ot">&lt;-</span> <span class="fu">image_blank</span>(</span>
+<span id="cb57-7"><a href="#cb57-7"></a>  <span class="at">width =</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"width"</span>]],</span>
+<span id="cb57-8"><a href="#cb57-8"></a>  <span class="at">height =</span> <span class="fu">image_info</span>(layer_1_img)[[<span class="st">"height"</span>]],</span>
+<span id="cb57-9"><a href="#cb57-9"></a>  <span class="at">color =</span> <span class="st">"#E1DED7"</span></span>
+<span id="cb57-10"><a href="#cb57-10"></a>)</span>
+<span id="cb57-11"><a href="#cb57-11"></a></span>
+<span id="cb57-12"><a href="#cb57-12"></a>paper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-58-1.png"></p>

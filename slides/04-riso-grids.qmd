@@ -571,6 +571,10 @@ ggplot() +
 
 Another brief math interlude...
 
+:::: columns 
+
+::: column
+
 \~the parametric equation\~
 
 For a circle:
@@ -583,6 +587,16 @@ The coordinates a point at an angle `tau` from the center are:
 * `x = x0 + sin(tau) * r`
 
 * `y = y0 + cos(tau) * r`
+
+:::
+
+::: column
+
+![](04-riso-grids/parametric-equation.jpg)
+
+:::
+
+::::
 
 ## Making parts of circles
 
