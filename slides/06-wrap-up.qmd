@@ -1,0 +1,19 @@
+---
+title: "posit::conf September 2023"
+subtitle: 'Wrap Up'
+author: "Ijeamaka Anyene Fumagalli and Sharla Gelfand"
+institute: "`posit::conf(2023)`"
+pagetitle: "Wrap Up"
+format:
+  revealjs:
+    theme: [default, css/style.scss]
+highlight-style: "ayu"
+execute:
+  echo: true
+---
+
+## Feedback for Workshop
+
+Please go to [pos.it/conf-workshop-survey](https://pos.it/conf-workshop-survey). Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.
+
+# Thank you!

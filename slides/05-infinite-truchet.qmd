@@ -1529,9 +1529,3 @@ output_grid %>%
 - Returned to `geom_arc_bar()` to create arcs and its arguments - using trigonometry without ever having to `sin()` a thing!
 -   Discussed why you need the `fill=` and `color=` for the shapes in truchet tile
 :::
-
-# Thank you! 
-
-## Feedback for Workshop
-
-Please go to [pos.it/conf-workshop-survey](https://pos.it/conf-workshop-survey). Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.
