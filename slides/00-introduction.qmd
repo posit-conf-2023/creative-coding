@@ -67,8 +67,8 @@ execute:
   * Password: conf2023
   
 * Course Materials
-  * Webpage: [pos.it/creative-coding](pos.it/creative-coding)
-  * Posit Cloud: [posit.cloud/spaces/397256](posit.cloud/spaces/397256)
+  * Webpage: [https://pos.it/creative-coding](pos.it/creative-coding)
+  * Posit Cloud: [https://posit.cloud/spaces/397256](posit.cloud/spaces/397256)
   
 ## Announcements
 
