@@ -1534,4 +1534,4 @@ output_grid %>%
 
 ## Feedback for Workshop
 
-Please go to [https://pos.it/conf-workshop-survey](pos.it/conf-workshop-survey). Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.
+Please go to [pos.it/conf-workshop-survey](https://pos.it/conf-workshop-survey). Your feedback is crucial! Data from the survey informs curriculum and format decisions for future conf workshops, and we really appreciate you taking the time to provide it.
