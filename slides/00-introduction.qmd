@@ -60,16 +60,31 @@ execute:
 
 # Meet each other!
 
-## Announcements
+Favorite color?
 
-* WiFi
-  * Network: Posit Conf 2023
-  * Password: conf2023
-  
-* Course Materials
-  * Webpage: [https://pos.it/creative-coding](pos.it/creative-coding)
-  * Posit Cloud: [https://posit.cloud/spaces/397256](posit.cloud/spaces/397256)
-  
+Least favorite color?
+
+::: fragment
+[github.com/posit-conf-2023/creative-coding/discussions/1](https://github.com/posit-conf-2023/creative-coding/discussions/1)
+:::
+
+
+## Schedule 
+
+| Time          | Activity                            |
+| ------------- | ----------------------------------- |
+| 09:00 - 09:15 | Introduction                        |
+| 09:15 - 09:30 | Steal like an artist                |
+| 09:30 - 10:30 | Homage to the square by Josef Albers|
+| 10:30 - 11:00 | *Coffee break*                        |
+| 11:00 - 12:30 | o.T. (carré noir) by Vera Molnár    |
+| 12:30 - 13:30 | *Lunch break*                         |
+| 13:30 - 15:00 | Riso Grids by Ryan Miglinczy        |
+| 15:00 - 15:30 | *Coffee break*                        |
+| 15:30 - 16:45 | Infinite Truchet by Roni Kaufman    |
+| 16:45 - 17:00 | Wrap-Up
+
+
 ## Announcements
 
 - There are [gender-neutral bathrooms]{.under} located among the Grand Suite Bathrooms.
@@ -80,7 +95,20 @@ execute:
 - Participants who [do not wish to be photographed have red lanyards]{.under}; please note everyone's lanyard colors before taking a photo and respect their choices.
 - The [Code of Conduct and COVID policies]{.under}     can be found at [https://posit.co/code-of-conduct/](https://posit.co/code-of-conduct/). Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
 
+## Announcements
 
+* WiFi
+  * Network: Posit Conf 2023
+  * Password: conf2023
+  
+* Course Materials
+  * Webpage: [pos.it/creative-coding](https://pos.it/creative-coding)
+  * Posit Cloud: [posit.cloud/spaces/397256](https://posit.cloud/spaces/397256)
+  * Download locally:
+     * `library(usethis)`
+     * `use_course("sharlagelfand/creative-coding-workshop")`
+     * Download packages with code in `code/00-setup.R`
+     
 ## Communication Strategy
 
 :::: {.columns}
@@ -101,17 +129,3 @@ execute:
 * Github discussion will be used only for sharing outputs from certain exercises. 
 * Please feel free to ask questions at any time during the workshop. 
 * There will be exercises where you will be asked to draw on graphing paper. If this is not accessible to you, feel free to use other software for drawing, use the solutions, or skip to the next part of the exercise.
-
-## Schedule 
-
-| Time          | Activity                            |
-| ------------- | ----------------------------------- |
-| 09:00 - 10:30 | Introduction                        |
-|               | Steal like an artist                |
-|               | Homage to the square by Josef Albers|
-| 10:30 - 11:00 | *Coffee break*                        |
-| 11:00 - 12:30 | o.T. (carré noir) by Vera Molnár    |
-| 12:30 - 13:30 | *Lunch break*                         |
-| 13:30 - 15:00 | Riso Grids by Ryan Miglinczy        |
-| 15:00 - 15:30 | *Coffee break*                        |
-| 15:30 - 17:00 | Infinite Truchet by Roni Kaufman    |
