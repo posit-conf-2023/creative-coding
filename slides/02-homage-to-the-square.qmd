@@ -640,6 +640,14 @@ Setting the same seed creates the same output, since the random number generator
 4. Share an output and the seed that created it in the GitHub discussion for this exercise
 :::
 
+```{r echo = FALSE}
+countdown::countdown(
+  minutes = 5,
+  color_running_background = "#b6d166",
+  color_finished_background = "#F2994A"
+)
+```
+
 ## Composition
   
 Deliberately simple and consistent in structure, the nested squares were a platform for exploring color.
@@ -1685,6 +1693,10 @@ Show upload and link, good time to show system in R and paste colors in
 5. Share the inspiration and output in the GitHub discussion for this exercise
 :::
 
+```{r echo = FALSE}
+countdown::countdown(minutes = 10)
+```
+
 ## Inspired by *Homage to the Square*
 
 ![*Seven Basic Colors and All Their Combinations in a Square within a Square: Wall Drawing for Josef Albers (Wall Drawing 1176)*, Sol LeWitt](02-homage-to-the-square/sol-lewitt-1.jpg)
@@ -1696,6 +1708,10 @@ Show upload and link, good time to show system in R and paste colors in
 2. Use whatever tool you like - paper, ggplot2, figma, anything you're comfortable with!
 3. Share your work in the GitHub discussion for this exercise
 :::
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 10)
+```
 
 ## So far you've...
 

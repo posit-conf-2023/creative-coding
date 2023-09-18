@@ -58,14 +58,24 @@ execute:
 :::
 :::
 
-# Meet each other!
+## Meet each other!
 
 Favorite color?
 
 Least favorite color?
 
+```{r echo = FALSE}
+countdown::countdown(
+  minutes = 3,
+  color_running_background = "#b6d166",
+  color_finished_background = "#F2994A"
+)
+```
+
 ::: fragment
 [github.com/posit-conf-2023/creative-coding/discussions/1](https://github.com/posit-conf-2023/creative-coding/discussions/1)
+
+"Welcome to Steal like an Rtist: Creative Coding in R! 🎨💻"
 :::
 
 

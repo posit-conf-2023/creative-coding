@@ -145,6 +145,14 @@ Using the shape types below, sketch two different 2x2 layers that could be combi
 
 :::
 
+```{r echo = FALSE}
+countdown::countdown(
+  minutes = 7,
+  color_running_background = "#b6d166",
+  color_finished_background = "#F2994A"
+)
+```
+
 ::: {layout-ncol=2}
 
 ![](04-riso-grids/shapes-1.jpg)
@@ -1129,6 +1137,14 @@ ggplot() +
 3. Plot it using `geom_arc_bar()`
 :::
 
+```{r echo = FALSE}
+countdown::countdown(
+  minutes = 5,
+  color_running_background = "#b6d166",
+  color_finished_background = "#F2994A"
+)
+```
+
 ::: {layout-ncol=2}
 
 ```{r echo=FALSE}
@@ -1608,6 +1624,10 @@ ggplot() +
 4. Share your two plots in the GitHub discussion
 :::
 
+```{r echo = FALSE}
+countdown::countdown(minutes = 10)
+```
+
 ## Put them together
 
 ```{r}
@@ -1775,6 +1795,10 @@ riso_output <- paper %>%
 3. Use the given code to combine a "paper" layer with your two layers to create the riso print effect
 4. Share your final image on GitHub
 ::::
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 5)
+```
 
 ## Wrap it up!
 

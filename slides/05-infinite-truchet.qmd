@@ -167,6 +167,14 @@ Cyril Smith, 1987, analyzed truchet tiles and abstracted them into 1) diagonal l
 - Take a picture of your piece when finished and share it on the Github Discussions page.
 :::
 
+```{r echo = FALSE}
+countdown::countdown(
+  minutes = 10,
+  color_running_background = "#b6d166",
+  color_finished_background = "#F2994A"
+)
+```
+
 # Who actually needs trigonometric functions?
 
 ## Creating arcs in {ggforce}
@@ -582,6 +590,9 @@ set_params <- function(x, y, sq_width) {
 4. Plot the output of your function to confirm, you corrected the mistake. 
 :::
 
+```{r echo = FALSE}
+countdown::countdown(minutes = 7)
+```
 
 # Building a System
 
@@ -1521,6 +1532,11 @@ output_grid %>%
 4. Pass the hex codes for these colors to `color1` and `color2`. Modify the seed to experiment with different outputs. 
 5.  Save your image using `ggsave()` code provided and share on the GitHub discussion
 :::
+
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 5)
+```
 
 ## Recap
 

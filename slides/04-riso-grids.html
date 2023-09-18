@@ -384,6 +384,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="04-riso-grids_files/libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="04-riso-grids_files/libs/countdown-0.4.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -562,6 +564,14 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <div class="exercise">
 <p>Using the shape types below, sketch two different 2x2 layers that could be combined to make a riso print</p>
 </div>
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-3_da2211dd18d5719b62f2be031dd4a358">
+<div class="cell-output-display">
+<div class="countdown" id="timer_9436effe" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -627,7 +637,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-3_8360cf1aed6c31cfc3905c78fb725518">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-4_8903e0dbd0c3b9191cd1f3470e47baf0">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>oreo_square_outer <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -648,7 +658,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-4_2778ca03f1b90788b84ed5349e8c07ac">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-5_235b3c2ab2ee34f418a58af2ebf6267a">
 <div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>oreo_square_hole <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="sc">~</span>x,   <span class="sc">~</span>y,</span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="fl">2.75</span>, <span class="fl">2.75</span>,</span>
@@ -665,7 +675,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb2-14"><a href="#cb2-14"></a></span>
 <span id="cb2-15"><a href="#cb2-15"></a>oreo_square_outer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-4_2778ca03f1b90788b84ed5349e8c07ac">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-5_235b3c2ab2ee34f418a58af2ebf6267a">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
       x     y subgroup
@@ -702,7 +712,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
       }</style></aside>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-5_b69262452a45e06519c5fc8d05827226">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-6_cfa17d67fb2eb28eea395ec2f5c72238">
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -718,9 +728,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb4-13"><a href="#cb4-13"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)</span>
 <span id="cb4-14"><a href="#cb4-14"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-5_b69262452a45e06519c5fc8d05827226">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-6_cfa17d67fb2eb28eea395ec2f5c72238">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </div>
 </div>
 </div><div class="column">
@@ -732,7 +742,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-6_8bf67549384247275ef158366bf849cf">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-7_f96becd46a90c5811660188952c8999c">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>oreo_square_inner <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb5-3"><a href="#cb5-3"></a>   <span class="dv">4</span>,  <span class="dv">4</span>,</span>
@@ -750,7 +760,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-7_2d1bb631290c8179b7b8569d9a2565d2">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-8_3bb4120f880b7b021c68f71a4edce18b">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>oreo_square <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  oreo_square_outer <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
@@ -760,7 +770,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb6-7"><a href="#cb6-7"></a></span>
 <span id="cb6-8"><a href="#cb6-8"></a>oreo_square</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-7_2d1bb631290c8179b7b8569d9a2565d2">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-8_3bb4120f880b7b021c68f71a4edce18b">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
        x     y subgroup group
@@ -788,7 +798,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-8_8e8db9f1c8dc92884c1436d074ebec9d">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-9_e6b8030a448f55fce5f18286ed08c4a4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>grey <span class="ot">&lt;-</span> <span class="st">"#8F8E93"</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -804,7 +814,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb8-13"><a href="#cb8-13"></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
 <span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </div>
 </div>
 </div><div class="column">
@@ -816,9 +826,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Oreo square</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-9_5aae4c2edb5c6f5a8364718f7d722c2d">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-10_2d4621b958ca2ac1b7317b783b782d56">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </div>
 </div>
 </div><div class="column">
@@ -843,7 +853,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
       }</style></aside>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-10_dbec6e5e5eb756e944b565e0f1d09107">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-11_7be43fd2d807a58c64675548695dbe60">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>upper_triangle <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb9-3"><a href="#cb9-3"></a>   <span class="dv">0</span>,  <span class="dv">0</span>,</span>
@@ -872,7 +882,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="upper-triangle-1" class="slide level2">
 <h2>Upper triangle</h2>
-<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-11_f8132499e5c49a790fc8dc0c758d763d">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-12_01aa22b495ecb3551ee67cc2c65aca0f">
 <div class="column">
 <div class="sourceCode cell-code" id="cb11" data-code-line-numbers="5,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>yellow <span class="ot">&lt;-</span> <span class="st">"#DDA710"</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
@@ -890,7 +900,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb11-14"><a href="#cb11-14"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -899,7 +909,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Lower triangle</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-12_0f532324e680d7f301ac936d87ee45f1">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-13_6886caac64eb920e3fdf3002e068ca9c">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>lower_triangle <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb12-3"><a href="#cb12-3"></a>   <span class="dv">0</span>,  <span class="dv">0</span>,</span>
@@ -928,7 +938,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="lower-triangle-1" class="slide level2">
 <h2>Lower triangle</h2>
-<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-13_04bf62aed27d6dce7ea4b767f1e6b877">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-14_f04db38b82d886b2201ae2484c880419">
 <div class="column">
 <div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_polygon</span>(</span>
@@ -944,7 +954,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb14-12"><a href="#cb14-12"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -957,7 +967,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <section id="making-circles" class="slide level2">
 <h2>Making circles</h2>
 <p><code>geom_circle()</code> from {ggforce} draws a circle based on the center point (<code>x0</code>, <code>y0</code>) and the radius (<code>r</code>)</p>
-<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-14_9ba0b50e79ff3c43ac416ad3c034c6d3">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-15_6c73660c78916db66a042047fcf7f7ff">
 <div class="column">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(ggforce)</span>
 <span id="cb15-2"><a href="#cb15-2"></a></span>
@@ -972,7 +982,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb15-11"><a href="#cb15-11"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1003,7 +1013,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-15_d4ddeb413c1f0b6b09909e483ac70a85">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-16_8f7b786b374eeaff8ad1ba25150b8e0e">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb16-3"><a href="#cb16-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1015,9 +1025,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb16-9"><a href="#cb16-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-16_9e147011f09b10fbeb703daae0876a7e">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-17_3776ede2849c20ca01f64a8e05466805">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1028,7 +1038,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-17_76d26cf8ead6f1698a2cd271875a24e9">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-18_cc5c2c3477c801474b6376d9ba4ac944">
 <div class="sourceCode cell-code" id="cb17" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>end <span class="ot">&lt;-</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1040,9 +1050,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb17-9"><a href="#cb17-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-18_ab3e5b5a9ef27d2728fce152af591874">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-19_0040e944e22909b460a4342875f39e64">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1053,7 +1063,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-19_9199334e5ea8815bb1016e8a2b89cc5c">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-20_b3efc48881a23c74159b901515352f24">
 <div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>start <span class="ot">&lt;-</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>end <span class="ot">&lt;-</span> pi</span>
 <span id="cb18-3"><a href="#cb18-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1065,9 +1075,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb18-9"><a href="#cb18-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-20_a0050fe4b22b879ccf26dcdca32e97b8">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-21_0701c16502d66ba94bf7b341528b4983">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1078,7 +1088,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-21_5d0f54f3a767867ca171f6077ab56b10">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-22_58379a81572821a90590496382fa6e60">
 <div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>start <span class="ot">&lt;-</span> pi</span>
 <span id="cb19-2"><a href="#cb19-2"></a>end <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1090,9 +1100,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb19-9"><a href="#cb19-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-22_51c99582ac51ec897e5be17bf4399ff5">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-23_fe7a125f4dcc329148ba30ceb2574a8a">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1103,7 +1113,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-23_fa0cee9e29b3bb0a05de712cec69ae23">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-24_ad4dc579c7fa06f3362b00fe97d7ab84">
 <div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>start <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb20-3"><a href="#cb20-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1115,9 +1125,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb20-9"><a href="#cb20-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-24_ceb26908c33ec2b2c94a1596ade8427d">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-25_a891ea2649094a60ec809334e474333e">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1128,7 +1138,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-25_2d91f462aa9e644f4da7f6ee98630432">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-26_afc1facbbd0b030b53d1584aa1264592">
 <div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb21-3"><a href="#cb21-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -1140,9 +1150,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb21-9"><a href="#cb21-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-26_4d37d26087450abfe3b2ffaa0d04e3b5">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-27_9227974f30b3eee8332ea0ba06fa9f9f">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1153,7 +1163,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p>Another brief math interlude…</p>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-27_0a2a65aec9862a43a8ef5308a8a41f23">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-28_a4f0ea61c9e24e7f61b4302b2ad54456">
 <div class="sourceCode cell-code" id="cb22" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>start <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>end <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> pi</span>
 <span id="cb22-3"><a href="#cb22-3"></a>x0 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -1165,9 +1175,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb22-9"><a href="#cb22-9"></a>y <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="fu">cos</span>(tau) <span class="sc">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-28_dd47dc8fbe71ff820ed1720ba7ba0e68">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-29_a996671aa071b678c3a53908058ef4b9">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1202,7 +1212,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p><img data-src="04-riso-grids/shape-quarter-circle-1-01.jpg"></p>
 <p><img data-src="04-riso-grids/circle-quadrants.png"></p>
 </div><div class="column" style="width:70%;">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-29_20da129e8429141e7cc0796c180658aa">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-30_c423c41792e64534a501d967d7933940">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_arc_bar</span>(</span>
 <span id="cb23-3"><a href="#cb23-3"></a>    <span class="fu">aes</span>(</span>
@@ -1216,9 +1226,9 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb23-11"><a href="#cb23-11"></a>  ) <span class="sc">+</span></span>
 <span id="cb23-12"><a href="#cb23-12"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-29_20da129e8429141e7cc0796c180658aa">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-30_c423c41792e64534a501d967d7933940">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1235,7 +1245,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <p><img data-src="04-riso-grids/shape-quarter-circle-1-02.jpg"></p>
 </div><div class="column">
 <div class="fragment">
-<div class="cell" data-fig.asp="0.7" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-30_e894d22a7e599b1b4b326950af50752c">
+<div class="cell" data-fig.asp="0.7" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-31_379699b5deaac5bd9ddc403a5668f7a6">
 <div class="sourceCode cell-code" id="cb24" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">geom_arc_bar</span>(</span>
 <span id="cb24-3"><a href="#cb24-3"></a>    <span class="fu">aes</span>(</span>
@@ -1249,7 +1259,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb24-11"><a href="#cb24-11"></a>  ) <span class="sc">+</span></span>
 <span id="cb24-12"><a href="#cb24-12"></a>  <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1258,7 +1268,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="quarter-donut-quadrant-1" class="slide level2">
 <h2>Quarter donut, quadrant 1</h2>
-<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-31_336e6c3ab250519d4f9cd9aa7ec839c7">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-32_34018901f7adc6909aaf59d7c2969158">
 <div class="column">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>quarter_donut_1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="at">x =</span> <span class="dv">0</span>,</span>
@@ -1284,7 +1294,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb25-22"><a href="#cb25-22"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1293,7 +1303,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Quarter donut, quadrant 2</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-32_6cb9748c29bf1aa7df843e8742c38920">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-33_f4aceffc7c3f9e9a809caa782b3fc08b">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>quarter_donut_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="at">x =</span> <span class="dv">0</span>,</span>
 <span id="cb26-3"><a href="#cb26-3"></a>  <span class="at">y =</span> <span class="dv">10</span>,</span>
@@ -1318,7 +1328,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="quarter-donut-quadrant-2-1" class="slide level2">
 <h2>Quarter donut, quadrant 2</h2>
-<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-33_472ef178ec536c2b6dda988c837bc761">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-34_e5422dbae1fd1c01a055d72a7c6bd7bd">
 <div class="column">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">geom_arc_bar</span>(</span>
@@ -1335,7 +1345,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <span id="cb28-13"><a href="#cb28-13"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1349,9 +1359,17 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <li>Plot it using <code>geom_arc_bar()</code></li>
 </ol>
 </div>
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-35_5623d142b158dba0c7a7eb31d80344d6">
+<div class="cell-output-display">
+<div class="countdown" id="timer_77e6a3ea" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-34_245c01a79286dc082c5d991d0aed82fa" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-36_e726a1963a0989ddbd2bd69172bc905a" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1360,7 +1378,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-35_2d7e67691898ac5490cc0064a3fd2a39" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-37_448d605c52f8794cfd5ffc19587f1290" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1376,7 +1394,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 <h2>Quarter donut, quadrant 4</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-37_b3af583482a07ec2c285e4aa070cab11">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-39_c99aa870a0fe5a03719a966fd9e61567">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>quarter_donut_4 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb29-2"><a href="#cb29-2"></a>  <span class="at">x =</span> <span class="dv">10</span>,</span>
 <span id="cb29-3"><a href="#cb29-3"></a>  <span class="at">y =</span> <span class="dv">0</span>,</span>
@@ -1406,7 +1424,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="generate-shape-data" class="slide level2">
 <h2>Generate shape data</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-38_d0c2f91fa57b86f9d25ef1be13d81d45">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-40_43a356ebe721856647b9918ee7064e83">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>generate_shape_data <span class="ot">&lt;-</span> <span class="cf">function</span>(shape, color) {</span>
 <span id="cb31-2"><a href="#cb31-2"></a>  <span class="cf">switch</span>(shape,</span>
 <span id="cb31-3"><a href="#cb31-3"></a>    <span class="st">"oreo square"</span> <span class="ot">=</span> oreo_square,</span>
@@ -1426,7 +1444,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="generate-shape-data-1" class="slide level2">
 <h2>Generate shape data</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-39_6ed6610ea577c322957b56870a81fa3e">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-41_58e3520ed9891bfd8f9dc4763a47e76d">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>yellow_oreo_square <span class="ot">&lt;-</span> <span class="fu">generate_shape_data</span>(</span>
 <span id="cb32-2"><a href="#cb32-2"></a>  <span class="st">"oreo square"</span>,</span>
 <span id="cb32-3"><a href="#cb32-3"></a>  yellow</span>
@@ -1454,7 +1472,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="shape-plotter" class="slide level2">
 <h2>Shape plotter</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-40_9d6cc0bc1c47a3f3b55087488e3551ad">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-42_d8e982187fcbe8f71c69c17ed0048366">
 <div class="sourceCode cell-code" id="cb34" data-code-line-numbers="4-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>generate_shape_plotter <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
 <span id="cb34-2"><a href="#cb34-2"></a>  shape <span class="ot">&lt;-</span> data[[<span class="st">"shape"</span>]][[<span class="dv">1</span>]]</span>
 <span id="cb34-3"><a href="#cb34-3"></a></span>
@@ -1479,7 +1497,7 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="shape-plotter-1" class="slide level2">
 <h2>Shape plotter</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-41_0873e85000f53bf01eaf3fee8771a303">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-43_debfc7769890f9ac7f10643157a8e0c4">
 <div class="sourceCode cell-code" id="cb35" data-code-line-numbers="11-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>generate_shape_plotter <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
 <span id="cb35-2"><a href="#cb35-2"></a>  shape <span class="ot">&lt;-</span> data[[<span class="st">"shape"</span>]][[<span class="dv">1</span>]]</span>
 <span id="cb35-3"><a href="#cb35-3"></a></span>
@@ -1504,10 +1522,10 @@ Ijeamaka Anyene Fumagalli and Sharla Gelfand
 </section>
 <section id="shape-plotter-2" class="slide level2">
 <h2>Shape plotter</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-42_fb324c57b064619a22d147e156ff9b93">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-44_73b0054543e74a0d446c4b4799a89cf4">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">generate_shape_plotter</span>(yellow_oreo_square)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-42_fb324c57b064619a22d147e156ff9b93">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-44_73b0054543e74a0d446c4b4799a89cf4">
 <div class="cell-output cell-output-stdout">
 <pre><code>mapping: x = ~x, y = ~y, group = ~group, subgroup = ~subgroup, fill = ~color 
 geom_polygon: na.rm = FALSE, rule = evenodd
@@ -1519,7 +1537,7 @@ position_identity </code></pre>
 <p>Returns only the <code>geom_*()</code> function, which can be used directly in a <code>ggplot2</code> pipeline, or with multiple together in a <code>list()</code></p>
 </div>
 <div class="fragment">
-<div class="cell columns column-output-location" data-fig.asp="0.75" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-43_6bca77f9b2897dbbee40d6fdca058646">
+<div class="cell columns column-output-location" data-fig.asp="0.75" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-45_13a0467ea5d963aa138eb96873741583">
 <div class="column">
 <div class="sourceCode cell-code" id="cb38" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">generate_shape_plotter</span>(yellow_oreo_square) <span class="sc">+</span></span>
@@ -1528,7 +1546,7 @@ position_identity </code></pre>
 <span id="cb38-5"><a href="#cb38-5"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-45-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1538,7 +1556,7 @@ position_identity </code></pre>
 <h2>Grid of shapes</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-44_55f07748f2ba7516dcfac542da41d26e">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-46_9dd73a419823abb39a15ca7fb41d50a6">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>layer_1 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb39-2"><a href="#cb39-2"></a>  <span class="sc">~</span>row, <span class="sc">~</span>column,             <span class="sc">~</span>shape,</span>
 <span id="cb39-3"><a href="#cb39-3"></a>     <span class="dv">1</span>,       <span class="dv">1</span>, <span class="st">"quarter donut q3"</span>,</span>
@@ -1571,7 +1589,7 @@ position_identity </code></pre>
 <h2>Create the grid of shapes</h2>
 <div class="columns">
 <div class="column">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-45_f0c311bc10a801ade05e3df1aee7bba0">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-47_8042e77a9d25bbace5a4f32604f1d843">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>layer_1 <span class="sc">%&gt;%</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1607,7 +1625,7 @@ $`4`
 </section>
 <section id="create-the-grid-of-shapes-1" class="slide level2">
 <h2>Create the grid of shapes</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-46_6a6fcdf24d9a824da99e7f31a294df24">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-48_482ec5932ecccecfcbbc2a55cac503bd">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb43-2"><a href="#cb43-2"></a></span>
 <span id="cb43-3"><a href="#cb43-3"></a>layer_1 <span class="sc">%&gt;%</span></span>
@@ -1648,7 +1666,7 @@ $`4`
 </section>
 <section id="list-of-plotters" class="slide level2">
 <h2>List of plotters</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-47_8b2f8c6902d82b32207576c66a2f6de2">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-49_633e0e510f3b1c9d2cc235eee4f7de23">
 <div class="sourceCode cell-code" id="cb45" data-code-line-numbers="8,9,10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb45-2"><a href="#cb45-2"></a></span>
 <span id="cb45-3"><a href="#cb45-3"></a>layer_1_plotting <span class="ot">&lt;-</span> layer_1 <span class="sc">%&gt;%</span></span>
@@ -1694,10 +1712,10 @@ position_identity </code></pre>
 <span id="cb47-5"><a href="#cb47-5"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-47-1.png" width="960" class="r-stretch"></section>
+<img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" class="r-stretch"></section>
 <section id="using-a-list-of-plotters-together" class="slide level2">
 <h2>Using a list of plotters together</h2>
-<div class="cell columns column-output-location" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-48_8e9cb58f89f57b95eafbf2246b1b8958">
+<div class="cell columns column-output-location" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-50_b554c350752b2b34b7b5a6db7d992880">
 <div class="column">
 <div class="sourceCode cell-code" id="cb48" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a>  layer_1_plotting <span class="sc">+</span></span>
@@ -1706,7 +1724,7 @@ position_identity </code></pre>
 <span id="cb48-5"><a href="#cb48-5"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-48-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-50-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1762,7 +1780,7 @@ position_identity </code></pre>
 <section id="shifting-data-2" class="slide level2">
 <h2>Shifting data</h2>
 <p>Shift everything over using the <span class="under">size of one grid</span> and the <span class="under">row</span> and <span class="under">column</span></p>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-49_d50029c1a0438fc59ce3f1e71ac5a263">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-51_f63618ace5093df4c8dc70d10c9c846e">
 <div class="sourceCode cell-code" id="cb49" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>layer_1_data <span class="ot">&lt;-</span> layer_1 <span class="sc">%&gt;%</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
 <span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">map_dfr</span>(</span>
@@ -1793,7 +1811,7 @@ position_identity </code></pre>
 <section id="shifting-data-3" class="slide level2">
 <h2>Shifting data</h2>
 <p>Shift everything over using the <span class="under">size of one grid</span> and the <span class="under">row</span> and <span class="under">column</span></p>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-50_9854b49495ef402db17e7c814c58efe5">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-52_c68dee4168674b78d3423db49e435c79">
 <div class="sourceCode cell-code" id="cb51" data-code-line-numbers="1,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>grid_size <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb51-2"><a href="#cb51-2"></a></span>
 <span id="cb51-3"><a href="#cb51-3"></a>layer_1_data_shifted <span class="ot">&lt;-</span> layer_1_data <span class="sc">%&gt;%</span></span>
@@ -1820,7 +1838,7 @@ position_identity </code></pre>
 </section>
 <section id="now-plot" class="slide level2">
 <h2>Now plot!</h2>
-<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-51_b59c2aa2ba243dbf4483945f799990fa">
+<div class="cell columns column-output-location" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-53_0ebdbb1a660f95e27895584987a8150b">
 <div class="column">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>layer_1_plotting <span class="ot">&lt;-</span> layer_1_data_shifted <span class="sc">%&gt;%</span></span>
 <span id="cb53-2"><a href="#cb53-2"></a>  <span class="fu">split</span>(.<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
@@ -1836,7 +1854,7 @@ position_identity </code></pre>
 <span id="cb53-12"><a href="#cb53-12"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-51-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1845,7 +1863,7 @@ position_identity </code></pre>
 <h2>Do the same for the second layer!</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-52_ea54d7a6447027d34fc42ae033cdfde0">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-54_61a5aa787da8e862aaef8b439c011664">
 <div class="sourceCode cell-code" id="cb54" data-code-line-numbers="3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>layer_2 <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb54-2"><a href="#cb54-2"></a>  <span class="sc">~</span>row, <span class="sc">~</span>column,             <span class="sc">~</span>shape,</span>
 <span id="cb54-3"><a href="#cb54-3"></a>     <span class="dv">1</span>,       <span class="dv">1</span>,      <span class="st">"oreo square"</span>,</span>
@@ -1883,13 +1901,13 @@ position_identity </code></pre>
 <span id="cb54-35"><a href="#cb54-35"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
 <span id="cb54-36"><a href="#cb54-36"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-52_ea54d7a6447027d34fc42ae033cdfde0">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-54_61a5aa787da8e862aaef8b439c011664">
 
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-53_8ad7110c688d8f0fb439a42b4614c2d5">
+<div class="cell" data-fig.asp="1" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-55_bf92b353629126bcfeeb52661717ff7d">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-55-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1905,10 +1923,18 @@ position_identity </code></pre>
 <li>Share your two plots in the GitHub discussion</li>
 </ol>
 </div>
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-56_933f659fff00aef23ea17f69118b4fc4">
+<div class="cell-output-display">
+<div class="countdown" id="timer_ed9ab696" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 </section>
 <section id="put-them-together" class="slide level2">
 <h2>Put them together</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-54_e78d887c888d7949e8ce0992f357dc79">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-57_9bda959aee9f6e10bd4fa4c911f3ac2f">
 <div class="sourceCode cell-code" id="cb55" data-code-line-numbers="2,3,4,5,"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">list</span>(</span>
 <span id="cb55-3"><a href="#cb55-3"></a>    layer_1_plotting,</span>
@@ -1918,9 +1944,9 @@ position_identity </code></pre>
 <span id="cb55-7"><a href="#cb55-7"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
 <span id="cb55-8"><a href="#cb55-8"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-54_e78d887c888d7949e8ce0992f357dc79">
+<div class="cell fragment" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-57_9bda959aee9f6e10bd4fa4c911f3ac2f">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-54-1.png" style="width:50.0%"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-57-1.png" style="width:50.0%"></p>
 </div>
 </div>
 <div class="fragment">
@@ -1944,7 +1970,7 @@ position_identity </code></pre>
       }</style></aside>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-55_7a8f265d6dc0f7cc31a022debc34afe5" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-58_23247b9101c6acd9c4bcfe079a1fd908" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1954,7 +1980,7 @@ position_identity </code></pre>
 </div>
 </div>
 <div class="fragment quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="cell" data-layout-align="center" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-56_500c52c29a9bc747c955f8c844380f3c">
+<div class="cell" data-layout-align="center" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-59_46396957bb432bde8f4deea1eb56420a">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1969,7 +1995,7 @@ position_identity </code></pre>
 </section>
 <section id="risograph-effect-please-1" class="slide level2">
 <h2>Risograph effect please?</h2>
-<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-57_4559feec4da7e30e6b77cdf326a342fd">
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-60_594ce5eaa43ed537aa28acebfed31940">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>layer_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb56-2"><a href="#cb56-2"></a>  layer_1_plotting <span class="sc">+</span></span>
 <span id="cb56-3"><a href="#cb56-3"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
@@ -2009,7 +2035,7 @@ position_identity </code></pre>
 <span id="cb57-12"><a href="#cb57-12"></a>paper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-58-1.png"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-61-1.png"></p>
 </div>
 </div>
 </div>
@@ -2033,7 +2059,7 @@ position_identity </code></pre>
 <span id="cb58-13"><a href="#cb58-13"></a>  <span class="fu">image_composite</span>(layer_1_img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-59-1.png"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-62-1.png"></p>
 </div>
 </div>
 </div>
@@ -2061,7 +2087,7 @@ position_identity </code></pre>
 <span id="cb59-17"><a href="#cb59-17"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-60-1.png"></p>
+<p><img data-src="04-riso-grids_files/figure-revealjs/unnamed-chunk-63-1.png"></p>
 </div>
 </div>
 </div>
@@ -2095,6 +2121,14 @@ position_identity </code></pre>
 <li>Use the given code to combine a “paper” layer with your two layers to create the riso print effect</li>
 <li>Share your final image on GitHub</li>
 </ol>
+</div>
+<div class="cell" data-hash="04-riso-grids_cache/revealjs/unnamed-chunk-65_bdaf908997c09064d05e8b61e12ff7c7">
+<div class="cell-output-display">
+<div class="countdown" id="timer_b8b929ad" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
 </div>
 </section>
 <section id="wrap-it-up" class="slide level2">

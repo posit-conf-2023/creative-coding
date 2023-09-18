@@ -534,6 +534,14 @@ create_initial_shape(1, 1) %>%
 8.  Remember to save your file when you are done with the exercise.
 :::
 
+```{r echo = FALSE}
+countdown::countdown(
+  minutes = 10,
+  color_running_background = "#b6d166",
+  color_finished_background = "#F2994A"
+)
+```
+
 # Orientation of the Letter U
 
 ## Exploring Geometric Abstraction
@@ -924,6 +932,10 @@ ggplot(data = rotated_shape) +
 4.  What happens if you change `shape_width` to be greater or smaller than 1? Why does this happen?
 5.  Remember to save your file when you are done with the exercise.
 :::
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 5)
+```
 
 # Composition of piece
 
@@ -1555,6 +1567,10 @@ final_output %>%
 -   Experiment with colors in the `fill=` and `color=` in `geom_polygon()`
 -   Experiment with colors in the `plot.background` in `theme()`
 :::
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 10)
+```
 
 ## Recap
 
