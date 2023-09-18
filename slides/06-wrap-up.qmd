@@ -30,11 +30,21 @@ execute:
 
 #
 
-![Sharla Gelfand](06-wrap-up/sharla.jpg)
+::: {layout="[[0.6,-0.3, 0.6]]" layout-valign="bottom"}
+
+![*Ridge Chemistry*, Pierre Casadebaig](06-wrap-up/pierre-1.jpg)
+
+![[*Dispyr*, Pierre Casadebaig](https://art.casadebaig.net/)](06-wrap-up/pierre-2.jpg)
+
+:::
 
 #
 
-![Ijeamaka Anyene Fumagalli](06-wrap-up/ije.jpg)
+![*Interstellar Doodles*, Sharla Gelfand](06-wrap-up/sharla.jpg)
+
+#
+
+![*Citrus Pop*, Ijeamaka Anyene Fumagalli](06-wrap-up/citrus-pop.jpg)
 
 # Feedback for Workshop
 
